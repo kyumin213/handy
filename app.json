@@ -1,0 +1,70 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/privateCoachDetails/privateCoachDetails",
+    "pages/privateCoachDetails/privateCoursePayment/privateCoursePayment",
+    "pages/me/me",
+    "pages/me/RechargeableCard/RechargeableCard",
+    "pages/course/paymentSuccess/paymentSuccess",
+    "pages/attention/attention",
+    "pages/course/course",
+    "pages/me/myCardList/myCardList",
+    "pages/course/courseDetails/courseDetails",
+    "pages/course/comfirPayment/comfirPayment",
+    "pages/me/membershipCard/membershipCard",
+    "pages/coachDetails/coachDetails",
+    "pages/me/myAppointment/myAppointment",
+    "pages/course/coursePayment/coursePayment",
+    "pages/me/cardPayment/cardPayment",
+    "pages/me/myTeamCourse/myTeamCourse",
+    "pages/me/myBill/myBill",
+    "pages/me/payPwd/payPwd",
+    "pages/me/useCoupon/useCoupon",
+    "pages/authorization/authorization",
+    "pages/find/find",
+    "pages/me/viewComplete/viewComplete",
+    "pages/me/InvitingFriends/InvitingFriends",
+    "pages/me/QRcode/QRcode",
+    "pages/newborn/newborn",
+    "pages/logs/logs",
+    "pages/qrcode/qrcode_buy"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "borderStyle": "#E5E5E5",
+    "backgroundColor": "#fff",
+    "color": "#ccc",
+    "selectedColor": "#D61518",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "发现",
+        "iconPath": "images/find.png",
+        "selectedIconPath": "images/findActive.png"
+      },
+      {
+        "pagePath": "pages/course/course",
+        "text": "汗的课程",
+        "iconPath": "images/course.png",
+        "selectedIconPath": "images/courseActive.png"
+      },
+      {
+        "pagePath": "pages/attention/attention",
+        "text": "关注教练",
+        "iconPath": "images/coach.png",
+        "selectedIconPath": "images/coachActive.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "汗的",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/meActive.png"
+      }
+    ]
+  }
+}

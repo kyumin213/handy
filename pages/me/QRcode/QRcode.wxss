@@ -1,0 +1,36 @@
+/* pages/me/QRcode/QRcode.wxss */
+
+.logBox {
+  width: 100%;
+  margin-top: 148rpx;
+  text-align: center;
+}
+
+.logs {
+  width: 234rpx;
+  height: 82rpx;
+}
+
+.codeBox {
+  width: 100%;
+  text-align: center;
+  margin-top: 72rpx;
+}
+
+.codeBox .codeImg {
+  width: 366rpx;
+  height: 366rpx;
+  border: 20rpx solid #d61518;
+}
+.txt1{
+  width: 100%;
+  text-align: center;
+  font-size: 30rpx;
+  color: #999999;
+  margin-top: 64rpx;
+}
+.txt2{
+  color: #D71718;
+  margin-top: 24rpx;
+  text-decoration-line: underline;
+}

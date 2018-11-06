@@ -1,0 +1,366 @@
+/* pages/course/course.wxss */
+
+page {
+  background: #f2f2f2;
+}
+
+.headImg {
+  width: 690rpx;
+  height: 154rpx;
+  margin: 20rpx auto 0 auto;
+}
+
+.bannerImg {
+  width: 100%;
+}
+
+.addressCon {
+  height: 88rpx;
+  line-height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 30rpx;
+}
+
+.addressLeft {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  height: 60rpx;
+  background: #fff;
+  text-align: left;
+  border-radius: 10rpx;
+  padding-right: 20rpx;
+  padding-left: 10rpx;
+}
+
+.addressCon .addressIcon {
+  width: 38rpx;
+  height: 38rpx;
+}
+
+.searchBtn {
+  width: 160rpx;
+  height: 60rpx;
+  font-size: 26rpx;
+  color: #333;
+  background: #fff;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 60rpx;
+}
+
+.addressTxt {
+  font-size: 26rpx;
+  color: #333;
+}
+
+/* 日期 */
+
+.showWeek {
+  width: 100%;
+  height: 206rpx;
+  background: #fff;
+}
+
+.weekDays {
+  padding: 52rpx 16rpx 0 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.weekDays .weekDay {
+  display: inline-block;
+  width: 94rpx;
+  text-align: center;
+}
+
+.dayDatas {
+  margin: 34rpx 16rpx 14rpx 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+
+.dayDatas .dayData {
+  width: 86rpx;
+  height: 86rpx;
+  color: #999;
+  text-align: center;
+  line-height: 78rpx;
+  font-size: 36rpx;
+  border: 4rpx solid transparent;
+  box-sizing: border-box;
+}
+
+.dayDatas .active {
+  border: 4rpx solid #d60b0b;
+  border-radius: 100%;
+  color: #d60b0b;
+}
+
+/* 课程 */
+
+.curriculumItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 200rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  margin-top: 16rpx;
+  background: #fff;
+  /* border-top: 4rpx solid #211e1e;
+  border-bottom: 4rpx solid #1e211e; */
+}
+
+.curriculumItem .curriLeft {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80%;
+}
+
+.headImgBox {
+  width: 148rpx;
+  height: 148rpx;
+  border-radius: 100%;
+}
+
+.curriculumItem .curriculumImg {
+  width: 148rpx;
+  height: 148rpx;
+  border-radius: 100%;
+  background: #ccc;
+}
+
+.curriculumItem .curriDes {
+  margin-left: 26rpx;
+}
+
+.curriculumItem .curriLabel {
+  display: inline-block;
+  text-align: center;
+  /* width: 66rpx; */
+  padding: 0 10rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  border: 2rpx solid #999;
+  border-radius: 6rpx;
+  font-size: 22rpx;
+  color: #999;
+  margin-right: 10rpx;
+}
+
+.curriculumItem .curriName {
+  font-size: 32rpx;
+  color: #333;
+  height: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.curriculumItem .labels {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 20rpx;
+  height: 26rpx;
+}
+
+.curriculumItem .prices {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 20rpx;
+}
+
+.prices .price {
+  display: inline-block;
+  font-size: 36rpx;
+  color: #d71718;
+}
+
+.prices .priceIcon {
+  display: inline-block;
+  font-size: 24rpx;
+  color: #d71718;
+}
+
+.hanPrice {
+  display: inline-block;
+  width: 130rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  text-align: center;
+  font-size: 20rpx;
+  color: #fff;
+  background: #d71718;
+  border-radius: 6rpx;
+  margin-left: 10rpx;
+}
+
+.startTime {
+  height: 100%;
+  text-align: center;
+}
+
+.startTime .times {
+  font-size: 26rpx;
+  color: #d71718;
+  height: 88rpx;
+  padding-top: 40rpx;
+  box-sizing: border-box;
+  font-weight: bold;
+  /* line-height: 88rpx; */
+}
+
+.startTime .appointment {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  background: #d71718;
+  /* box-shadow: 2rpx 4rpx 4rpx #ff696a; */
+  color: #fff;
+  font-size: 30rpx;
+  /* margin-top: 18rpx; */
+}
+
+.startTime .endBtn {
+  background: #ccc;
+}
+
+.startTime .check {
+  background: #ccc;
+  color: #d71718;
+}
+
+.reserve {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.reserve .reserveBtn {
+  height: 98rpx;
+  line-height: 98rpx;
+  background-color: #d71718;
+  color: #fff;
+  border-radius: 0;
+  font-size: 32rpx;
+}
+
+.isnull {
+  width: 100%;
+  text-align: center;
+  color: #999;
+  margin-top: 200rpx;
+  font-size: 32rpx;
+}
+
+.animation {
+  background: rgba(0, 0, 0, 0);
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  right: 0;
+  bottom: 0;
+}
+
+.animation-content {
+  width: 418rpx;
+  height: 100%;
+  background: #fff;
+  position: absolute;
+  left: -418rpx;
+  bottom: 0;
+  font-size: 30rpx;
+  color: #666;
+  z-index: 999;
+}
+
+.animation-content .listLeft {
+  position: absolute;
+  top: 84rpx;
+  bottom: 0;
+  left: 0;
+  width: 210rpx;
+}
+
+.animation-content .listRight {
+  background: #f2f2f2;
+  position: absolute;
+  top: 84rpx;
+  bottom: 0;
+  right: 0;
+  width: 210rpx;
+  padding-top: 24rpx;
+}
+
+.pztitle {
+  width: 100%;
+  height: 84rpx;
+  line-height: 84rpx;
+  font-size: 30rpx;
+  color: #fff;
+  padding-left: 58rpx;
+  background: #d60b0b;
+  box-sizing: border-box;
+}
+
+.city {
+  width: 158rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  text-align: center;
+  border-radius: 34rpx;
+  margin: 22rpx auto auto auto;
+}
+
+.storeNames {
+  width: 190rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  text-align: center;
+  background: #fff;
+  border-radius: 34rpx;
+  margin: 0 auto 22rpx auto;
+}
+
+.inputzone {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.tabActive {
+  background: #d71718;
+  color: #fff;
+}
+
+.modelShow {
+  transform: rotate(0deg) scale(1) translate(100%, 0%);
+  transition: ease-in-out 0.2s;
+  -webkit-transform: rotate(0deg) scale(1) translate(100%, 0%);
+}
+
+.hideModel {
+  transform: rotate(0deg) scale(1) translate(-100%, 0%);
+  transition: ease-in-out 0.2s;
+  -webkit-transform: rotate(0deg) scale(1) translate(-100%, 0%);
+}

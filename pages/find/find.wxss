@@ -1,0 +1,169 @@
+/* pages/find/find.wxss */
+view{
+  line-height: 1;
+}
+button::after{
+  border: none;
+}
+.bg-c {
+  width: 100%;
+  background: #f2f2f2;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+.bg-c::-webkit-scrollbar{
+  display: none;
+}
+
+.ml {
+  margin-left: 32rpx;
+}
+
+.dflex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headTop {
+  width: 690rpx;
+  height: 154rpx;
+  margin: 20rpx auto 0 auto;
+  background: #ccc;
+}
+
+.headBot {
+  margin: 14rpx 32rpx;
+}
+
+.headBot .txt {
+  font-size: 26rpx;
+  color: #333;
+  background: #fff;
+  border-radius: 10rpx;
+  text-align: center;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.headBot .txt:first-child {
+  width: 192rpx;
+}
+
+.headBot .txt:last-child {
+  width: 214rpx;
+}
+.con{
+  margin-bottom: 116rpx;
+}
+.items {
+  width: 100%;
+  height: 566rpx;
+  background: #fff;
+  margin-bottom: 18rpx;
+  box-sizing: border-box;
+}
+
+.items .conTop {
+  padding: 24rpx 30rpx 30rpx 30rpx;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.items .coachImg {
+  display: inline-block;
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 100%;
+  background: #ccc;
+}
+.items .fllowAtten{
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.items .conLeft {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.items .coachDes {
+  margin-left: 32rpx;
+}
+
+.items .coachDes text {
+  display: block;
+}
+
+.items .coachDes .coachName {
+  font-size: 26rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.items .coachDes .coachLevel {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.items .followBtn {
+  padding: 0;
+  margin: 0;
+  width: 106rpx;
+  height: 38rpx;
+  text-align: center;
+  /* background: #d71718; */
+  border-radius: 10rpx;
+  font-size: 20rpx;
+  /* color: #fff; */
+  border: 2rpx solid #d71718;
+  line-height: 38rpx;
+  box-sizing: content-box;
+}
+
+
+.items .fg {
+  margin-left: 36rpx;
+  color: #333;
+  font-size: 26rpx;
+  margin-bottom: 28rpx;
+}
+.items .fg text{
+  display: block;
+  line-height: 30rpx;
+}
+
+.con .imgShow {
+  margin: 0 32rpx;
+}
+
+.con .imgShow .imgs {
+  width: 218rpx;
+  height: 220rpx;
+  border-radius: 10rpx;
+  background: #ccc;
+}
+
+.con .times {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 12rpx;
+  margin-bottom: 30rpx;
+}
+
+.con .times text:first-child {
+  margin-right: 18rpx;
+}
+.con .opera{
+  font-size: 28rpx;
+  color: #333333;
+  margin: 0 92rpx;
+}
+.btn-hover{
+  background: #fff;
+  color: #d71718;
+}

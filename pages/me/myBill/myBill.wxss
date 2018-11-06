@@ -1,0 +1,18 @@
+/* pages/me/myBill/myBill.wxss */
+.consumptionList{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 122rpx;
+  padding: 0 54rpx 0 32rpx;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #efeff5;
+}
+.consumptionList .names{
+  font-size: 32rpx;
+  color: #333;
+}
+.consumptionList .times{
+  font-size: 26rpx;
+  margin-top: 14rpx;
+}

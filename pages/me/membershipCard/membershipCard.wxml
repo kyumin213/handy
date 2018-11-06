@@ -1,0 +1,41 @@
+<!--pages/me/membershipCard/membershipCard.wxml-->
+<!--pages/me/RechargeableCard/RechargeableCard.wxml-->
+
+<view>
+  <view class='cardimgBox'>
+    <image mode='widthFix' class='cardImg' src='../../../images/memberCard/chongzhi.png'></image>
+  </view>
+  <view class='con'>
+    <block wx:for="{{handyCardList}}" wx:key="{{index}}">
+      <view class='cardBox' bindtap='selectCard' data-index="{{index}}">
+        <view class="cardList {{check===index?'active': ''}}">
+          <view class='cardItems'>
+            <view>
+              <view class="item1 {{check===index?'': 'color'}}">汗的{{item.handyCardName}}</view>
+              <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===1}}">有效期{{item.handyCardTimeType}}个月</view>
+              <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===2}}">有效期3个月</view>
+              <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===3}}">有效期6个月</view>
+              <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===4}}">有效期1年</view>
+               <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===5}}">有效期1天</view>
+            </view>
+            <view class='itemRight'>
+              <view class="item1 {{check===index?'':'color'}}">
+                <text class="fh {{check===index?'':'color'}}">￥</text>{{item.handyCardMoney}}</view>
+              <view class="fz-24 item3 {{check===index? '': 'activeBtn'}}">会员卡</view>
+            </view>
+          </view>
+          <view class="leftBy {{check===index?'active': ''}}"></view>
+          <view class="rightBy {{check===index?'active': ''}}"></view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='footer'>
+    <view class='left'>
+      <text class='fz-24'>付款金额</text>
+      <text class='totalMoney'>￥{{totalMoney}}</text>
+    </view>
+    <view class='right' bindtap='subPayment'>确认支付</view>
+  </view>
+</view>
+

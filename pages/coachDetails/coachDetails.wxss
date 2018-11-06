@@ -1,0 +1,549 @@
+/* pages/coachDetails/coachDetails.wxss */
+
+page {
+  width: 100%;
+  height: 100%;
+  background-color: plum;
+  display: flex;
+  flex-direction: column;
+}
+
+view {
+  line-height: 1;
+}
+
+.bgF {
+  background: #fff;
+}
+
+.bg-c {
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+}
+
+.bg-c::-webkit-scrollbar {
+  display: none;
+}
+
+.swiper-box {
+  width: 100%;
+  max-height: 9999rpx;
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.fw {
+  font-weight: bold;
+}
+
+.detailTop {
+  /* display: flex; *//* height: 596rpx; */
+}
+
+.headTop {
+  width: 100%;
+  margin-bottom: 16rpx;
+}
+
+.headImg {
+  display: block;
+  width: 100%;
+  height: 468rpx;
+  background: #ccc;
+  background-size: cover;
+}
+
+.Tabs {
+  width: 100%;
+  height: 114rpx;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  overflow: hidden;
+  z-index: 999;
+  color: #333;
+  /* margin-top: 16rpx; */
+}
+
+.Tabs .items {
+  display: inline-block;
+  height: 114rpx;
+  line-height: 114rpx;
+  /* padding-top: 48rpx; */
+  text-align: center;
+  width: 25%;
+  box-sizing: border-box;
+  /* position: relative; */
+}
+
+.Tabs .active {
+  border-bottom: 10rpx solid #d71718;
+  font-weight: bold;
+}
+
+/* .Tabs .borBom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10rpx;
+  background: #d71718;
+  border-radius: 4rpx;
+} */
+
+/* 详情scroll */
+
+.item1, .item2, .item3 {
+  border-bottom: 16rpx solid #f2f2f2;
+  height: auto;
+}
+
+.detailsBom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 612rpx;
+  overflow-y: auto;
+  /* flex: 1;
+  height: 500px; */
+}
+
+.coachProfile {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48rpx 46rpx 43rpx 46rpx;
+  box-sizing: border-box;
+  /* background: #1a1a1a; */
+}
+
+.coachProfile .coachImg {
+  width: 148rpx;
+  height: 148rpx;
+  border-radius: 50%;
+  /* background: #ccc; */
+  background-size: cover;
+}
+
+.coachProfile .coachName {
+  width: 100%;
+  text-align: center;
+  color: #d71718;
+  margin-top: 22rpx;
+  font-size: 46rpx;
+}
+
+.coachProfile .profile {
+  font-size: 30rpx;
+  color: #999;
+  margin-left: 52rpx;
+  width: 460rpx;
+  line-height: 48rpx;
+}
+
+.more {
+  width: 100%;
+  text-align: center;
+  background: #fff;
+  padding-bottom: 38rpx;
+  /* background: #1a1a1a; *//* position: fixed; *//* bottom: 26rpx; */
+}
+
+.more .jt {
+  display: inline-block;
+  width: 26rpx;
+  height: 26rpx;
+  border-left: 4rpx solid #d71718;
+  border-bottom: 4rpx solid #d71718;
+  transform: rotate(-45deg);
+  /* margin-top: -26rpx; */
+}
+
+/* 擅长课程 */
+
+.goodTitle {
+  margin: 40rpx auto 0 auto;
+  text-align: center;
+  font-size: 36rpx;
+}
+
+.titleBg {
+  width: 100%;
+  text-align: center;
+}
+
+.logoICon {
+  width: 238rpx;
+  height: 84rpx;
+  margin: 0 auto;
+  padding: 34rpx 0 16rpx 0;
+}
+
+.titles {
+  margin: 0 auto 26rpx auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  width: 252rpx;
+  height: 46rpx;
+  background: #d60b0b;
+  padding: 0 16rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.titles::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -120rpx;
+  width: 104rpx;
+  height: 2rpx;
+  background: #d60b0b;
+}
+
+.titles::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -120rpx;
+  width: 104rpx;
+  height: 2rpx;
+  background: #d60b0b;
+}
+
+/* .goodTitle text {
+  display: inline-block;
+  width: 64rpx;
+  height: 64rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 32rpx;
+  margin-top: 10rpx;
+  font-weight: bold;
+  margin-right: 30rpx;
+} */
+
+.goodTitle .enDetail {
+  font-size: 30rpx;
+  color: #ccc;
+}
+
+.coachGood {
+  margin-left: 54rpx;
+  font-size: 32rpx;
+  color: #fff;
+  margin-top: 34rpx;
+  height: 44rpx;
+}
+
+.goodsAt {
+  display: inline-block;
+  height: 44rpx;
+  line-height: 44rpx;
+  background: #d71718;
+  padding: 0 32rpx 0 22rpx;
+}
+
+.item2 .goodDes {
+  width: 622rpx;
+  padding: 0 0 40rpx 56rpx;
+  font-size: 30rpx;
+  color: #999;
+  line-height: 48rpx;
+}
+
+.item2 .courseGood {
+  margin-top: 20rpx;
+  line-height: 48rpx;
+}
+
+.item2 .item2Top {
+  padding-bottom: 40rpx;
+}
+
+.item2 .imgList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 30rpx 10rpx 30rpx;
+}
+
+.item2 .imgList .imgItem {
+  width: 226rpx;
+  height: 226rpx;
+  background: #ccc;
+}
+
+/* 认证证书 */
+
+.certifiList {
+  padding:24rpx 54rpx 64rpx 54rpx;
+}
+
+.item3 .certificateList {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10rpx;
+}
+
+.item3 .certificateIcon {
+  width: 48rpx;
+  height: 48rpx;
+  /* background: #f00; */
+}
+
+.item3 .certificateList .certificateItem {
+  margin-left: 18rpx;
+  font-size: 30rpx;
+  color: #999;
+  line-height: 46rpx;
+}
+
+/* 近期排课 */
+
+.item4 {
+  margin-bottom: 98rpx;
+  /* height: auto; */
+}
+
+.dates {
+  height: auto;
+  background: #fff;
+  border-top: 2rpx solid #f2f2f2;
+  border-bottom: 2rpx solid #f2f2f2;
+  margin-top: 34rpx;
+}
+
+.item4 .weekDays {
+  background: #fff;
+  padding: 54rpx 72rpx 0 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.item4 .weekDays .weekDay {
+  width: 86rpx;
+  text-align: center;
+}
+
+.item4 .dayDatas {
+  margin: 36rpx 72rpx 22rpx 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.item4 .dayDatas .dayData {
+  width: 86rpx;
+  height: 86rpx;
+  color: #999;
+  text-align: center;
+  line-height: 78rpx;
+  font-size: 36rpx;
+  border: 4rpx solid transparent;
+  box-sizing: border-box;
+}
+
+.item4 .dayDatas .active {
+  border: 4rpx solid #d60b0b;
+  border-radius: 100%;
+  color: #d60b0b;
+}
+
+.curriculumItem {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 222rpx;
+  padding: 0 50rpx 0 48rpx;
+  box-sizing: border-box;
+  border-bottom: 18rpx solid #f2f2f2;
+}
+
+.curriculumItem .curriLeft {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80%;
+}
+
+.headImgBox {
+  width: 148rpx;
+  height: 148rpx;
+  border-radius: 100%;
+}
+
+.curriculumItem .curriculumImg {
+  width: 148rpx;
+  height: 148rpx;
+  border-radius: 100%;
+  background: #ccc;
+}
+
+.curriculumItem .curriDes {
+  margin-left: 26rpx;
+}
+
+.curriculumItem .curriLabel {
+  display: inline-block;
+  text-align: center;
+  /* width: 66rpx; */
+  padding: 0 10rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  border: 2rpx solid #999;
+  border-radius: 6rpx;
+  font-size: 22rpx;
+  color: #999;
+  margin-right: 10rpx;
+}
+
+.curriculumItem .curriName {
+  font-size: 32rpx;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.curriculumItem .labels {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 20rpx;
+  height: 26rpx;
+}
+
+.curriculumItem .prices {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 20rpx;
+}
+
+.price {
+  display: inline-block;
+  font-size: 24rpx;
+  color: #d71718;
+}
+
+.hanPrice {
+  display: inline-block;
+  width: 130rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  text-align: center;
+  font-size: 20rpx;
+  color: #fff;
+  background: #d71718;
+  border-radius: 6rpx;
+  margin-left: 10rpx;
+}
+
+.startTime {
+  height: 100%;
+}
+
+.startTime .times {
+  font-size: 26rpx;
+  color: #d71718;
+  height: 88rpx;
+  padding-top: 40rpx;
+  box-sizing: border-box;
+}
+
+.startTime .appointment {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  background: #d71718;
+  color: #fff;
+  font-size: 30rpx;
+  /* margin-top: 18rpx; */
+}
+
+.startTime .endBtn {
+  background: #ccc;
+}
+
+.startTime .check {
+  background: #ccc;
+  color: #d71718;
+}
+
+.item4 .reserve {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.item4 .reserve .reserveBtn {
+  height: 98rpx;
+  line-height: 98rpx;
+  background-color: #d71718;
+  color: #fff;
+  border-radius: 0;
+  font-size: 32rpx;
+}
+
+.isnull {
+  width: 100%;
+  text-align: center;
+  height: 222rpx;
+  line-height: 222rpx;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.isnullCourse {
+  width: 100%;
+  text-align: center;
+  margin-top: 70rpx;
+}
+
+.scoll-h {
+  height: 100%;
+  overflow: auto;
+}
+
+.menuTops {
+  position: fixed;
+  top: 612rpx;
+}
+.zsIcon{
+  width: 48rpx;
+  height: 48rpx;
+}

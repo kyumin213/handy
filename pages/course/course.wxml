@@ -1,0 +1,90 @@
+<!--pages/course/course.wxml-->
+<view>
+  <view class='headImg'>
+    <image class='bannerImg' mode='widthFix' src='../../images/course/course-banner@2x.png'></image>
+  </view>
+  <view class='addressCon'>
+    <view class='addressLeft' bindtap='getStoreAddress'>
+      <view>
+        <image mode='widthFix' class='addressIcon' src='../../images/course/dw1.png'></image>
+      </view>
+      <view class='addressTxt'>{{storeCityName}}{{storeNames}}</view>
+    </view>
+    <!-- <view class='searchBtn' bindtap='searchStoreCourse'>搜索</view> -->
+  </view>
+  <view class='showWeek'>
+    <view class='weekDays'>
+      <block wx:for="{{week}}" wx:key="{{index}}">
+        <text class='weekDay' data-index="{{index}}">{{item}}</text>
+      </block>
+    </view>
+    <view class='dayDatas'>
+      <block wx:for="{{dates}}" wx:key="{{index}}">
+        <text class="{{check==index?'active':''}} dayData" data-index="{{index}}" bindtap='checkData'>{{item}}</text>
+      </block>
+    </view>
+  </view>
+  <view class='courseList' wx:if="{{hashList===true}}">
+    <block wx:for="{{courseList}}" wx:key="{{index}}">
+      <view class='curriculumItem' data-index="{{index}}">
+        <view class='curriLeft' bindtap='courseDetails' data-id="{{item.courseReleasePkcode}}" data-price="{{item.courseReleaseMoney}}" data-names="{{item.fitnessCourseName}}" data-start="{{item.coursePlanBegtime}}" data-end="{{item.coursePlanEndtime}}" data-url="{{item.storeCoachHeadimg}}"
+          data-status="{{item.isbook}}" data-store="{{item.storeName}}">
+          <view class='headImgBox'>
+            <image class='curriculumImg' src="{{item.storeCoachTopimg}}"></image>
+          </view>
+          <view class='curriDes'>
+            <view class='fw curriName'>{{item.fitnessCourseName}}</view>
+            <view class='labels'>
+              <view class='curriLabel' wx:for="{{item.flag}}" wx:key="{{index}}">{{item}}</view>
+              <!-- <view class='curriLabel'>减脂</view>
+              <view class='curriLabel'>增肌</view> -->
+            </view>
+            <view class='prices'>
+              <view>
+                <text class='priceIcon'>￥</text>
+                <text class='price'>{{item.courseReleaseMoney}}</text>
+              </view>
+              <text class='hanPrice'>汗卡价￥{{item.courseReleaseMoney}}</text>
+            </view>
+          </view>
+        </view>
+        <view class='startTime'>
+          <view class='times' bindtap='courseDetails' data-id="{{item.courseReleasePkcode}}" data-price="{{item.courseReleaseMoney}}" data-names="{{item.fitnessCourseName}}" data-start="{{item.coursePlanBegtime}}" data-end="{{item.coursePlanEndtime}}" data-url="{{item.storeCoachHeadimg}}"
+            data-status="{{item.isbook}}" data-store="{{item.storeName}}">{{item.coursePlanBegtime}}-{{item.coursePlanEndtime}}</view>
+          <view class='appointment' bindtap='yue' id='{{item.courseReleasePkcode}}' data-index="{{index}}" wx:if="{{item.isbook==1}}" data-store="{{item.storeName}}" data-names="{{item.fitnessCourseName}}" data-start="{{item.coursePlanBegtime}}" data-end="{{item.coursePlanEndtime}}"
+            data-price="{{item.courseReleaseMoney}}">预约</view>
+          <view class='appointment endBtn' wx:if="{{item.isbook==0}}" data-index="{{index}}">结束</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view wx:else class='isnull'>
+    <image mode='widthFix' class='nullImg' src='../../images/memberCard/isnull.png'></image>
+    <view class='nullTxt'>暂无课程</view>
+  </view>
+</view>
+<view class="animation {{open?'modelShow':'hideModel'}}" bindtap='hiddenModel'>
+  <view class="animation-content {{open?'modelShow':'hideModel'}}">
+    <view class='pricezone'>
+      <view class='pztitle'>
+        <text>城市门店</text>
+      </view>
+      <view class='inputzone'>
+        <!-- <input type='digit'  bindinput="bindKeyInput" placeholder="最低价"/>
+        <text style='color:#ddd'>-</text>
+        <input type='digit'  bindinput="bindKeyInput" placeholder="最高价"/> -->
+        <view class='listLeft'>
+          <block wx:for="{{storeCityList}}" data-index="{{index}}" wx:key="{{index}}">
+            <view class='city tabActive' data-name="{{item.store_city}}" bindtap='getByCityStore'>{{item.store_city}}</view>
+          </block>
+        </view>
+        <view class='listRight'>
+          <view class="storeNames {{allActive?'tabActive':''}}" bindtap='allCity'>全城</view>
+          <block wx:for="{{storeList}}" wx:key="{{index}}" data-index="{{index}}">
+            <view class="storeNames {{storeActive==index?'tabActive':''}}" bindtap='selectStore' data-index="{{index}}" data-name="{{item.storeName}}" data-code="{{item.storePkcode}}">{{item.storeName}}</view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

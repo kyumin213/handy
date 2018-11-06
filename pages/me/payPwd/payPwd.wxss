@@ -1,0 +1,50 @@
+/* pages/me/payPwd/payPwd.wxss */
+page{
+  background: #F4F4F4;
+}
+.con{
+  width: 100%;
+  height: 234rpx;
+  background: #fff;
+  margin-top: 30rpx;
+}
+.pwd .pwdItem:first-child{
+  border-bottom: 2rpx solid #ccc;
+}
+.pwdItem{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 54rpx;
+  height: 116rpx;
+  font-size: 28rpx;
+  color: #999999;
+  box-sizing: border-box;
+}
+.pwdItem .pwdIcon{
+  width: 48rpx;
+  height: 50rpx;
+}
+.pwdItem .pwdRight{
+  width: 40rpx;
+  height: 20rpx;
+}
+.pwdItem input{
+  height: 116rpx;
+  line-height: 116rpx;
+  padding-left: 38rpx;
+}
+.pwdItem .pwdLeft{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.subPwd{
+  width: 596rpx;
+  height: 98rpx;
+  border-radius: 10rpx;
+  background: #D71718;
+  font-size: 36rpx;
+  color: #fff;
+  margin-top: 216rpx;
+}

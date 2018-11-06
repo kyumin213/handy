@@ -1,0 +1,100 @@
+<!--pages/find/find.wxml-->
+<view class='bg-c'>
+  <view class='headTop'>
+    <image class='headImg' mode='widthFix'></image>
+  </view>
+  <view class='dflex headBot'>
+    <text class='txt'>深圳教练</text>
+    <text class='txt'>热门 what's Hot</text>
+  </view>
+  <view class='con'>
+    <view class='items'>
+      <view class='dflex conTop'>
+        <view class='conLeft'>
+          <image class='coachImg' mode='widthFix'></image>
+        </view>
+        <view class='fllowAtten'>
+          <view class='coachDes'>
+            <text class='coachName'>石龙店-汗的教练</text>
+            <text class='coachLevel'>1级健身教练</text>
+          </view>
+          <view>
+            <button class='followBtn' style='background-color:{{btnBgColor}};color:{{btnColor}}' bindtap='follow'>{{follow}}</button>
+          </view>
+        </view>
+
+      </view>
+      <view class='fg'>
+        <text>/</text>
+        <text>流汗的人生，不需要解释</text>
+      </view>
+      <view class='dflex imgShow'>
+        <image class='imgs' mode='widthFix'></image>
+        <image class='imgs' mode='widthFix'></image>
+        <image class='imgs' mode='widthFix'></image>
+      </view>
+      <view class='ml times'>
+        <text>深圳</text>
+        <text>2分钟前</text>
+      </view>
+      <view class='dflex opera'>
+        <view>
+          <text></text>
+          <text>分享</text>
+        </view>
+        <view>
+          <text></text>
+          <text>评论</text>
+        </view>
+        <view>
+          <text></text>
+          <text>点赞</text>
+        </view>
+      </view>
+    </view>
+    <view class='items'>
+      <view class='dflex conTop'>
+        <view class='conLeft'>
+          <image class='coachImg' mode='widthFix'></image>
+        </view>
+        <view class='fllowAtten'>
+          <view class='coachDes'>
+            <text class='coachName'>石龙店-汗的教练</text>
+            <text class='coachLevel'>1级健身教练</text>
+          </view>
+          <view>
+            <button class='followBtn' style='background-color:{{btnBgColor}};color:{{btnColor}}'>关注</button>
+          </view>
+        </view>
+
+      </view>
+      <view class='fg'>
+        <text>/</text>
+        <text>流汗的人生，不需要解释</text>
+      </view>
+      <view class='dflex imgShow'>
+        <image class='imgs' mode='widthFix'></image>
+        <image class='imgs' mode='widthFix'></image>
+        <image class='imgs' mode='widthFix'></image>
+      </view>
+      <view class='ml times'>
+        <text>深圳</text>
+        <text>2分钟前</text>
+      </view>
+      <view class='dflex opera'>
+        <view>
+          <text></text>
+          <text>分享</text>
+        </view>
+        <view>
+          <text></text>
+          <text>评论</text>
+        </view>
+        <view>
+          <text></text>
+          <text>点赞</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

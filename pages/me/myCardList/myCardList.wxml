@@ -1,0 +1,64 @@
+<!--pages/me/myCardList/myCardList.wxml-->
+<view wx:if="{{hashList}}">
+  <view class='cons'>
+    <view class='fzCol6 selectCard'>选择卡片</view>
+    <scroll-view class="scroll-view_H" scroll-x='true' style="width: 100%">
+      <view scroll-x='true' class='wrap'>
+        <view class="items" bindtap='selectCardType' data-index="{{index}}" wx:for="{{handyCardList}}" wx:key="{{index}}">
+          <view class='imgItem' id="cardImgBox">
+            <image class="cardType {{check===index?'borderCol':''}}" src="{{item.handyCardImgurl}}"></image>
+            <text class='select' wx:if="{{check===index}}"></text>
+          </view>
+          <view class='cardBom'>
+            <text class='fz-28 fzCol6'>{{item.handyCardName}}</text>
+            <text class='fz-28 fzCol6'>{{item.endtime}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <!-- <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{handyCardList}}">
+        <swiper-item>
+          <image src="{{item.handyCardImgurl}}" class="cardType" />
+        </swiper-item>
+      </block>
+    </swiper> -->
+  </view>
+  <view class='fzCol6 selectTime'>选择时间</view>
+  <view class='con' wx:if="{{hashList===true}}">
+    <block wx:for="{{handyCardList}}" wx:key="{{index}}">
+      <view class='cardBox' bindtap='selectCard' data-index="{{index}}" wx:if="{{check===index}}">
+        <view class="cardList {{check===index?'bor':''}}">
+          <view class='cardItems'>
+            <view>
+              <view class="item1 {{check===index?'': 'color'}}">汗的{{item.handyCardName}}</view>
+              <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===1}}">有效期{{item.handyCardTimeType}}个月</view>
+              <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===2}}">有效期3个月</view>
+              <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===3}}">有效期6个月</view>
+              <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===4}}">有效期1年</view>
+              <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===5}}">有效期1天</view>
+            </view>
+            <view class='itemRight'>
+              <view class="item1 {{select===index?'':'color'}}">
+                <text class="fh {{select===index?'':'color'}}">￥</text>{{item.handyCardMoney}}</view>
+              <view class="fz-24 item3 {{select===index? '': 'activeBtn'}}">{{item.handyCardName}}</view>
+            </view>
+          </view>
+          <view class="leftBy {{select===index?'active': ''}}"></view>
+          <view class="rightBy {{select===index?'active': ''}}"></view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='footer'>
+    <view class='left'>
+      <!-- <text class='fz-24'>充值金额</text> -->
+      <text class='totalMoney'>￥{{totalMoney}}</text>
+    </view>
+    <button class="right" disabled='{{disable}}' bindtap='subPayment'>确认支付</button>
+  </view>
+</view>
+<view class='isnull' wx:else>
+  <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
+  <view class='nullTxt'>暂无会员卡信息</view>
+</view>

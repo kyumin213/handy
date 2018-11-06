@@ -1,0 +1,45 @@
+<view class='bgCon'>
+  <view class='courseMes'>
+    <view class='courseDes'>
+      <view class='fw'>{{fitnessCourseName}}</view>
+      <view>￥{{courseReleaseMoney}}</view>
+    </view>
+    <view class='fzCol6 courseTime' wx:if="{{hashTime}}">时间：{{time}}</view>
+    <view class='fzCol6 courseAddress'>
+      <view class='addressTxt'>地点：</view>
+      <view class='addressDes'>{{storeAddress}}
+      </view>
+    </view>
+  </view>
+  <view class='fw payTxt'>支付方式</view>
+  <view class='payList'>
+    <view class='payLeft'>
+      <image class='hanIcon2' mode='widthFix' src='../../../images/pay/wxPay.png'></image>
+      <text class='fw hanTxt'>微信支付</text>
+    </view>
+    <view class='payRight' bindtap='wxPay'>
+      <text class="selectPay {{wxPay?'selectActive': ''}}"></text>
+    </view>
+  </view>
+  <view class='payList'>
+    <view class='payLeft'>
+      <image class='hanIcon' mode='widthFix' src='../../../images/pay/hanPayLogo.png'></image>
+      <text class='fw hanTxt'>汗的支付</text>
+    </view>
+    <view class='payRight' bindtap='hanPay'>
+      <text class="selectPay {{hanPay?'selectActive': ''}}"></text>
+    </view>
+  </view>
+  <view class='tips'>
+    <text class='tsTxt'>温馨提示：</text>
+    <text class='tipsRight'>若团操预约在开课6小时前取消，本预约已付金额
+      退回，若在取消前已有免入場，其入埸金额補扣</text>
+  </view>
+  <view>
+    <view class='backBtn' bindtap='back'>返回</view>
+  </view>
+</view>
+<view class='footer' bindtap='submitPayment'>
+  <text class='txt'>确认支付</text>
+  <text class='money'>￥{{courseReleaseMoney}}</text>
+</view>

@@ -1,0 +1,71 @@
+/* pages/authorization/authorization.wxss */
+
+.headCon {
+  width: 100%;
+  height: 362rpx;
+  border-top: 16rpx solid #f2f2f2;
+  border-bottom: 16rpx solid #f2f2f2;
+}
+
+.headShow {
+  margin: 54rpx auto 16rpx auto;
+  width: 194rpx;
+  height: 194rpx;
+  border-radius: 100%;
+  border: 6rpx solid #f00;
+  overflow: hidden;
+}
+
+.userinfo-avater {
+  width: 210rpx;
+  height: 210rpx;
+  border-radius: 100%;
+  /* border: 6rpx solid #f00; */
+  overflow: hidden;
+}
+
+.headShow .userHead {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.headCon .headTxt {
+  width: 100%;
+  text-align: center;
+  font-size: 24rpx;
+  color: #252525;
+}
+
+.txt1 {
+  color: #373736;
+  margin: 70rpx 0 20rpx 64rpx;
+}
+
+.txt2 {
+  position: relative;
+  margin-left: 96rpx;
+}
+
+.txt3 {
+  display: inline-block;
+  position: absolute;
+  top: -10rpx;
+  left: -14rpx;
+}
+
+.txt4 {
+  color: #666;
+}
+
+.subLogin {
+  width: 598rpx;
+  height: 98rpx;
+  border-radius: 10rpx;
+  background: #d71718;
+  color: #fff;
+  font-size: 36rpx;
+  margin-top: 74rpx;
+  box-shadow: 0 4rpx 4rpx 2rpx #ff696a;
+}

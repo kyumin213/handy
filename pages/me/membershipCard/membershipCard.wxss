@@ -1,0 +1,7 @@
+/* pages/me/membershipCard/membershipCard.wxss */
+
+@import "../RechargeableCard/RechargeableCard.wxss";
+.cardimgBox {
+  margin-top: 40rpx;
+  margin-bottom: 62rpx;
+}

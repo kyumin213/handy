@@ -1,0 +1,79 @@
+<!--pages/course/coursePayment/coursePayment.wxml-->
+<view>
+  <view class='courseDes'>
+    <view class='des'>
+      <view class='fw desTxt'>{{names}}</view>
+      <view class='fw fzColor price'>￥{{price}}</view>
+    </view>
+    <view class='courseTime'>
+      <text>时间：</text>
+      <text>{{currentData}} {{start}}-{{end}}</text>
+    </view>
+    <!-- <view class='address'>
+      <text>地点：</text>
+      <text class='addressTxt'>深圳市南山区深南大道9680号大冲商务
+         中心A座1600室（一号线B出口）</text>
+    </view> -->
+  </view>
+  <view class='desList'>
+    <view class='peopleNum'>
+      <text class='fw NumTxt'>人数</text>
+      <view>
+        <button class='peoBtn'>1人</button>
+      </view>
+    </view>
+    <!-- <view class='peopleNum card'>
+      <text class='fw NumTxt'>汗卡折扣卡</text>
+      <view>
+        <text class='cardTxt'>确认开通后，可省10元</text>
+        <text class='jt'></text>
+      </view>
+    </view>
+    <view class='peopleNum card' bindtap='coupon'>
+      <text class='fw NumTxt'>优惠券</text>
+      <view>
+        <text class='cardTxt'>暂无</text>
+        <text class='jt'></text>
+      </view>
+    </view> -->
+  </view>
+  <view class='payType'>
+    <view class='payTitle'>
+      <text class='txt'>支付方式</text>
+    </view>
+    <view class='payList'>
+      <view class='payLeft'>
+        <image class='hanIcon' mode='widthFix' src='../../../images/pay/hanPayLogo.png'></image>
+        <text class='hanTxt'>汗的支付</text>
+      </view>
+      <view class='payRight' bindtap='hanPay'>
+        <text class="selectPay {{hanPay?'selectActive': ''}}"></text>
+        <!-- <image mode='widthFix' class='hanOn' src='../../../images/pay/payActive.png' wx:if="{{hanPay}}"></image>
+        <image mode='widthFix' class='hanOn' src='../../../images/pay/default.png' wx:else></image> -->
+      </view>
+    </view>
+    <view class='payList'>
+      <view class='payLeft'>
+        <image class='hanIcon2' mode='widthFix' src='../../../images/pay/wxPay.png'></image>
+        <text class='hanTxt'>微信支付</text>
+      </view>
+      <view class='payRight' bindtap='wxPay'>
+        <text class="selectPay {{wxPay?'selectActive': ''}}"></text>
+        <!-- <image mode='widthFix' class='hanOn' src='../../../images/pay/payActive.png' wx:if="{{wxPay}}"></image>
+        <image mode='widthFix' class='hanOn' src='../../../images/pay/default.png' wx:else></image> -->
+      </view>
+    </view>
+    <view class='tips'>
+      <text class='tsTxt'>温馨提示：</text>
+      <text class='tipsRight'>若团操预约在开课6小时前取消，本预约已付金额
+      退回，若在取消前已有免入場，其入埸金额補扣</text>
+    </view>
+  </view>
+  <!-- <view class='comfir' bindtap='subPayment'>
+    <text class='comfirBtn'>确认支付</text>
+    <text class='payMoney'>￥{{price}}</text>
+  </view> -->
+  <button class='comfir' bindtap='subPayment' disabled="{{disBtn}}" data-name="{{courseList.fitnessCourseName}}" data-time="{{currentData}}" data-stores="{{courseList.storeName}}">确认支付
+    <text class='payMoney'>￥{{price}}</text>
+  </button>
+</view>

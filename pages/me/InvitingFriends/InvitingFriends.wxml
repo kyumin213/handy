@@ -1,0 +1,12 @@
+<!--pages/me/InvitingFriends/InvitingFriends.wxml-->
+<view class='headTop'>
+  <view class='tops'>
+    <view class='topBgOne'></view>
+    <view class='topBgTwo'></view>
+    <view class='imgBox'>
+      <image mode='widthFix' class='invitingImg' src='../../../images/me/invitingFriends.png'></image>
+    </view>
+  </view>
+</view>
+<view class='txt'>试试右上角按钮分享给好友吧~</view>
+<view class='invitingBtn'>马上邀请，各得50元优惠券</view>

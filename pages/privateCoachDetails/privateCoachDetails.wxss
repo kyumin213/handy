@@ -1,0 +1,152 @@
+/* pages/privateCoachDetails/privateCoachDetails.wxss */
+@import '../coachDetails/coachDetails.wxss';
+
+.privateItems {
+  border-bottom: 16rpx solid #f2f2f2;
+  /* margin-bottom: 30rpx; *//* width: 80%;
+  margin: 0 auto;
+  border: 2rpx solid #f2f2f2; */
+}
+
+.privateCouseList {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.privateCoachName {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.levels {
+  margin-top: 24rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: -20rpx;
+  font-size: 30rpx;
+  color: #d71718;
+}
+
+.curriDes {
+  width: 80%;
+}
+
+.hours {
+  padding: 10rpx 26rpx;
+  background: #fff;
+  border-radius: 40rpx;
+}
+
+.activeCourseHouse {
+  /* background: #d71718; */
+background: linear-gradient(to right,#FF6637, #D71740);
+  color: #fff;
+}
+
+/* .goodTitle{
+  margin-top: 50rpx;
+} */
+
+.item3 {
+  padding-bottom: 30rpx;
+}
+
+.coachGood {
+  margin-left: 34rpx;
+}
+
+.courseGood {
+  font-size: 30rpx;
+  color: #999;
+  margin: 24rpx 80rpx 0 36rpx;
+  line-height: 48rpx;
+}
+
+.items2 {
+  border-bottom: none;
+}
+
+.animation {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 99;
+  height: 100%;
+}
+
+.payModal {
+  position: absolute;
+  height: 500rpx;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  z-index: 1000;
+  width: 100%;
+}
+
+.payModal .modelTit {
+  text-align: center;
+  margin-top: 60rpx;
+  font-size: 34rpx;
+}
+
+.payModal .courseCon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 80rpx 80rpx 0 80rpx;
+
+  font-size: 30rpx;
+}
+
+.payModal .modelBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 100rpx;
+}
+
+.payModal .modelBtn .cancel {
+  width: 50%;
+  text-align: center;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #f2f2f2;
+}
+
+.payModal .modelBtn .comfir {
+  width: 50%;
+  text-align: center;
+  background: #d71718;
+  color: #fff;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+
+.showModal {
+  transform: rotate(0deg) scale(1) translateY(500);
+  transition: linear 2s;
+  -webkit-transform: rotate(0deg) scale(1) translateY(500);
+}
+
+.hideModal {
+  transform: translateY(0);
+  transition: ease-in-out 1s;
+  -webkit-transform: translateY(0);
+}
+.privateNull{
+  width: 100%;
+  text-align: center;
+  margin-top: 50rpx;
+  font-size: 30rpx;
+  color: #ccc;
+}

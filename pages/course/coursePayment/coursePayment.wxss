@@ -1,0 +1,2 @@
+/* pages/course/coursePayment/coursePayment.wxss */
+@import '../comfirPayment/comfirPayment.wxss'

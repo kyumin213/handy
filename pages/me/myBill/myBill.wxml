@@ -1,0 +1,33 @@
+<!--pages/me/myBill/myBill.wxml-->
+<view wx:if="{{hashList===true}}">
+  <block wx:for="{{myBillData}}" wx:key="{{index}}">
+    <view class='consumptionList'>
+      <view>
+        <view class='fw names' wx:if="{{item.product===1}}">微信充值余额</view>
+        <view class='fw names' wx:if="{{item.product===2}}">余额购买团课</view>
+        <view class='fw names' wx:if="{{item.product===3}}">余额购买私课</view>
+        <view class='fw names' wx:if="{{item.product===4}}">余额支付门禁费用</view>
+        <view class='fw names' wx:if="{{item.product===5}}">余额支付临时柜费用</view>
+        <view class='fw names' wx:if="{{item.product===6}}">余额支付月租柜费用</view>
+        <view class='fw names' wx:if="{{item.product===7}}">现金充值余额</view>
+        <view class='fw names' wx:if="{{item.product===8}}">刷卡充值余额</view>
+        <view class='fw names' wx:if="{{item.product===9}}">余额购买汗滴卡</view>
+        <view class='fw names' wx:if="{{item.product===10}}">微信支付购买团课 </view>
+        <view class='fw names' wx:if="{{item.product===11}}">微信支付购买私教课 </view>
+        <view class='fw names' wx:if="{{item.product===12}}">微信支付进出场费用 </view>
+        <view class='fw names' wx:if="{{item.product===13}}">微信支付储物柜费用 </view>
+        <view class='fw names' wx:if="{{item.product===14}}">微信支付场内商品 </view>
+        <view class='fw names' wx:if="{{item.product===16}}">微信支付购买汗滴卡</view>
+        <view class='fzCol6 times'>{{item.ctime}}</view>
+      </view>
+      <view>
+        <view class='fw fz-28 fzColor fzColor' wx:if="{{item.type===1}}">+￥{{item.money}}</view>
+        <view class='fw fz-28 fzCol6' wx:if="{{item.type===2}}">-￥{{item.money}}</view>
+      </view>
+    </view>
+  </block>
+</view>
+<view class='isnull' wx:else>
+  <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
+  <view class='nullTxt'>暂无消费记录</view>
+</view>

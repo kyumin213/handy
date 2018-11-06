@@ -1,0 +1,161 @@
+/* pages/me/myAappointment/myAppointment.wxss */
+
+page {
+  background: #f6f6f6;
+}
+
+.myTop {
+  width: 100%;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.appointTab {
+  background: #fff;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 28rpx;
+  color: #474747;
+  margin: 0 22rpx;
+  box-sizing: border-box;
+}
+
+.appointTab view {
+  height: 100%;
+  line-height: 90rpx;
+  width: 20%;
+  text-align: center;
+}
+
+.appointTab .active {
+  border-bottom: 8rpx solid#D71718;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+/* 订单列表 */
+
+.courseList {
+  width: 100%;
+  height: 286rpx;
+  margin-bottom: 18rpx;
+  background: #fff;
+}
+
+.courseList .orderTitle {
+  margin: 0 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 2rpx solid #e6e6e6;
+}
+
+.courseList .orderTitle .txt1 {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.courseList .orderTitle .txt2 {
+  color: #666;
+}
+
+.courseList .orderCon {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30rpx;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.orderCon .orderConLeft {
+  display: flex;
+  justify-content: flex-start;
+}
+.headImgBox{
+  width: 148rpx;
+  height: 148rpx;
+  border-radius: 10rpx;
+  margin-top: 28rpx;
+  overflow: hidden;
+}
+.orderCon .courseImg {
+  width: 148rpx;
+  height: 148rpx;
+  margin: 0 auto;
+  border-radius: 100%;
+  background: #e6e6e6;
+}
+
+.orderCon .orderConCen {
+  margin-left: 24rpx;
+}
+
+.orderCon .courseName {
+  font-size: 32rpx;
+  color: #333;
+  margin-top: 38rpx;
+}
+
+.orderCon .storeName {
+  font-size: 22rpx;
+  color: #666;
+  margin-top: 24rpx;
+}
+
+.orderCon .startDate {
+  color: #d71718;
+  margin-top: 28rpx;
+  font-weight: bold;
+}
+
+.orderCon .times {
+  font-size: 26rpx;
+  color: #d71718;
+  margin-top: 46rpx;
+  font-weight: bold;
+}
+
+.orderCon .viewBtn {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  background: #d71718;
+  color: #fff;
+  margin-top: 22rpx;
+}
+
+.orderCon .btColor {
+  background: #ccc;
+}
+
+.footer {
+  width: 100%;
+  height: 110rpx;
+  background: #fff;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.footer .footTxt {
+  font-size: 28rpx;
+  color: #999;
+  padding-top: 26rpx;
+}
+
+.footer .bomBorder {
+  width: 690rpx;
+  height: 2rpx;
+  margin: 0 auto;
+  background: #e6e6e6;
+  margin-top: 26rpx;
+}
+.isNull{
+  width: 100%;
+  text-align: center;
+  margin-top: 200rpx;
+  font-size: 32rpx;
+  color: #666;
+}

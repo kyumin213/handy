@@ -1,0 +1,77 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+.fz-24{
+  font-size: 24rpx;
+}
+.fz-28{
+  font-size: 28rpx;
+}
+button::after{
+  border: none;
+}
+view{
+  line-height: 1;
+}
+.fw{
+  font-weight: bold;
+}
+.show{
+  display: block;
+}
+.hidden{
+  display: none;
+}
+.fzColor{
+  color: #D71718;
+}
+.fzCol6{
+  color: #666666;
+}
+/* 选择支付方式 */
+.selectPay{
+  display: inline-block;
+  width: 42rpx;
+  height: 42rpx;
+  border-radius: 100%;
+  border: 4rpx solid #ccc;
+  position: relative;
+}
+
+.selectPay::before{
+  content: '';
+  position: absolute;
+  top: 12rpx;
+  left: 10rpx;
+  width: 20rpx;
+  height: 10rpx;
+  border-left: 4rpx solid #fff;
+  border-bottom: 4rpx solid #fff;
+  transform: rotate(-45deg);
+}
+.selectActive{
+  background: #D71718;
+  border-color: #D71718;
+}
+/* 为空时 */
+.isnull{
+  width: 100%;
+  margin-top: 274rpx;
+  text-align: center;
+}
+.nullImg{
+  width: 376rpx;
+  height: 132rpx;
+}
+.nullTxt{
+  font-size: 28rpx;
+  color: #B3B3B3;
+  margin-top: 40rpx;
+}

@@ -1,0 +1,88 @@
+/* pages/me/cardPayment/cardPayment.wxss */
+.headTop{
+  width: 100%;
+  text-align: center;
+  margin: 68rpx 0 154rpx 0;
+}
+.money{
+  font-size: 48rpx;
+  margin-bottom: 32rpx;
+}
+.payList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 30rpx 0 30rpx;
+  height: 104rpx;
+  /* border-bottom: 2rpx solid #f2f2f2; */
+  box-sizing: border-box;
+}
+
+.payList .hanTxt {
+  font-size: 28rpx;
+  color: #333;
+  margin-left: 32rpx;
+}
+
+.payList .hanIcon {
+  width: 82rpx;
+  height: 28rpx;
+}
+
+.payList .hanIcon2 {
+  width: 80rpx;
+}
+.payList .payRight {
+  margin-right: 32rpx;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+}
+.payList .hanOn {
+  width: 50rpx;
+  /* height: 50rpx; */
+  border-radius: 100%;
+}
+
+.payList .payLeft {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 26rpx;
+}
+.tips {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 40rpx 110rpx 0 46rpx;
+  font-size: 22rpx;
+  color: #999;
+  padding-bottom: 108rpx;
+  /* margin-top: 40rpx; */
+}
+
+.tipsRight {
+  line-height: 36rpx;
+}
+
+.tips .tsTxt {
+  padding-top: 6rpx;
+}
+
+.submitPayment{
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  height: 108rpx;
+  line-height: 108rpx;
+  color: #fff;
+  background: #D71718;
+}
+.payment{
+  font-size: 32rpx;
+}
+.totalMoney{
+  font-size: 48rpx;
+}

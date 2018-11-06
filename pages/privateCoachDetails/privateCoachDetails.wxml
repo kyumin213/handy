@@ -1,0 +1,175 @@
+<!--pages/privateCoachDetails/privateCoachDetails.wxml-->
+<view class='bg-c' id="coach">
+  <scroll-view scroll-y="true" bindscroll="scroll" style='height:100%' scroll-top="{{menuScrollTop}}">
+    <view class='detailTop'>
+      <view class='headTop' id='headImg'>
+        <image class='headImg' src='{{coachData.storeCoachTopimg}}'></image>
+      </view>
+      <view class="Tabs {{menuFixed ? 'fixed': ''}}">
+        <view class="{{currentTab=='1'? 'active':''}} items" id="1" bindtap='coachjj' data-current="1">
+          <text>教练简介</text>
+          <!-- <text class="{{currentTab=='1'?'':'hidden'}} borBom"></text> -->
+        </view>
+        <view class="{{currentTab=='2'? 'active':''}} items" id="2" bindtap='ReleaseCourse' data-current="2">
+          <text>私教课程</text>
+          <!-- <text class="{{currentTab=='4'?'':'hidden'}} borBom"></text> -->
+        </view>
+        <view class="{{currentTab=='3'? 'active':''}} items" id="3" bindtap='goodsCourse' data-current="3">
+          <text>擅长课程</text>
+          <!-- <text class="{{currentTab=='2'?'':'hidden'}} borBom"></text> -->
+        </view>
+        <view class="{{currentTab=='4'? 'active':''}} items" id="4" bindtap='renz' data-current="4">
+          <text>认证证书</text>
+          <!-- <text class="{{currentTab=='3'?'':'hidden'}} borBom"></text> -->
+        </view>
+
+      </view>
+    </view>
+    <view id='scollTops'>
+      <!-- <scroll-view scroll-y="true" class='scoll-h' style="{{clientHeight?clientHeight+'px':'auto'}}" bindscroll="scroll"> -->
+      <view id='items'>
+        <view class="item1" data-current="1" id='items1'>
+          <view class='bgF coachProfile'>
+            <view>
+              <image class='coachImg' src="{{coachData.storeCoachHeadimg}}"></image>
+              <view class='coachName'>{{coachData.storeCoachName}}</view>
+            </view>
+            <view class='profile'>
+              <!-- {{coachData.storeCoachSynopsis}} -->
+              {{jian}}
+            </view>
+          </view>
+          <view class="{{more?'show':'hidden'}} more" bindtap='moreView'>
+            <text class='jt'></text>
+          </view>
+        </view>
+        <view class="item2 items2" id='items2' data-current="2">
+          <!-- <view class='titleBg'>
+            <image mode='widthFix' class='logoICon' src='../../images/course/login.png'></image>
+          </view> -->
+          <view class='goodTitle'>
+            <view class='fw titles'>
+              <text>私</text>
+              <text>教</text>
+              <text>课</text>
+              <text>程</text>
+            </view>
+          </view>
+          <!-- <view class='dates'>
+            <view class='showWeek'>
+              <view class='weekDays'>
+                <block wx:for="{{week}}" wx:key="{{index}}">
+                  <text class='weekDay' data-index="{{index}}">{{item}}</text>
+                </block>
+              </view>
+              <view class='dayDatas'>
+                <block wx:for="{{dates}}" wx:key="{{index}}">
+                  <text class="{{check==index?'active':''}} dayData" data-index="{{index}}" bindtap='courseTime'>{{item}}</text>
+                </block>
+              </view>
+            </view>
+          </view> -->
+          <view wx:if="{{hashList}}">
+            <view class='curriculumItem privateItems' wx:for="{{courseList}}" wx:key="{{index}}" wx:for-index="listindex">
+              <view class='privateCouseList' data-id="{{item.courseReleasePkcode}}" data-price="{{item.courseReleaseMoney}}" data-names="{{item.fitnessCourseName}}" data-start="{{item.coursePlanBegtime}}" data-end="{{item.coursePlanEndtime}}" data-url="{{item.storeCoachHeadimg}}"
+                data-status="{{item.isbook}}" data-store="{{item.storeName}}">
+                <view class='headImgBox'>
+                  <image class='curriculumImg' src="{{item.fitnessCourseCoverimg}}"></image>
+                </view>
+                <view class='curriDes'>
+                  <view class='fw curriName'>{{item.fitnessCourseName}}</view>
+                  <view class='labels'>
+                    <view class='privateCoachName'>{{item.storeCoachName}}</view>
+                  </view>
+                  <view class='levels' data-oo="{{index}}">
+                    <block wx:for="{{item.courseReleasePriceLevel}}" wx:key="{{index}}" wx:for-index="priceindex">
+                      <view class="hours {{courseIndex===listindex  && hourIndex===priceindex?'activeCourseHouse':''}}" bindtap='selectCourseHouse' data-priceindex="{{priceindex}}" data-listindex="{{listindex}}">{{item.courseTotal}}课时</view>
+                    </block>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view wx:else class='privateNull'>暂无私教课程</view>
+        </view>
+        <view class="item3" id='items3' data-current="3">
+          <view class='bgF item2Top'>
+            <!-- <view class='titleBg'>
+              <image mode='widthFix' class='logoICon' src='../../images/course/login.png'></image>
+            </view> -->
+            <view class='goodTitle'>
+              <view class='fw titles'>
+                <text>擅</text>
+                <text>长</text>
+                <text>课</text>
+                <text>程</text>
+              </view>
+              <!-- <view class='fw enDetail'>GOOD AT COURSE</view> -->
+            </view>
+            <!-- <view class='fw coachGood'>
+              <text class='goodsAt'>{{coachData.storeCoachName}}教练擅长</text>
+            </view> -->
+            <view class='goodDes'>
+              <!-- {{conText.goodCourse}} -->
+              <view wx:for="{{conText.goodCourse}}" wx:key="{{index}}">
+                <view class='courseGood'>{{item.goods}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="{{more2?'show':'hidden'}} more" bindtap='moreGood'>
+            <text class='jt'></text>
+          </view>
+        </view>
+        <view class="item3" id='items4' data-current="4">
+          <!-- <view class='titleBg'>
+            <image mode='widthFix' class='logoICon' src='../../images/course/login.png'></image>
+          </view> -->
+          <view class='goodTitle'>
+            <view class='fw titles'>
+              <text>认</text>
+              <text>证</text>
+              <text>证</text>
+              <text>书</text>
+            </view>
+            <!-- <view class='fw enDetail'>AUTHENTICATION CERTIFICATE</view> -->
+          </view>
+          <view class='certifiList'>
+            <block wx:for="{{conText.certificateList}}" wx:key="{{index}}">
+              <view class='certificateList'>
+                <view class='zsIcon'>
+                  <image class='certificateIcon' src='../../images/coach/zs.png'></image>
+                </view>
+                <view class='certificateItem'>{{item.text}}</view>
+              </view>
+            </block>
+          </view>
+          <!-- <view class='certificateList'>
+      <image mode='widthFix' class='certificateIcon'></image>
+      <view class='certificateItem'>中国健美协会国家级私人教练</view>
+    </view> -->
+        </view>
+
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<view class="animation" wx:if="{{modelShow}}" bindtap='hideModal'>
+  <view class="payModal" animation="{{animationData}}">
+    <view class='modelCon'>
+      <view class='modelTit'>确认支付</view>
+      <view class='courseCon'>
+        <view>教练：{{coachName}}</view>
+        <view>课程：{{fitnessCourseName}}</view>
+      </view>
+      <view class='courseCon'>
+        <view>{{courseHour}}课时</view>
+        <view>总价：￥{{totalMoney}}</view>
+      </view>
+
+    </view>
+    <view class='modelBtn'>
+      <view class='cancel' bindtap='hideModal'>取消</view>
+      <view class='comfir' bindtap='submitBuy'>确定</view>
+    </view>
+  </view>
+</view>

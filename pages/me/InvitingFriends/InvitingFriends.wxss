@@ -1,0 +1,48 @@
+/* pages/me/InvitingFriends/InvitingFriends.wxss */
+.tops{
+  width: 100%;
+  text-align: center;
+}
+.tops .topBgOne{
+  border-radius: 20rpx;
+  width: 488rpx;
+  height: 272rpx;
+  background: #FF9078;
+  margin: 100rpx auto 0 auto;
+}
+.tops .topBgTwo{
+  width: 536rpx;
+  height: 300rpx;
+  border-radius: 20rpx;
+  background: #FF6E4F;
+  margin: -240rpx auto 0 auto;
+}
+.tops .imgBox{
+  position: absolute;
+  top: 166rpx;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+.tops .invitingImg{
+  width: 576rpx;
+  height: 322rpx;
+}
+.txt{
+  width: 100%;
+  text-align: center;
+  font-size: 36rpx;
+  color: #666666;
+  margin-top: 230rpx;
+}
+.invitingBtn{
+  width: 596rpx;
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  background: #D71718;
+  border-radius: 10rpx;
+  font-size: 36rpx;
+  color: #fff;
+  margin: 48rpx auto auto auto;
+}

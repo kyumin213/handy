@@ -1,0 +1,23 @@
+<!--pages/authorization/authorization.wxml-->
+<view>
+
+  <view class='headCon'>
+    <view class='headShow'>
+      <open-data type="userAvatarUrl" class="userinfo-avater" mode="cover"></open-data>
+      <!-- <image class='userHead' mode='widthFix' src="{{userInfo.avatarUrl}}"></image> -->
+    </view>
+    <view class='headTxt'>欢迎<open-data type="userNickName" lang="zh_CN"></open-data>来到汗的健身</view>
+  </view>
+  <view>
+    <view>
+      <view class='fz-24 txt1'>网页有该小程序开发，请确认授权以下信息</view>
+      <view class='fz-24 txt2'>
+        <view class='txt3'>.</view>
+        <view class='txt4'>获取你的公开信息（昵称、头像等）</view>
+      </view>
+    </view>
+  </view>
+  <view>
+    <button class='subLogin' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信授权登录</button>
+  </view>
+</view>

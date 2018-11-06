@@ -1,0 +1,9 @@
+<!--pages/me/QRcode/QRcode.wxml-->
+<view class='logBox'>
+  <image mode='widthFix' class='logs' src='../../../images/me/logo.png'></image>
+</view>
+<view class='codeBox'>
+  <image mode='widthFix' class='codeImg'></image>
+</view>
+<view class='txt1'>请提前购买产品或充值,到店可扫码入场</view>
+<view class='txt1 txt2'>赶紧去充值、购课吧~</view>

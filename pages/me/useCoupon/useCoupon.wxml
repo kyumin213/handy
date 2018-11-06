@@ -1,0 +1,91 @@
+<!--pages/course/useCoupon/useCoupon.wxml-->
+<view wx:if="{{hashList}}">
+  <view class='tabSelect'>
+    <view class='use' bindtap='selectUse'>
+      <view class='useTxt'>可用优惠券</view>
+      <text class='on' wx:if="{{useCoupons}}"></text>
+    </view>
+    <view class='use' bindtap='SelectUnUse'>
+      <view class='useTxt'>不可用优惠券</view>
+      <text class='on' wx:if="{{unUse}}"></text>
+    </view>
+  </view>
+  <view>
+    <view wx:if="{{useCoupons}}">
+      <block>
+        <view class='UseList' bindtap='selectOn'>
+          <view class='useLeft'>
+            <view class='select'>
+              <image mode='widthFix' class='selectOn' src='../../../images/pay/yhq.png' wx:if="{{select===false}}"></image>
+              <image mode='widthFix' class='selectOn' src='../../../images/pay/yhqctive.png' wx:if="{{select===true}}"></image>
+            </view>
+            <view class='coupinDes'>
+              <view class='txt1'>新手礼券</view>
+              <view class='txt2'>无门槛优惠券</view>
+              <view class='txt3'>有效期：2018.08.30-2018.12.30</view>
+            </view>
+          </view>
+          <view class='useRight'>
+            <view class='fw price'>￥10</view>
+            <view class='fz-24 useBtn'>去使用</view>
+            <text class='yj'></text>
+            <text class='yj-bom'></text>
+          </view>
+        </view>
+      </block>
+
+    </view>
+    <view wx:if="{{unUse}}" class='unUseBox'>
+      <view class='unLeft'>
+        <view class='title'>训练营课程</view>
+        <view class='des'>购买699元训练营可用</view>
+        <view class='times'>有效期：2018.08.30-2018.12.30</view>
+      </view>
+      <view class='unRight'>
+        <view class='fw price'>￥100</view>
+        <view class='useBtn'>去使用</view>
+        <text class='icon1'></text>
+        <text class='icon1 bom'></text>
+        <text class='icon2 ic1'></text>
+        <text class='icon2 ic2'></text>
+        <text class='icon2 ic3'></text>
+        <text class='icon2 ic4'></text>
+        <text class='icon2 ic5'></text>
+        <text class='icon2 ic6'></text>
+        <text class='icon2 ic7'></text>
+        <text class='icon2 ic8'></text>
+        <text class='icon2 ic9'></text>
+        <text class='icon2 ic10'></text>
+        <text class='icon2 ic11'></text>
+      </view>
+    </view>
+    <view wx:if="{{unUse}}" class='unUseBox'>
+      <view class='unLeft'>
+        <view class='title'>训练营课程</view>
+        <view class='des'>购买699元训练营可用</view>
+        <view class='times'>有效期：2018.08.30-2018.12.30</view>
+      </view>
+      <view class='unRight'>
+        <view class='fw price'>￥100</view>
+        <view class='useBtn'>去使用</view>
+        <text class='icon1'></text>
+        <text class='icon1 bom'></text>
+        <text class='icon2 ic1'></text>
+        <text class='icon2 ic2'></text>
+        <text class='icon2 ic3'></text>
+        <text class='icon2 ic4'></text>
+        <text class='icon2 ic5'></text>
+        <text class='icon2 ic6'></text>
+        <text class='icon2 ic7'></text>
+        <text class='icon2 ic8'></text>
+        <text class='icon2 ic9'></text>
+        <text class='icon2 ic10'></text>
+        <text class='icon2 ic11'></text>
+      </view>
+    </view>
+  </view>
+  <view class='comfir' wx:if="{{useCoupons}}">
+    确认
+  </view>
+</view>
+<view class='isnull' wx:else>暂无优惠券信息~</view>

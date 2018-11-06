@@ -1,0 +1,2 @@
+/* pages/privateCoachDetails/privateCoursePayment/privateCoursePayment.wxss */
+@import '../../course/coursePayment/coursePayment.wxss'

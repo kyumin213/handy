@@ -1,0 +1,106 @@
+/* pages/course/paymentSuccess/paymentSuccess.wxss */
+
+.top {
+  width: 100%;
+  height: 126rpx;
+  background: #d71718;
+}
+
+.head {
+  width: 202rpx;
+  height: 202rpx;
+  margin: -109rpx auto 0 auto;
+  border-radius: 100%;
+  border: 10rpx solid #fff;
+  box-shadow: 4rpx 4rpx 42rpx 2rpx rgba(255, 55, 0, 0.19);
+  text-align: center;
+  overflow: hidden;
+}
+
+.headImg {
+  width: 198rpx;
+  height: 198rpx;
+  border-radius: 100%;
+}
+
+.tips {
+  width: 100%;
+  text-align: center;
+  margin-top: 64rpx;
+}
+
+.tips .success {
+  font-size: 36rpx;
+  color: #1b1c21;
+}
+
+.tips .des {
+  font-size: 28rpx;
+  color: #d71718;
+  margin: 14rpx 0 38rpx 0;
+}
+
+.con .items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 100rpx;
+  margin: 0 54rpx;
+  border-bottom: 2rpx solid #f2f2f2;
+  font-size: 28rpx;
+}
+
+.items .txtTit {
+  color: #333;
+}
+
+.items .txtCon {
+  color: #999;
+}
+
+.inviting {
+  height: 98rpx;
+  line-height: 98rpx;
+  background: #363636;
+  text-align: center;
+  font-size: 36rpx;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.isError {
+  width: 100%;
+  text-align: center;
+  margin-top: 64rpx;
+}
+
+.isError .fail {
+  font-size: 36rpx;
+  color: #1b1c21;
+  margin-bottom: 14rpx;
+}
+
+.isError .errorTxt {
+  font-size: 36rpx;
+}
+.backBtn{
+  width: 400rpx;
+  text-align: center;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-radius: 10rpx;
+  background: #d71718;
+  color: #fff;
+  font-size: 32rpx;
+  margin: 50rpx auto auto auto;
+}
+.moneys{
+  width: 100%;
+  text-align: center;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+}

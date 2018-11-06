@@ -1,0 +1,49 @@
+<!--pages/me/viewComplete/viewComplete.wxml-->
+<view class='imgBox'>
+  <image mode='widthFix' class='headImg' src="{{userInfo.avatarUrl}}"></image>
+</view>
+<view class='headCard'>
+  <view class='viewDetails'>查看详情</view>
+  <view class='fw courseName'>格莱美舞蹈</view>
+  <view class='courseDes'>
+    <text class='item1'>09月01日</text>
+    <text class='item1'>星期六</text>
+    <text>09:00-10:00</text>
+  </view>
+</view>
+<view class='conDes'>
+  <view class='admissionMode'>
+    <view class='fw fz-28'>入场方式</view>
+    <view class='fz-28 viewCode'>查看二维码入场</view>
+  </view>
+  <view class='conAddress'>
+    <view class='fw fz-28 AddressTitle'>门店地址</view>
+    <view class='fz-28 storeAddress'>深圳市南山区世界之窗益田假日广场3层</view>
+    <view class='fz-28 viewMap'>查看地图</view>
+  </view>
+  <view class='considerations'>
+    <view class='fw fz-28 carefulTitle'>注意事项</view>
+    <view class='fz-28 carefulDes'>{{jianShow}}</view>
+    <view class="more" bindtap='moreView'>
+      <text class='jt' wx:if="{{more}}"></text>
+      <!-- <view class='fz-28 takeUp' wx:if="{{more===false}}" bindtap='takeUp'>收起</view> -->
+    </view>
+    
+  </view>
+</view>
+<view class='appointDes'>
+  <view class='items'>
+    <view class='fw fz-28'>预约人数：</view>
+    <view class='fz-28 colorNum'>1人</view>
+  </view>
+  <view class='items'>
+    <view class='fw fz-28'>应付金额：</view>
+    <view class='fz-28 color'>￥69.00</view>
+  </view>
+  <view class='items'>
+    <view class='fw fz-28'>实付金额：</view>
+    <view class='fz-28 color'>（充值卡扣款）￥69.00</view>
+  </view>
+</view>
+<view class='cancelBtn'>取消预约</view>
+<view class='invitingFriends' bindtap='invitingFriends'>邀请好友</view>

@@ -1,0 +1,131 @@
+<!--pages/newborn/newborn.wxml-->
+<view class='newbom'>
+  <view class='headTop'>
+  </view>
+  <view class='headImg'>
+    <image class='topImg' mode='widthFix'></image>
+  </view>
+  <view class='headTxt'>
+    <text>汗的新生</text>
+    <view class='level'>VIP1</view>
+  </view>
+  <view class='levelList'>
+    <view class='levelItem'>
+      <view class='levelLeft'>
+        <view class='step'>
+          <text class='onStep'></text>
+        </view>
+        <view class='levelRight'>
+          <view class='color levelTxt'>VIP 1</view>
+          <view class='finishNum'>
+            <view class='consumn'>已完成消费</view>
+            <view class='color cardNum'>
+              1次汗卡
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='levelItem'>
+      <view class='levelLeft'>
+        <view class='step'>
+          <text class='onStep levelFinish'></text>
+        </view>
+        <view class='levelRight'>
+          <view class='color levelTxt'>VIP 2</view>
+          <view class='finishNum'>
+            <view class='consumn'>需完成消费</view>
+            <view class='color cardNum'>
+              5次汗卡
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='levelItem'>
+      <view class='levelLeft'>
+        <view class='step'>
+          <text class='onStep'></text>
+        </view>
+        <view class='levelRight'>
+          <view class='color levelTxt'>VIP 3</view>
+          <view class='finishNum'>
+            <view class='consumn unfinished'>需完成消费</view>
+            <view class='cardNum unfinished'>
+              10次汗卡
+            </view>
+          </view>
+
+        </view>
+      </view>
+
+    </view>
+    <view class='levelItem'>
+      <view class='levelLeft'>
+        <view class='step'>
+          <text class='onStep'></text>
+        </view>
+        <view class='levelRight'>
+          <view class='color levelTxt'>VIP 4</view>
+          <view class='finishNum'>
+            <view class='consumn unfinished'>需完成消费</view>
+            <view class='cardNum unfinished'>
+              15次汗卡
+            </view>
+          </view>
+
+        </view>
+      </view>
+
+    </view>
+    <view class='levelItem '>
+      <view class='levelLeft'>
+        <view class='step'>
+          <text class='onStep'></text>
+        </view>
+        <view class='levelRight'>
+          <view class='color levelTxt'>VIP 5</view>
+          <view class='finishNum'>
+            <view class='consumn unfinished'>需完成消费</view>
+            <view class='cardNum unfinished'>
+              20次汗卡
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <view class='levelItem'>
+      <view class='levelLeft'>
+        <view class='step'>
+          <text class='onStep'></text>
+        </view>
+        <view class='levelRight'>
+          <view class='color levelTxt'>VIP 6</view>
+          <view class='finishNum'>
+            <view class='consumn unfinished'>需完成消费</view>
+            <view class='cardNum unfinished'>
+              25次汗卡
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='levelItem'>
+      <view class='levelLeft'>
+        <view class='step'>
+          <text class='onStep'></text>
+        </view>
+        <view class='levelRight'>
+          <view class='color levelTxt'>VIP 7</view>
+          <view class='finishNum'>
+            <view class='consumn unfinished'>需完成消费</view>
+            <view class='cardNum unfinished'>
+              30次汗卡
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

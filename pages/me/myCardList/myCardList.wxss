@@ -1,0 +1,110 @@
+/* pages/me/myCardList/myCardList.wxss */
+@import '../RechargeableCard/RechargeableCard.wxss';
+
+.isnull {
+  font-size: 32rpx;
+  width: 100%;
+  text-align: center;
+}
+
+.selectCard {
+  width: 100%;
+  padding-top: 30rpx;
+  padding-left: 52rpx;
+  font-size: 30rpx;
+}
+
+.wrap {
+  /* height: 312rpx; */
+  width: 100%;
+  display: flex;
+  display: -webkit-box;
+  flex-direction: column;
+  padding-top: 32rpx;
+  box-sizing: border-box;
+}
+
+.wrap .items {
+  width: 520rpx;
+  /* height: 312rpx; */
+  border-radius: 20rpx;
+  flex: 1;
+  margin-right: 20rpx;
+}
+
+.wrap .select {
+  display: inline-block;
+  position: absolute;
+  top: -20rpx;
+  right: -18rpx;
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 100%;
+  background: #f00;
+  z-index: 99999;
+}
+
+.wrap .select::after {
+  content: "";
+  position: absolute;
+  left: 10rpx;
+  top: 14rpx;
+  width: 22rpx;
+  height: 10rpx;
+  border-left: 6rpx solid #fff;
+  border-bottom: 6rpx solid #fff;
+  transform: rotate(-45deg);
+}
+
+.wrap .imgItem {
+  width: 514rpx;
+  height: 312rpx;
+  position: relative;
+  flex: 1;
+}
+
+.wrap .items .cardType {
+  width: 514rpx;
+  height: 312rpx;
+  border-radius: 24rpx;
+  border: 6rpx solid #fff;
+}
+
+.wrap .items:first-child {
+  margin-left: 50rpx;
+}
+
+.wrap .items:last-child {
+  padding-right: 50rpx;
+}
+
+.wrap .items .borderCol {
+  border: 6rpx solid #f00;
+  /* position: relative;
+  top: 0;
+  left: 50%;
+  margin-left: -257rpx;
+  transition: ease-in-out .3; */
+
+}
+
+.selectTime {
+  width: 100%;
+  margin: 58rpx 0 40rpx 52rpx;
+  font-size: 30rpx;
+}
+
+.bor {
+  border: 4rpx solid #f00;
+}
+
+.cardBom {
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.footer .unactive{
+  background: #CCC;
+}

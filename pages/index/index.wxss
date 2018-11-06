@@ -1,0 +1,180 @@
+/**index.wxss**/
+
+.imgBox {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.bgImg {
+  width: 100%;
+  height: 100%;
+}
+
+.con {
+  position: absolute;
+  bottom: 286rpx;
+  left: 50%;
+  margin-left: -298rpx;
+  width: 596rpx;
+  height: 310rpx;
+}
+
+.con .phone {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 98rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  margin-bottom: 8rpx;
+  /* padding: 0 22rpx 0 44rpx; */
+}
+
+.code {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 98rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  margin-bottom: 8rpx;
+  /* padding: 0 22rpx 0 44rpx; */
+}
+
+/* .con .phone {
+  justify-content: start;
+} */
+
+.con .phoneTxt {
+  color: #333;
+  /* width: 30%; */
+  text-align: center;
+  margin: 0 52rpx 0 42rpx;
+}
+
+.con .phoneBox {
+  width: 70%;
+}
+
+.con .inp {
+  color: #999;
+  font-size: 28rpx;
+  /* margin-left: 52rpx; */
+}
+
+.con .telInp {
+  width: 100%;
+  /* margin-left: 52rpx; *//* text-align: left; */
+}
+
+.con .codeItem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 70%;
+  box-sizing: border-box;
+  height: 68rpx;
+}
+
+.con .sendBox {
+  width: 40%;
+  margin-right: 22rpx;
+}
+
+.con .sendCode {
+  width: 172rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  background: #d71718;
+  color: #fff;
+}
+
+.con .codeBox {
+  width: 60%;
+}
+
+.con .inpCode {
+  width: 100%;
+  /* padding-left: 12rpx; */
+}
+
+.loginBtn {
+  width: 100%;
+  height: 98rpx;
+  text-align: center;
+  line-height: 98rpx;
+  border-radius: 10rpx;
+  background: #d71718;
+  font-size: 36rpx;
+  color: #fff;
+}
+
+/* 授权弹窗 */
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.model {
+  width: 75%;
+  height: 350rpx;
+  border-radius: 20rpx;
+  margin: 50% auto;
+  text-align: center;
+  font-size: 28rpx;
+  background: #fff;
+  position: relative;
+  z-index: 9999;
+  box-sizing: border-box;
+  padding-bottom: 20rpx;
+}
+
+.modelTitle {
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 32rpx;
+}
+
+.modelBody {
+  height: 150rpx;
+  color: #999;
+  border-top: 2rpx solid #ccc;
+  word-wrap:break-word;
+  padding: 0 20rpx;
+}
+
+.modelBody .item1{
+  height: 50rpx;
+  padding-top: 40rpx;
+}
+
+.btns {
+  border-top: 2rpx solid #ccc;
+  position: absolute;
+  bottom: 6rpx;
+  left: 0;
+  right: 0;
+}
+
+.agree {
+  border-radius: 0;
+  background: #fff;
+  color: #d71718;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+}

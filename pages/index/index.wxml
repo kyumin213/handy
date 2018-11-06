@@ -1,0 +1,41 @@
+<!--index.wxml-->
+<view class='imgBox'>
+  <image class='bgImg' src='../../images/find/banner.png'></image>
+</view>
+<view wx:if="{{showModel}}" class="mask">
+  <view class="model">
+    <view class="modelTitle">
+      获取微信授权信息
+    </view>
+    <view class="modelBody">
+      <view class='item1'>微信登录需要获取您的用户信息</view>
+      <view>请确认授权</view>
+    </view>
+    <view class="btns">
+      <button open-type="getUserInfo" class="agree" bindgetuserinfo="agreeGetUser" lang="zh_CN">确认授权</button>
+    </view>
+  </view>
+
+</view>
+
+<!-- <view class='con'>
+  <view class='phone'>
+    <view class='fz-28 phoneTxt'>手机号</view>
+    <view class='phoneBox'>
+      <input class='fz-28 telInp' placeholder='请输入手机号' placeholder-class='inp'></input>
+    </view>
+  </view>
+  <view class='code'>
+    <view class='fz-28 phoneTxt'>校验码</view>
+    <view class='codeItem'>
+      <view class='codeBox'>
+        <input class='fz-28 inpCode' placeholder='请输入验证码' placeholder-class='inp'></input>
+      </view>
+      <view class='sendBox'>
+        <view class='fz-28 sendCode'>发送校验码</view>
+      </view>
+    </view>
+
+  </view>
+  <view class='loginBtn'>登录</view>
+</view> -->

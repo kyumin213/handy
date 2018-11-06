@@ -1,0 +1,78 @@
+<!--pages/me/RechargeableCard/RechargeableCard.wxml-->
+<!-- <view class='headTab'>
+  <view class="cz {{tabOne?'active':''}}" bindtap='tabOne'>充值</view>
+  <view class="xf {{tabTwo?'active':''}}" bindtap='tabTwo'>消费记录</view>
+</view> -->
+<view>
+  <view class='cardimgBox'>
+    <image mode='widthFix' class='cardImg' src='../../../images/memberCard/chongzhi.png'></image>
+  </view>
+  <view class='cardDes'>
+    <!-- <view class='items'>
+      <view class='item1'>会员卡</view>
+      <view class='item2'>查看</view>
+    </view> -->
+    <view class='items'>
+      <view class='item1'>余额</view>
+      <view class='item2'>￥{{allMonty}}</view>
+    </view>
+    <!-- <view class='items'>
+      <view class='item1'>优惠券</view>
+      <view class='item2'>查看</view>
+    </view> -->
+  </view>
+  <view class='con'>
+    <block wx:for="{{cardList}}" wx:key="{{index}}">
+      <view class='cardBox' bindtap='selectCard' data-index="{{index}}">
+        <view class="cardList {{check===index?'active': ''}}">
+          <view class='cardItems'>
+            <view>
+              <view class="item1 {{check===index?'': 'color'}}">汗的充值卡</view>
+              <view class='fz-24 item2'>有效期{{item.expiryDate}}年</view>
+            </view>
+            <view class='itemRight'>
+              <view class="item1 {{check===index?'':'color'}}">
+                <text class="fh {{check===index?'':'color'}}">￥</text>{{item.money}}</view>
+              <view class="fz-24 item3 {{check===index? '': 'activeBtn'}}">充值卡</view>
+            </view>
+          </view>
+          <view class="leftBy {{check===index?'active': ''}}"></view>
+          <view class="rightBy {{check===index?'active': ''}}"></view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class='footer'>
+    <view class='left'>
+      <text class='fz-24'>充值金额</text>
+      <text class='totalMoney'>￥{{totalMoney}}</text>
+    </view>
+    <button class='right' bindtap='subPayment' disabled='{{disable}}'>确认支付</button>
+  </view>
+</view>
+<!-- <view wx:else>
+  <view wx:if="{{xiaofei}}">
+    <view class='spendItems'>
+      <view>
+        <view class='fw courseName'>瑜伽体验课</view>
+        <view class='times'>2018-05-06 20:56:56</view>
+      </view>
+      <view class='money'>-100</view>
+    </view>
+    <view class='spendItems'>
+      <view>
+        <view class='fw courseName'>瑜伽体验课</view>
+        <view class='times'>2018-05-06 20:56:56</view>
+      </view>
+      <view class='money'>-100</view>
+    </view>
+    <view class='spendItems'>
+      <view>
+        <view class='fw courseName'>瑜伽体验课</view>
+        <view class='times'>2018-05-06 20:56:56</view>
+      </view>
+      <view class='money'>-100</view>
+    </view>
+  </view>
+  <view ex:else class='isnull'>暂无消费记录~</view>
+</view> -->

@@ -1,0 +1,198 @@
+/* pages/attention/attention.wxss */
+
+.bg-c {
+  width: 100%;
+  background: #f2f2f2;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+
+button::after {
+  border: none;
+}
+
+.tabs {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80rpx;
+  margin: 0 auto;
+  font-size: 32rpx;
+   background: #f2f2f2;
+   z-index: 99;
+}
+.tabs .tabCon {
+  width: 70%;
+ display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.tabs .private,.tabs .team {
+  width: 50%;
+  /* background: #f00; */
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  box-sizing: border-box;
+  border-bottom: 8rpx solid #f2f2f2;
+}
+
+.tabs .active {
+  border-bottom: 8rpx solid #d71718;
+  color: #d61518;
+}
+
+.headTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  height: 88rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.addressLeft {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  height: 60rpx;
+  background: #fff;
+  text-align: left;
+  border-radius: 10rpx;
+  padding-right: 18rpx;
+}
+
+.addressIcon {
+  width: 38rpx;
+  height: 38rpx;
+  margin-left: 22rpx;
+}
+
+.headTop .address, .headTop .searchBtn {
+  display: inline-block;
+  text-align: center;
+  width: 192rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #fff;
+  border-radius: 10rpx;
+}
+
+.headTop .address {
+  width: auto;
+  margin-right: 18rpx;
+}
+
+.headTop .searchBtn {
+  width: 160rpx;
+  color: #000;
+}
+
+.attentionList {
+  margin-bottom: 114rpx;
+  margin-top: 80rpx;
+}
+
+.attentionList .items {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin-bottom: 16rpx;
+  padding: 32rpx 0;
+  box-sizing: border-box;
+}
+
+.attentionList .itemRight {
+  /* padding: 62rpx 34rpx 52rpx 22rpx; */
+  margin-left: 22rpx;
+  margin-right: 60rpx;
+}
+
+.imgBox {
+  width: 204rpx;
+  height: 204rpx; 
+  border-radius: 100%;
+  /* overflow: hidden; */
+  margin-left: 30rpx;
+}
+
+.imgBox .attenImg {
+  width: 204rpx;
+  height: 204rpx;
+  border-radius: 100%;
+  background: #ccc;
+  background-size: cover;
+  /* border: 2rpx solid #f00; *//* background-size: cover; *//* height: 202rpx; *//* border-radius: 100%; *//* background: #ccc;
+  margin: 30rpx 0 30rpx 30rpx; *//* src="{{item.headimg}}" */
+}
+
+.attentionList .attenName {
+  font-size: 30rpx;
+  color: #2d2d2d;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.attentionList .zan {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 24rpx;
+  color: #d61518;
+  margin-bottom: 12rpx;
+  line-height: 1;
+}
+
+.attentionList .zan .zanNum {
+  margin-right: 14rpx;
+}
+
+.attentionList .des {
+  font-size: 26rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 36rpx;
+  margin-top: 20rpx;
+  color: #999;
+}
+
+.attentionList .des .txtDes {
+  line-height: 36rpx;
+}
+
+.attentionList .follow {
+  /* display: inline-block;  */
+  padding: 0;
+  font-size: 20rpx;
+  width: 106rpx;
+  height: 38rpx;
+  border-radius: 10rpx;
+  border: 2rpx solid #d71718;
+  color: #d71718;
+  background: #fff;
+  text-align: center;
+  line-height: 38rpx;
+  /* box-sizing: border-box; */
+}
+
+.attentionList .unfollow {
+  background: #d71718;
+  color: #fff;
+}
+
+.attentionList .rightTitle {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}

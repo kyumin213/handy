@@ -1,0 +1,32 @@
+<!--pages/me/payPwd/payPwd.wxml-->
+<view>
+  <view class='con'>
+   <form bindsubmit='subPayPwd'>
+    <view class='pwd'>
+      <view class='pwdItem'>
+        <view class='pwdLeft'>
+          <image class='pwdIcon' mode='widthFix' src='../../../images/pay/setpwd.png'></image>
+          <input placeholder='设置密码' name="pwd" type='{{types}}'></input>
+        </view>
+        <view>
+          <image bindtap='showPwd' class='pwdRight' mode='widthFix' src='../../../images/pay/showpwd.png' wx:if="{{pwd===true}}"></image>
+          <image bindtap='showPwd' class='pwdRight' mode='widthFix' src='../../../images/pay/hidepwd.png' wx:else></image>
+        </view>
+      </view>
+      <view class='pwdItem'>
+        <view class='pwdLeft'>
+          <image class='pwdIcon' mode='widthFix' src='../../../images/pay/setpwd.png'></image>
+          <input placeholder='请确认密码' name="pwd" type='{{pwdType}}'></input>
+        </view>
+        <view>
+          <image bindtap='comfirPwd' class='pwdRight' mode='widthFix' src='../../../images/pay/showpwd.png' wx:if="{{hiddenPwd===true}}"></image>
+          <image bindtap='comfirPwd' class='pwdRight' mode='widthFix' src='../../../images/pay/hidepwd.png' wx:else></image>
+        </view>
+      </view>
+    </view>
+    <view>
+      <button class='subPwd' form-type='subPwd'>完成</button>
+    </view>
+   </form>
+  </view>
+</view>
