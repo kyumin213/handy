@@ -12,52 +12,60 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    personAll: {}
+    personAll: {},
+    times:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this
     var loginData = wx.getStorageSync("userInfo")
     var id = loginData.id
     this.setData({
       id: id
     })
-    this.personalLoad()
-    if (app.globalData.userInfo) {
-      var that = this
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true,
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    // this.personalLoad()
+    that.nowTimes()
   },
-  getUserInfo: function(e) {
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  // 当前时间
+  nowTimes: function () {
+    let that = this
+    let newData = new Date()
+    let y = newData.getFullYear()
+    let month = newData.getMonth()+1
+    let d = newData.getDate()
+    let h = newData.getHours()
+    let m = newData.getMinutes()
+    let s = newData.getSeconds()
+    let times = that.data.times
+    if (month < 10) {
+      month = '0' + month
+    }
+    if (d < 10) {
+      d = '0' + d
+    }
+    if (h < 10) {
+      h = '0' + h
+    }
+    if (m < 10) {
+      m = '0' + m
+    }
+    if (s < 10) {
+      s = '0' + s
+    }
+    let nowTimes = y + '-' + month + '-' + d + ' ' + h + ':' + m + ':' + s
+    that.setData({
+      times: nowTimes
+    })
+  },
+  // 二维码入场
+  codeAdmission:function(){
+    let that = this
+    let times = that.data.times
+    wx.navigateTo({
+      url: './guardCode/guardCode?times='+times,
     })
   },
   // 获取上课、私教次数
@@ -166,6 +174,7 @@ Page({
   onShow: function() {
     var loginData = wx.getStorageSync("userInfo")
     var that = this
+    that.nowTimes()
     login.login()
     if (loginData) {
       that.personalLoad()

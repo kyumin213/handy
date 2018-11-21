@@ -10,21 +10,26 @@ Page({
   data: {
     stayConduct: true,
     // stayAssess: false,
-    allele: false,
-    completed: false,
-    cancelled: false,
+    allele: true,
+    completed: true,
+    cancelled: true,
     teamCourseList: {},
     cancelList: {},
     wcList: {},
     jxzList: {},
     djxList: {},
-    hashList: false,
-    cancelledList: false,
-    completedList: false,
-    stayConductList: false,
-    alleleList: false,
+    hashList: true,
+    cancelledList: true,
+    completedList: true,
+    stayConductList: true,
+    alleleList: true,
     begin: '',
-    end: ''
+    end: '',
+    memberCode: '',
+    times: '',
+    loadingTimes: '',
+    currentTab: 0,
+    winHeight: ''
   },
 
   /**
@@ -34,41 +39,118 @@ Page({
     var status = options.status
     // var stayConduct = that.data.stayConduct
     var that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        var clientHeight = res.windowHeight,
+          clientWidth = res.windowWidth,
+          rpxR = 750 / clientWidth;
+        var calc = clientHeight * rpxR - 180;
+        that.setData({
+          winHeight: calc
+        });
+      }
+    })
+    that.cancelled()
+    that.conduct()
+    that.completed()
+    that.allele()
     if (status == 'djx') {
       that.setData({
-        stayConduct: true,
-        completed: false,
-        cancelled: false,
-        allele: false,
+        // stayConduct: true,
+        // completed: false,
+        // cancelled: false,
+        // allele: false,
+        currentTab: 0
       })
       // that.myTeamCourse()
       that.conduct()
     } else if (status == 'jxz') {
       that.setData({
-        allele: true,
-        stayConduct: false,
-        completed: false,
-        cancelled: false,
+        // allele: true,
+        // stayConduct: false,
+        // completed: false,
+        // cancelled: false,
+        currentTab: 1
       })
       that.allele()
     } else if (status == 'ywc') {
       that.setData({
-        allele: false,
-        stayConduct: false,
-        completed: true,
-        cancelled: false,
+        // allele: false,
+        // stayConduct: false,
+        // completed: true,
+        // cancelled: false,
+        currentTab: 2
       })
       that.completed()
     } else if (status == 'yqx') {
       that.setData({
-        allele: false,
-        stayConduct: false,
-        completed: false,
-        cancelled: true,
+        // allele: false,
+        // stayConduct: false,
+        // completed: false,
+        // cancelled: true,
+        currentTab: 3
       })
       that.cancelled()
     }
-    
+    that.nowTime()
+  },
+  // tab切换
+  coachTab: function(e) {
+    var that = this
+    let cur = e.currentTarget.dataset.current
+    console.log(cur)
+    if (that.data.currentTab == cur) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: cur
+      })
+    }
+  },
+  switchTab: function (e) {
+    this.setData({
+      currentTab: e.detail.current
+    });
+  },
+  nowTime: function() {
+    let that = this
+    let newData = new Date()
+    let y = newData.getFullYear()
+    let month = newData.getMonth() + 1
+    let d = newData.getDate()
+    let h = newData.getHours()
+    let m = newData.getMinutes()
+    let s = newData.getSeconds()
+    let nowData = that.data.nowData
+    if (month < 10) {
+      month = '0' + month
+    }
+    if (d < 10) {
+      d = '0' + d
+    }
+    if (h < 10) {
+      h = '0' + h
+    }
+    if (m < 10) {
+      m = '0' + m
+    }
+    if (s < 10) {
+      s = '0' + s
+    }
+    let times = y + '-' + month + '-' + d + ' ' + h + ':' + m + ':' + s
+    that.setData({
+      times: times
+    })
+  },
+  // 二维码入场
+  codeIn: function(e) {
+    let that = this
+    let times = that.data.times
+    let memberCode = e.currentTarget.dataset.code
+    that.endSetInter()
+    wx.navigateTo({
+      url: '../../admissionCode/admissionCode?times=' + times + '&memberCode=' + memberCode,
+    })
   },
   // 我的团体课程
   myTeamCourse: function() {
@@ -90,19 +172,19 @@ Page({
             stayConductList: false
           })
         }
-          var datas = res.data
-          for (var i = 0; i < datas.length; i++) {
-            var ss = datas[i].begtime
-            var endtime = datas[i].endtime
-            var lastStr = ss.substring(10, 16)
-            var lastEnd = endtime.substring(10, 16)
-            datas[i].begin = lastStr
-            
-            datas[i].end = lastEnd
-            // that.setData({
-            //   begin: lastStr,
-            //   end: lastEnd
-            // })
+        var datas = res.data
+        for (var i = 0; i < datas.length; i++) {
+          var ss = datas[i].begtime
+          var endtime = datas[i].endtime
+          var lastStr = ss.substring(10, 16)
+          var lastEnd = endtime.substring(10, 16)
+          datas[i].begin = lastStr
+
+          datas[i].end = lastEnd
+          // that.setData({
+          //   begin: lastStr,
+          //   end: lastEnd
+          // })
         }
       })
       .catch(res => {
@@ -115,13 +197,13 @@ Page({
     var loginData = wx.getStorageSync("userInfo")
     var id = loginData.id
     var that = this
-    that.setData({
-      stayConduct: true,
-      stayAssess: false,
-      allele: false,
-      completed: false,
-      cancelled: false
-    })
+    // that.setData({
+    //   stayConduct: true,
+    //   stayAssess: false,
+    //   allele: false,
+    //   completed: false,
+    //   cancelled: false
+    // })
     var status = 1
     app.agriknow.getMyTeamCourse(id, status)
       .then(res => {
@@ -134,7 +216,6 @@ Page({
           var lastEnd = endtime.substring(10, 16)
           datas[i].begin = lastStr
           datas[i].end = lastEnd
-          console.log(res.data[i].begin)
         }
         if (res.data.length > 0) {
           that.setData({
@@ -146,7 +227,7 @@ Page({
             stayConductList: false
           })
         }
-    
+
       })
       .catch(res => {
         // wx.stopPullDownRefresh()
@@ -158,13 +239,13 @@ Page({
     var loginData = wx.getStorageSync("userInfo")
     var id = loginData.id
     var that = this
-    that.setData({
-      stayConduct: false,
-      stayAssess: false,
-      allele: true,
-      completed: false,
-      cancelled: false
-    })
+    // that.setData({
+    //   stayConduct: false,
+    //   stayAssess: false,
+    //   allele: true,
+    //   completed: false,
+    //   cancelled: false
+    // })
     var status = 2
     app.agriknow.getMyTeamCourse(id, status)
       .then(res => {
@@ -188,7 +269,7 @@ Page({
             alleleList: false
           })
         }
-  
+
       })
       .catch(res => {
         // wx.stopPullDownRefresh()
@@ -200,13 +281,13 @@ Page({
     var loginData = wx.getStorageSync("userInfo")
     var id = loginData.id
     var that = this
-    that.setData({
-      stayConduct: false,
-      stayAssess: false,
-      allele: false,
-      completed: true,
-      cancelled: false
-    })
+    // that.setData({
+    //   stayConduct: false,
+    //   stayAssess: false,
+    //   allele: false,
+    //   completed: true,
+    //   cancelled: false
+    // })
     var status = 3
     app.agriknow.getMyTeamCourse(id, status)
       .then(res => {
@@ -242,13 +323,13 @@ Page({
     var loginData = wx.getStorageSync("userInfo")
     var id = loginData.id
     var that = this
-    that.setData({
-      stayConduct: false,
-      stayAssess: true,
-      allele: false,
-      completed: false,
-      cancelled: false
-    })
+    // that.setData({
+    //   stayConduct: false,
+    //   stayAssess: true,
+    //   allele: false,
+    //   completed: false,
+    //   cancelled: false
+    // })
     // var status = 3
     app.agriknow.getMyTeamCourse(id)
       .then(res => {
@@ -277,13 +358,14 @@ Page({
     var loginData = wx.getStorageSync("userInfo")
     var id = loginData.id
     var that = this
-    that.setData({
-      stayConduct: false,
-      stayAssess: false,
-      allele: false,
-      completed: false,
-      cancelled: true
-    })
+    // that.setData({
+    //   // stayConduct: false,
+    //   // stayAssess: false,
+    //   // allele: false,
+    //   // completed: false,
+    //   // cancelled: true
+    //   currentTab:3
+    // })
     var status = 4
     app.agriknow.getMyTeamCourse(id, status)
       .then(res => {
@@ -320,6 +402,11 @@ Page({
       url: '../viewComplete/viewComplete',
     })
   },
+  // 清除定时器
+  endSetInter: function() {
+    var that = this;
+    clearInterval(that.data.loadingTimes)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -331,6 +418,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    let that = this
+    // that.nowTime()
+    let loadingTimes = that.data.loadingTimes
+    that.setData({
+      loadingTimes: setInterval(function() {
+        // qrcode.makeCode(txt)
+        that.nowTime()
+      }, 10000)
+    })
     // this.myTeamCourse()
   },
 
@@ -345,7 +441,10 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    let that = this
+    that.endSetInter()
+    let loadingTimes = that.data.loadingTimes
+    clearInterval(loadingTimes)
   },
 
   /**

@@ -1,0 +1,9 @@
+<!--pages/me/guardCode/guardCode.wxml-->
+<view class='bg'>
+  <view class='con'>
+    <view class='button-wrapper'>
+      <view class='fz-28'>请将二维码靠近扫码器</view>
+    </view>
+    <canvas class='canvas' canvas-id='canvas' bindlongtap='save'></canvas>
+  </view>
+</view>

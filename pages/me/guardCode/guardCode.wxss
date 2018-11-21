@@ -1,0 +1,2 @@
+/* pages/me/guardCode/guardCode.wxss */
+@import '../../admissionCode/admissionCode.wxss';

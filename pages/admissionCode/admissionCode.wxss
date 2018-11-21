@@ -1,0 +1,49 @@
+/* pages/admissionCode/admissionCode.wxss */
+.bg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #D71718;
+}
+.con{
+  width: 90%;
+  height: 700rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  margin: 100rpx auto 0 auto;
+  box-sizing: border-box;
+}
+.resh{
+  margin-top: 50rpx;
+  text-align: center;
+  color: #999;
+}
+/* .input-wrapper {
+    margin: 40rpx auto 0 auto;
+    width: 600rpx;
+    height: 88rpx;
+    border: 2rpx solid #ddd;
+    border-radius: 16rpx;
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+}
+
+.input-wrapper input {
+    font-size: 32rpx;
+    line-height: 88rpx;
+    height: 100%;
+}
+*/
+.button-wrapper {
+  text-align: center;
+  padding-top: 100rpx;
+} 
+
+.canvas {
+    margin: 70rpx auto 0 auto;
+    width: 180px;
+    height: 180px;
+    /* border: 1px solid black; */
+}

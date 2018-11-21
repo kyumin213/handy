@@ -103,6 +103,15 @@
           <text class='jt'></text>
         </view>
       </view>
+            <view class='items' bindtap='codeAdmission'>
+        <view class='itemLeft'>
+          <image class='itemIcon' mode='widthFix' src='../../images/me/meyy.png'></image>
+          <text class='itemsTxt'>二维码入场</text>
+        </view>
+        <view>
+          <text class='jt'></text>
+        </view>
+      </view>
       <!-- <view class='items' bindtap='myTeamCourse'>
         <view class='itemLeft'>
           <image class='itemIcon' mode='widthFix' src='../../images/me/meyy.png'></image>

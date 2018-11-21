@@ -3,10 +3,10 @@
   <view class='myTop'>
     <view class='appointTab'>
       <!-- <view class="{{stayAssess?'active':''}}" bindtap='assess'>全部</view> -->
-      <view class="{{stayConduct?'active':''}}" bindtap='conduct'>待进行</view>
-      <view class="{{allele?'active':''}}" bindtap='allele'>进行中</view>
-      <view class="{{completed?'active':''}}" bindtap='completed'>已完成</view>
-      <view class="{{cancelled?'active':''}}" bindtap='cancelled'>已取消</view>
+      <view class="{{currentTab==0?'active':''}}" data-current="0" bindtap='coachTab'>待进行</view>
+      <view class="{{currentTab==1?'active':''}}" data-current="1" bindtap='coachTab'>进行中</view>
+      <view class="{{currentTab==2?'active':''}}" data-current="2" bindtap='coachTab'>已完成</view>
+      <view class="{{currentTab==3?'active':''}}" data-current="3" bindtap='coachTab'>已取消</view>
     </view>
   </view>
   <!-- 全部 -->
@@ -67,143 +67,153 @@
     </view>
   </view> -->
   <!-- 待进行 -->
-  <view class='stayConduct' wx:if="{{stayConduct}}">
-    <view class='courseList' wx:for="{{djxList}}" wx:key="{{index}}" wx:if="{{stayConductList}}">
-      <view class='courseItem'>
-        <view class='orderTitle'>
-          <text class='fw txt1'>订单号：</text>
-          <text class='fz-24 txt2'>{{item.courseOrderNum}}</text>
-        </view>
-        <view class='orderCon'>
-          <view class='orderConLeft'>
-            <view class='headImgBox'>
-              <image class='courseImg' src="{{item.headimg}}"></image>
+  <swiper current="{{currentTab}}" class="swiper" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+    <swiper-item>
+      <view class='stayConduct'>
+        <view class='courseList' wx:for="{{djxList}}" wx:key="{{index}}" wx:if="{{stayConductList}}">
+          <view class='courseItem'>
+            <view class='orderTitle'>
+              <text class='fw txt1'>订单号：</text>
+              <text class='fz-24 txt2'>{{item.courseOrderNum}}</text>
             </view>
-            <view class='orderConCen'>
-              <view class='fw courseName'>{{item.courseName}}</view>
-              <view class='storeName'>{{item.storeName}}</view>
-              <view class='fz-24 fw startDate'>{{item.orderCtime}}</view>
+            <view class='orderCon'>
+              <view class='orderConLeft'>
+                <view class='headImgBox'>
+                  <image class='courseImg' src="{{item.headimg}}"></image>
+                </view>
+                <view class='orderConCen'>
+                  <view class='fw courseName'>{{item.courseName}}</view>
+                  <view class='storeName'>{{item.storeName}}</view>
+                  <view class='fz-24 fw startDate'>{{item.orderCtime}}</view>
+                </view>
+              </view>
+              <view>
+                <view class='fw times'>{{item.begin}} -{{item.end}}</view>
+                <view class='fz-24 viewBtn' bindtap='codeIn' data-code="{{item.memberCoursePkcode}}">二维码入场</view>
+              </view>
             </view>
           </view>
-          <view>
-            <view class='fw times'>{{item.begin}} -{{item.end}}</view>
-            <!-- <view class='fz-24 viewBtn'>查看详情</view> -->
-          </view>
         </view>
-      </view>
-    </view>
-    <view class='isnull' wx:if="{{stayConductList===false}}">
-      <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
-      <view class='nullTxt'>暂无课程信息</view>
-    </view>
-    <!-- <view class='footer'>
+        <view class='isnull' wx:if="{{stayConductList===false}}">
+          <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
+          <view class='nullTxt'>暂无课程信息</view>
+        </view>
+        <!-- <view class='footer'>
       <view class='footTxt'>我是有底线的</view>
       <view class='bomBorder'></view>
     </view> -->
-  </view>
-  <!-- 进行中 -->
-  <view class='allele' wx:if="{{allele}}">
-    <view class='courseList' wx:for="{{jxzList}}" wx:key="{{index}}" wx:if="{{alleleList}}">
-      <view class='courseItem'>
-        <view class='orderTitle'>
-          <text class='fw txt1'>订单号：</text>
-          <text class='fz-24 txt2'>{{item.courseOrderNum}}</text>
-        </view>
-        <view class='orderCon'>
-          <view class='orderConLeft'>
-            <view class='headImgBox'>
-              <image class='courseImg' src="{{item.headimg}}"></image>
-            </view>
-            <view class='orderConCen'>
-              <view class='fw courseName'>{{item.courseName}}</view>
-              <view class='storeName'>{{item.storeName}}</view>
-              <view class='fz-24 startDate'>{{item.orderCtime}}</view>
-            </view>
-          </view>
-          <view>
-            <view class='times'>{{item.begin}} -{{item.end}}</view>
-            <view class='fz-24 viewBtn'>进行中</view>
-          </view>
-        </view>
       </view>
-    </view>
-    <view class='isnull' wx:if="{{alleleList===false}}">
-      <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
-      <view class='nullTxt'>暂无课程信息</view>
-    </view>
-    <!-- <view class='footer'>
+    </swiper-item>
+    <swiper-item>
+      <!-- 进行中 -->
+      <view class='allele' wx:if="{{allele}}">
+        <view class='courseList' wx:for="{{jxzList}}" wx:key="{{index}}" wx:if="{{alleleList}}">
+          <view class='courseItem'>
+            <view class='orderTitle'>
+              <text class='fw txt1'>订单号：</text>
+              <text class='fz-24 txt2'>{{item.courseOrderNum}}</text>
+            </view>
+            <view class='orderCon'>
+              <view class='orderConLeft'>
+                <view class='headImgBox'>
+                  <image class='courseImg' src="{{item.headimg}}"></image>
+                </view>
+                <view class='orderConCen'>
+                  <view class='fw courseName'>{{item.courseName}}</view>
+                  <view class='storeName'>{{item.storeName}}</view>
+                  <view class='fz-24 startDate'>{{item.orderCtime}}</view>
+                </view>
+              </view>
+              <view>
+                <view class='times'>{{item.begin}} -{{item.end}}</view>
+                <view class='fz-24 viewBtn' bindtap='codeIn' data-code="{{item.memberCoursePkcode}}">二维码入场</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='isnull' wx:if="{{alleleList===false}}">
+          <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
+          <view class='nullTxt'>暂无课程信息</view>
+        </view>
+        <!-- <view class='footer'>
       <view class='footTxt'>我是有底线的</view>
       <view class='bomBorder'></view>
     </view> -->
-  </view>
-  <!-- 已完成 -->
-  <view wx:if="{{completed}}">
-    <view class='courseList' wx:for="{{wcList}}" wx:key="{{index}}" wx:if="{{completedList}}">
-      <view class='courseItem'>
-        <view class='orderTitle'>
-          <text class='fw txt1'>订单号：</text>
-          <text class='fz-24 txt2'>{{item.courseOrderNum}}</text>
-        </view>
-        <view class='orderCon'>
-          <view class='orderConLeft'>
-            <view class='headImgBox'>
-              <image class='courseImg' src="{{item.headimg}}"></image>
-            </view>
-            <view class='orderConCen'>
-              <view class='fw courseName'>{{item.courseName}}</view>
-              <view class='storeName'>{{item.storeName}}</view>
-              <view class='fz-24 startDate'>{{item.orderCtime}}</view>
-            </view>
-          </view>
-          <view>
-            <view class='times'>{{item.begin}} -{{item.end}}</view>
-            <!-- <view class='fz-24 viewBtn' bindtap='viewDetails'>查看详情</view> -->
-          </view>
-        </view>
       </view>
-    </view>
-    <view class='isnull' wx:if="{{completedList===false}}">
-      <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
-      <view class='nullTxt'>暂无课程信息</view>
-    </view>
-    <!-- <view class='footer'>
+    </swiper-item>
+    <swiper-item>
+      <!-- 已完成 -->
+      <view wx:if="{{completed}}">
+        <view class='courseList' wx:for="{{wcList}}" wx:key="{{index}}" wx:if="{{completedList}}">
+          <view class='courseItem'>
+            <view class='orderTitle'>
+              <text class='fw txt1'>订单号：</text>
+              <text class='fz-24 txt2'>{{item.courseOrderNum}}</text>
+            </view>
+            <view class='orderCon'>
+              <view class='orderConLeft'>
+                <view class='headImgBox'>
+                  <image class='courseImg' src="{{item.headimg}}"></image>
+                </view>
+                <view class='orderConCen'>
+                  <view class='fw courseName'>{{item.courseName}}</view>
+                  <view class='storeName'>{{item.storeName}}</view>
+                  <view class='fz-24 startDate'>{{item.orderCtime}}</view>
+                </view>
+              </view>
+              <view>
+                <view class='times'>{{item.begin}} -{{item.end}}</view>
+                <view class='fz-24 viewBtn' bindtap='codeIn' data-code="{{item.memberCoursePkcode}}">二维码入场</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='isnull' wx:if="{{completedList===false}}">
+          <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
+          <view class='nullTxt'>暂无课程信息</view>
+        </view>
+        <!-- <view class='footer'>
       <view class='footTxt'>我是有底线的</view>
       <view class='bomBorder'></view>
     </view> -->
-  </view>
-  <!-- 已取消 -->
-  <view wx:if="{{cancelled}}">
-    <view class='courseList' wx:for="{{cancelList}}" wx:key="{{index}}" wx:if="{{hashList}}">
-      <view class='courseItem'>
-        <view class='orderTitle'>
-          <text class='fw txt1'>订单号：</text>
-          <text class='fz-24 txt2'>{{item.courseOrderNum}}</text>
-        </view>
-        <view class='orderCon'>
-          <view class='orderConLeft'>
-            <view class='headImgBox'>
-              <image class='courseImg' src="{{item.headimg}}"></image>
-            </view>
-            <view class='orderConCen'>
-              <view class='fw courseName'>{{item.courseName}}</view>
-              <view class='storeName'>{{item.storeName}}</view>
-              <view class='fz-24 startDate'>{{item.orderCtime}}</view>
-            </view>
-          </view>
-          <view>
-            <view class='times'>{{item.begin}} -{{item.end}}</view>
-            <view class='fz-24 viewBtn btColor'>已取消</view>
-          </view>
-        </view>
       </view>
-    </view>
-    <view class='isnull' wx:if="{{hashList===false}}">
-      <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
-      <view class='nullTxt'>暂无课程信息</view>
-    </view>
-    <!-- <view class='footer'>
+    </swiper-item>
+    <swiper-item>
+      <!-- 已取消 -->
+      <view wx:if="{{cancelled}}">
+        <view class='courseList' wx:for="{{cancelList}}" wx:key="{{index}}" wx:if="{{hashList}}">
+          <view class='courseItem'>
+            <view class='orderTitle'>
+              <text class='fw txt1'>订单号：</text>
+              <text class='fz-24 txt2'>{{item.courseOrderNum}}</text>
+            </view>
+            <view class='orderCon'>
+              <view class='orderConLeft'>
+                <view class='headImgBox'>
+                  <image class='courseImg' src="{{item.headimg}}"></image>
+                </view>
+                <view class='orderConCen'>
+                  <view class='fw courseName'>{{item.courseName}}</view>
+                  <view class='storeName'>{{item.storeName}}</view>
+                  <view class='fz-24 startDate'>{{item.orderCtime}}</view>
+                </view>
+              </view>
+              <view>
+                <view class='times'>{{item.begin}} -{{item.end}}</view>
+                <view class='fz-24 viewBtn' bindtap='codeIn' data-code="{{item.memberCoursePkcode}}">二维码入场</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='isnull' wx:if="{{hashList===false}}">
+          <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
+          <view class='nullTxt'>暂无课程信息</view>
+        </view>
+        <!-- <view class='footer'>
       <view class='footTxt'>我是有底线的</view>
       <view class='bomBorder'></view>
     </view> -->
-  </view>
+      </view>
+    </swiper-item>
+  </swiper>
 </view>
