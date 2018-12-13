@@ -1,2 +1,10 @@
 /* pages/me/guardCode/guardCode.wxss */
 @import '../../admissionCode/admissionCode.wxss';
+.button-wrapper{
+  padding-top: 86rpx;
+}
+
+.toBuy{
+  margin-top: 24rpx;
+  text-decoration: underline;
+}

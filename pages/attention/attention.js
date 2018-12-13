@@ -12,16 +12,30 @@ Page({
     item: '已关注',
     coachList: {},
     hashList: false,
-    currentTab: 1,
+    currentTab: 0,
     teamList: {},
-    teamTab:false
+    teamTab: false,
+    winHeight: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.teamList()
+    let that = this
+    that.teamList()
+    that.coachList()
+    wx.getSystemInfo({
+      success: function (res) {
+        var clientHeight = res.windowHeight,
+          clientWidth = res.windowWidth,
+          rpxR = 750 / clientWidth;
+        var calc = clientHeight * rpxR - 180;
+        that.setData({
+          winHeight: calc
+        });
+      }
+    });
   },
   // 私教教练列表
   coachList: function() {
@@ -32,9 +46,9 @@ Page({
     var storeProvince = ''
     var storeCity = ''
     var storeDistrict = ''
-    that.setData({
-      currentTab:2
-    })
+    // that.setData({
+    //   currentTab: 1
+    // })
     app.agriknow.getCoachList(id, coachType, storeProvince, storeCity, storeDistrict)
       .then(res => {
         if (res.data.success = '200') {
@@ -47,7 +61,7 @@ Page({
             })
           } else {
             that.setData({
-              hashList:false
+              hashList: false
             })
           }
         }
@@ -61,7 +75,7 @@ Page({
       })
   },
   // 团操教练列表
-  teamList:function(){
+  teamList: function() {
     var loginData = wx.getStorageSync("userInfo")
     var id = loginData.id
     var that = this
@@ -69,21 +83,21 @@ Page({
     var storeProvince = ''
     var storeCity = ''
     var storeDistrict = ''
-    that.setData({
-      currentTab: 1
-    })
+    // that.setData({
+    //   currentTab: 0
+    // })
     app.agriknow.getCoachList(id, coachType, storeProvince, storeCity, storeDistrict)
       .then(res => {
-          if (res.data.length > 0) {
-            that.setData({
-              teamTab: true,
-              teamList: res.data
-            })
-          } else {
-            that.setData({
-              hashList: false
-            })
-          }
+        if (res.data.length > 0) {
+          that.setData({
+            teamTab: true,
+            teamList: res.data
+          })
+        } else {
+          that.setData({
+            hashList: false
+          })
+        }
       })
       .catch(res => {
         // wx.stopPullDownRefresh()
@@ -100,8 +114,13 @@ Page({
       url: '../coachDetails/coachDetails?coachId=' + coachId,
     })
   },
+  switchTab: function (e) {
+    this.setData({
+      currentTab: e.detail.current
+    });
+  },
   // 私教详情
-  precoachDetails:function(e){
+  precoachDetails: function(e) {
     var coachType = 2
     var coachId = e.currentTarget.dataset.id
     wx.navigateTo({
@@ -109,13 +128,14 @@ Page({
     })
   },
   // 教练tab切换
-  coachTab:function(e){
+  coachTab: function(e) {
     var that = this
-    if (that.data.currentTab === e.currentTarget.dataset.current) {
+    let cur = e.currentTarget.dataset.current
+    if (that.data.currentTab == cur) {
       return false;
     } else {
       that.setData({
-        currentTab: e.currentTarget.dataset.current
+        currentTab: cur
       })
     }
   },

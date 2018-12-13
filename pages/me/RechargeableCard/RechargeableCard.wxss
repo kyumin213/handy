@@ -1,41 +1,54 @@
 /* pages/me/RechargeableCard/RechargeableCard.wxss */
 
-.headTab {
-  width: 100%;
-  height: 90rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #F6F6F6;
+page {
+  background: #f2f2f2;
+  overflow-y: auto;
 }
 
-.headTab .cz, .headTab .xf {
-  color: #474747;
-  font-size: 32rpx;
-  height: 90rpx;
-  line-height: 90rpx;
-  width: 188rpx;
-  text-align: center;
-}
-
-.headTab .xf {
-  width: 252rpx;
-}
-
-.headTab .active {
-  border-bottom: 6rpx solid #d71718;
-  font-weight: bold;
+.tops {
+  position: relative;
+  z-index: 100;
 }
 
 .cardimgBox {
-  width: 600rpx;
-  height: 338rpx;
-  margin: 30rpx auto 56rpx auto;
+  background: #f2f2f2;
+  text-align: center;
+  margin: 30rpx auto 36rpx auto;
 }
 
 .cardimgBox .cardImg {
-  width: 100%;
+  width: 612rpx;
+  height: 342rpx;
 }
+
+.tops .cardName {
+  position: absolute;
+  top:-230rpx;
+  left: 50%;
+  margin-left: -70rpx;
+  font-size: 48rpx;
+}
+
+/* 使用规则 */
+
+.buyTxt {
+  text-align: center;
+  margin: 36rpx auto 22rpx auto;
+}
+
+.viewUse {
+  width: 210rpx;
+  height: 50rpx;
+  background: #005b6d;
+  border-radius: 26rpx;
+  text-align: center;
+  line-height: 50rpx;
+  /* margin: 0 auto 56rpx auto; */
+  margin-left: 30rpx;
+}
+
+
+/* 查看会员卡、余额 */
 
 .cardDes {
   width: 100%;
@@ -43,22 +56,21 @@
   align-items: center;
   justify-content: space-around;
   text-align: center;
-  margin-bottom: 84rpx;
+  margin-bottom: 76rpx;
 }
 
 .cardDes .item1 {
-  font-size: 30rpx;
-  color: #333;
+  font-size: 32rpx;
 }
 
 .cardDes .item2 {
   font-size: 36rpx;
-  color: #d91a1a;
   margin-top: 16rpx;
 }
 
 .cardDes .items {
-  width: 33.3%;
+  /* width: 33.3%; */
+  width: 50%;
   border-right: 2rpx solid #e6e6e6;
 }
 
@@ -69,89 +81,101 @@
 /* 选择充值金额 */
 
 .con {
-  margin-bottom: 140rpx;
+  /* margin-bottom: 240rpx; */
+  height: 640rpx;
 }
 
 .cardBox {
   overflow: hidden;
-  width: 648rpx;
-  height: 180rpx;
-  margin: 0 auto 34rpx auto;
+  width: 612rpx;
+  height: 152rpx;
+  margin: 0 auto 22rpx auto;
 }
 
 .cardList {
-  width: 648rpx;
-  height: 180rpx;
+  width: 612rpx;
+  height: 152rpx;
   margin: 0 auto;
   border-radius: 20rpx;
-  border: 4rpx solid #999;
   position: relative;
   box-sizing: border-box;
+  background: #fff;
 }
 
 .cardList .cardItems {
+  height: 152rpx;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  height: 180rpx;
-  margin: 0 60rpx;
+}
+
+.cardList .cardItems .itemLeft {
+  width: 56%;
+  text-align: center;
+  background: #f96400;
+  height: 152rpx;
+  border-top-left-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+  border-right: 2rpx dashed #fafafa;
 }
 
 .cardList .leftBy {
   position: absolute;
-  top: 85rpx;
-  left: -20rpx;
+  top: 84rpx;
+  left: -15rpx;
   width: 30rpx;
   height: 30rpx;
   border-radius: 100%;
-  background: #fff;
-  z-index: 99;
-  border: 4rpx solid #999;
+  background: #f2f2f2;
+  /* z-index: 99; */
 }
 
 .cardList .rightBy {
   position: absolute;
-  top: 85rpx;
-  right: -20rpx;
+  top: 84rpx;
+  right: -15rpx;
   width: 30rpx;
   height: 30rpx;
   border-radius: 100%;
-  background: #fff;
-  z-index: 99;
-  border: 4rpx solid #999;
+  background: #f2f2f2;
+  /* z-index: 99; */
 }
 
 .cardList .cardItems .item1 {
-  font-size: 30rpx;
-  color: #d71718;
-}
-
-.cardList .cardItems .item1 .fh {
-  font-size: 24rpx;
+  font-size: 36rpx;
+  margin-top: 32rpx;
+  font-weight: 900;
 }
 
 .cardList .item2 {
   margin-top: 18rpx;
-  color: #999;
 }
 
 .cardList .itemRight {
   text-align: center;
+  width: 46%;
+  border: 4rpx solid #fff;
+  border-top-right-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
 }
 
 .cardList .item3 {
-  margin-top: 18rpx;
-  width: 194rpx;
+  width: 168rpx;
   height: 50rpx;
-  background: #d71718;
+  background: #005b6d;
   border-radius: 26rpx;
   color: #fff;
   text-align: center;
   line-height: 50rpx;
+  margin: 12rpx auto 0 auto;
 }
 
 .cardBox .active {
-  border-color: #d71718;
+  border: 4rpx solid #f96400;
+  border-left: none;
+}
+
+.cardBox .rightActive {
+  border: 4rpx solid #f96400;
 }
 
 .cardList .activeBtn {
@@ -177,24 +201,62 @@
 }
 
 .footer .left {
-  width: 462rpx;
-  background: #424242;
+  width: 41%;
+  background: #f96400;
   height: 98rpx;
   line-height: 98rpx;
-  color: #d71718;
-  text-align: right;
+  color: #fff;
+  text-align: center;
   padding-right: 28rpx;
+  position: relative;
+}
+
+.footer .left .sj {
+  width: 0px;
+  height: 0px;
+  border-top: 98rpx solid #f96400;
+  border-right: 68rpx solid transparent;
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
+
+.footer .left .colPrice {
+  color: #fafafa;
+  margin-right: 4rpx;
 }
 
 .footer .right {
-  width: 290rpx;
+  width: 42%;
+  font-size: 32rpx;
+  text-align: center;
+  position: relative;
+}
+
+.sjr {
+  width: 0px;
+  height: 0px;
+  /* border-color: #fff #fc6703 #fc6703 #fff;
+  border-width: 48rpx 48rpx 48rpx 48rpx; */
+  border-bottom: 98rpx solid #ccc;
+  border-left: 66rpx solid transparent;
+  position: absolute;
+  right: 100%;
+  top: 0;
+}
+.strOn{
+  border-bottom: 98rpx solid #005b6d;
+}
+.footer .right .subBtn {
+  border-radius: 0;
+  background: #ccc;
+  color: #fff;
   height: 98rpx;
   line-height: 98rpx;
-  background: #d71718;
   font-size: 32rpx;
-  color: #fff;
-  text-align: center;
-  border-radius: 0;
+}
+.footer .right .active{
+  background: #005b6d;
 }
 
 .footer .totalMoney {
@@ -218,18 +280,21 @@
   color: #333;
   font-size: 32rpx;
 }
-.spendItems .times{
-  color: #666666;
+
+.spendItems .times {
+  color: #666;
   font-size: 26rpx;
   margin-top: 14rpx;
 }
-.spendItems .money{
+
+.spendItems .money {
   font-size: 28rpx;
-  color: #666666;
+  color: #666;
 }
-.isnull{
+
+.isnull {
   font-size: 32rpx;
-  color: #666666;
+  color: #666;
   width: 100%;
   text-align: center;
   margin-top: 300rpx;

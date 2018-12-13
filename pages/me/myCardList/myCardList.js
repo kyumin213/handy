@@ -13,54 +13,102 @@ Page({
     totalMoney: '0.00',
     yhCard: false,
     check: 0,
-    select: 1,
+    select: null,
     scrollLeft: 0,
     allScroll: 0,
     len: 0,
     itemWidth: 270,
-    disable: true
+    chooseSize: false,
+    animationData: {},
+    disable: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this
+    that.getCardList()
+  },
+  chooseSezi: function(e) {
+    var that = this;
+    // 创建一个动画实例
+    var animation = wx.createAnimation({
+      // 动画持续时间
+      duration: 400,
+      // 定义动画效果，当前是匀速
+      timingFunction: 'linear'
+    })
+    // 将该变量赋值给当前动画
+    that.animation = animation
+    // 先在y轴偏移，然后用step()完成一个动画
+    animation.translateY(500).step()
+    // 用setData改变当前动画
+    that.setData({
+      // 通过export()方法导出数据
+      animationData: animation.export(),
+      // 改变view里面的Wx：if
+      chooseSize: true
+    })
+    // 设置setTimeout来改变y轴偏移量，实现有感觉的滑动
+    setTimeout(function() {
+      animation.translateY(0).step()
+      that.setData({
+        animationData: animation.export()
+      })
+    }, 200)
+  },
+  // 隐藏
+  hideModal: function(e) {
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 400,
+      timingFunction: 'linear'
+    })
+    that.animation = animation
+    animation.translateY(500).step()
+    that.setData({
+      animationData: animation.export()
 
+    })
+    setTimeout(function() {
+      animation.translateY(0).step()
+      that.setData({
+        animationData: animation.export(),
+        chooseSize: false
+      })
+    }, 200)
   },
 
-  // 查询我的汗滴卡
+  // // 使用规则
+  // useMsg: function() {
+  //   let that = this
+  //   that.setData({
+  //     shows: true
+  //   })
+  // },
+  // close:function(){
+  //   let that = this
+  //   that.setData({
+  //     shows: false
+  //   })
+  // },
+  // 查询所有会员卡片
   getCardList: function() {
-    var that = this
-    var userData = wx.getStorageSync('userInfo')
-    var id = userData.id
+    let that = this
+    let userData = wx.getStorageSync('userInfo')
+    let id = userData.id
     app.agriknow.getMyhandyCard(id)
       .then(res => {
-        var len = res.data.length
-        if (res.data.length > 0) {
-          var len = res.data.length
-          var allScroll = len * 270
-          that.setData({
-            hashList: true,
-            handyCardList: res.data,
-            allScroll: allScroll,
-            len: len
-          })
-        } else {
-          that.setData({
-            hashList: false
-          })
-        }
-        // if (res.data.success = '200') {
-        //   that.setData({
-        //     handyCardList: res.data
-        //   })
-        // }
+        let datas = res.data
+        let dat = datas.slice(0,1)
+        that.setData({
+          handyCardList:dat,
+          hashList: true
+        })
       })
       .catch(res => {
-        // wx.showToast({
-        //   title: '出错了！',
-        //   icon: 'none'
-        // })
+   
       })
   },
   // 选择卡片
@@ -68,7 +116,8 @@ Page({
     var that = this
     var index = e.currentTarget.dataset.index
     that.setData({
-      check: index
+      check: index,
+      disable: false
     })
     var cardType = that.data.yhCard
     if (cardType === true) {
@@ -93,7 +142,7 @@ Page({
     that.setData({
       select: index,
       totalMoney: money,
-      disable: false
+      disable: true
     })
     if (select === index) {
       that.setData({
@@ -110,8 +159,9 @@ Page({
     var index = that.data.check
     var datas = that.data.handyCardList
     var pkCode = datas[index].handyCardPkcode
+    let names = datas[index].handyCardName
     wx.navigateTo({
-      url: '../cardPayment/cardPayment?money=' + money + '&pkCode=' + pkCode,
+      url: '../cardPayment/cardPayment?money=' + money + '&pkCode=' + pkCode + '&names=' + names,
     })
   },
   // 滑动距离
@@ -170,17 +220,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    var that = this
-    this.getCardList()
-    const query = wx.createSelectorQuery()
-    query.select('#cardImgBox').boundingClientRect()
-    query.selectViewport().scrollOffset()
-    query.exec(function(res) {
-      console.log(res)
-      // that.setData({
-      //   items1Height: res[0].
-      // })
-    })
+    // var that = this
+    // const query = wx.createSelectorQuery()
+    // query.select('#cardImgBox').boundingClientRect()
+    // query.selectViewport().scrollOffset()
+    // query.exec(function(res) {
+    //   console.log(res)
+    //   // that.setData({
+    //   //   items1Height: res[0].
+    //   // })
+    // })
   },
 
   /**

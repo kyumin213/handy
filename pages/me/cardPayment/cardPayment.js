@@ -12,7 +12,8 @@ Page({
     wxPay: false,
     payType: 2,
     totalMoney: '',
-    pkCode: ''
+    pkCode: '',
+    names:''
   },
 
   /**
@@ -22,9 +23,11 @@ Page({
     var that = this
     var money = options.money
     var pkCode = options.pkCode
+    let names = options.names
     that.setData({
       totalMoney: money,
-      pkCode: pkCode
+      pkCode: pkCode,
+      names:names
     })
 
   },

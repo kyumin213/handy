@@ -1,12 +1,7 @@
 /* pages/attention/attention.wxss */
 
-.bg-c {
-  width: 100%;
+page {
   background: #f2f2f2;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  overflow-y: auto;
 }
 
 button::after {
@@ -17,33 +12,34 @@ button::after {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 80rpx;
+  height: 114rpx;
   margin: 0 auto;
   font-size: 32rpx;
-   background: #f2f2f2;
-   z-index: 99;
+  background: #fff;
+  z-index: 99;
 }
+
 .tabs .tabCon {
   width: 70%;
- display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
 }
 
-.tabs .private,.tabs .team {
+.tabs .private, .tabs .team {
   width: 50%;
   /* background: #f00; */
-  height: 80rpx;
-  line-height: 80rpx;
+  height: 114rpx;
+  line-height: 114rpx;
   text-align: center;
   box-sizing: border-box;
-  border-bottom: 8rpx solid #f2f2f2;
+  border-bottom: 8rpx solid #fff;
 }
 
 .tabs .active {
-  border-bottom: 8rpx solid #d71718;
-  color: #d61518;
+  border-bottom: 8rpx solid #f96400;
+  color: #f96400;
 }
 
 .headTop {
@@ -95,20 +91,28 @@ button::after {
 }
 
 .attentionList {
-  margin-bottom: 114rpx;
-  margin-top: 80rpx;
-}
-
-.attentionList .items {
+  margin: 130rpx 30rpx 30rpx 30rpx;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
-  height: auto;
+  flex-wrap: wrap;
+}
+
+.attentionList .items {
+  /* display: flex;
+  align-items: center;
+  justify-content: flex-start; */
+  width: 336rpx;
+  height: 564rpx;
   background: #fff;
   margin-bottom: 16rpx;
-  padding: 32rpx 0;
+  /* padding: 0 0 38rpx 0; */
   box-sizing: border-box;
+  border-radius: 20rpx;
+}
+
+.attentionList .items:nth-child(odd) {
+  margin-right: 18rpx;
 }
 
 .attentionList .itemRight {
@@ -118,26 +122,19 @@ button::after {
 }
 
 .imgBox {
-  width: 204rpx;
-  height: 204rpx; 
-  border-radius: 100%;
+  width: 336rpx;
+  height: 352rpx;
   /* overflow: hidden; */
-  margin-left: 30rpx;
 }
 
 .imgBox .attenImg {
-  width: 204rpx;
-  height: 204rpx;
-  border-radius: 100%;
-  background: #ccc;
-  background-size: cover;
-  /* border: 2rpx solid #f00; *//* background-size: cover; *//* height: 202rpx; *//* border-radius: 100%; *//* background: #ccc;
-  margin: 30rpx 0 30rpx 30rpx; *//* src="{{item.headimg}}" */
+  width: 336rpx;
+  height: 352rpx;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
 }
 
 .attentionList .attenName {
-  font-size: 30rpx;
-  color: #2d2d2d;
   font-weight: bold;
   line-height: 1;
 }
@@ -156,19 +153,15 @@ button::after {
 }
 
 .attentionList .des {
-  font-size: 26rpx;
+  font-size: 24rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   line-height: 36rpx;
-  margin-top: 20rpx;
-  color: #999;
-}
-
-.attentionList .des .txtDes {
-  line-height: 36rpx;
+  /* margin-top: 20rpx; */
+  color: #666;
 }
 
 .attentionList .follow {
@@ -178,8 +171,8 @@ button::after {
   width: 106rpx;
   height: 38rpx;
   border-radius: 10rpx;
-  border: 2rpx solid #d71718;
-  color: #d71718;
+  border: 2rpx solid #f96400;
+  color: #f96400;
   background: #fff;
   text-align: center;
   line-height: 38rpx;
@@ -187,12 +180,59 @@ button::after {
 }
 
 .attentionList .unfollow {
-  background: #d71718;
+  background: #f96400;
   color: #fff;
 }
 
 .attentionList .rightTitle {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  font-size: 30rpx;
+  margin: 20rpx auto 16rpx auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
+
+.swiper-tab {
+  width: 100%;
+  border-bottom: 2rpx solid #f5f5f5;
+  text-align: center;
+  height: 100%;
+  line-height: 100rpx;
+  font-size: 30rpx;
+}
+
+.swiper-tab-item {
+  display: inline-block;
+  width: 50%;
+  color: #999;
+}
+
+.tab-item {
+  flex: 1;
+  font-size: 30rpx;
+  display: inline-block;
+  color: #777;
+}
+
+.on {
+  color: #4ca835;
+  border-bottom: 4rpx solid #4ca835;
+}
+
+.swiper {
+  display: block;
+  height: 200rpx;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+.scoll-h{height: 100%;}

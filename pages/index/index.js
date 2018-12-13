@@ -6,7 +6,8 @@ var app = getApp()
 
 Page({
   data: {
-    showModel: false
+    showModel: false,
+    imgs: 'http://112.74.169.46:8094/api/file/uploadfile/file/images/find/banner.png'
   },
 
   onLoad: function() {

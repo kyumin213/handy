@@ -1,21 +1,24 @@
 <!--pages/privateCoachDetails/privateCoursePayment/privateCoursePayment.wxml-->
 <!--pages/course/coursePayment/coursePayment.wxml-->
 <view>
-  <view class='courseDes'>
-    <view class='des'>
-      <view class='fw desTxt'>{{courseName}}</view>
-      <view class='fw fzColor price'>￥{{tm}}</view>
-    </view>
-    <view class='courseTime'>
-      <text>课时：</text>
-      <text>{{hour}}课时</text>
-    </view>
-    <!-- <view class='address'>
+  <view class='courseDesTop'>
+    <view class='courseDes'>
+      <view class='des'>
+        <view class='fw desTxt'>{{courseName}}</view>
+        <view class='fw price'>￥{{tm}}</view>
+      </view>
+      <view class='courseTime'>
+        <text>课时：</text>
+        <text>{{hour}}课时</text>
+      </view>
+      <!-- <view class='address'>
       <text>地点：</text>
       <text class='addressTxt'>深圳市南山区深南大道9680号大冲商务
          中心A座1600室（一号线B出口）</text>
     </view> -->
+    </view>
   </view>
+
   <view class='desList'>
     <!-- <view class='peopleNum'>
       <text class='fw NumTxt'>人数</text>
@@ -40,12 +43,12 @@
   </view>
   <view class='payType'>
     <view class='payTitle'>
-      <text class='txt'>支付方式</text>
+      <text class='fw txt'>支付方式</text>
     </view>
     <view class='payList'>
       <view class='payLeft'>
-        <image class='hanIcon' mode='widthFix' src='../../../images/pay/hanPayLogo.png'></image>
-        <text class='hanTxt'>汗的支付</text>
+        <image class='hanIcon' src='../../../images/pay/ff.png'></image>
+        <text class='hanTxt'>沸沸支付</text>
       </view>
       <view class='payRight' bindtap='hanPay'>
         <text class="selectPay {{hanPay?'selectActive': ''}}"></text>
@@ -55,7 +58,7 @@
     </view>
     <view class='payList'>
       <view class='payLeft'>
-        <image class='hanIcon2' mode='widthFix' src='../../../images/pay/wxPay.png'></image>
+        <image class='hanIcon' src='../../../images/pay/wxPay.png'></image>
         <text class='hanTxt'>微信支付</text>
       </view>
       <view class='payRight' bindtap='wxPay'>
@@ -63,6 +66,16 @@
         <!-- <image mode='widthFix' class='hanOn' src='../../../images/pay/payActive.png' wx:if="{{wxPay}}"></image>
         <image mode='widthFix' class='hanOn' src='../../../images/pay/default.png' wx:else></image> -->
       </view>
+    </view>
+    <view class='agreeItem'>
+      <view>
+        <checkbox-group bindchange="checkboxChange">
+          <label class="fz-28 checkboxBtn">
+            <checkbox class='checkBox' value="{{item.name}}" checked="{{checked}}" />我已阅读并同意
+          </label>
+        </checkbox-group>
+      </view>
+      <view class='fz-28 fzColor viewUse' bindtap='chooseSezi'>(查看用户协议)</view>
     </view>
     <!-- <view class='tips'>
       <text class='tsTxt'>温馨提示：</text>
@@ -74,7 +87,100 @@
     <text class='comfirBtn'>确认支付</text>
     <text class='payMoney'>￥{{price}}</text>
   </view> -->
-  <button class='comfir' bindtap='subPayment' disabled="{{disBtn}}" data-name="{{courseList.fitnessCourseName}}" data-time="{{currentData}}" data-stores="{{courseList.storeName}}">确认支付
+  <button class='comfir' bindtap='subPayment' disabled="{{disable}}" data-name="{{courseList.fitnessCourseName}}" data-time="{{currentData}}" data-stores="{{courseList.storeName}}">确认支付
     <text class='payMoney'>￥{{tm}}</text>
   </button>
+</view>
+<view class='bgModel' wx:if="{{chooseSize}}" bindtap='hideModal'>
+  <view class="model" animation="{{animationData}}">
+    <scroll-view scroll-y='true' style="width: 100%;height:500px" class='use'>
+      <view>
+        <view class='close' bindtap='hideModal'>
+          <text class='closeIcon'></text>
+        </view>
+        <!-- <view class='gzTitle'>适用时间：购买当日起有效期一年</view> -->
+        <view class='gzDes'>
+          <view class='fw gz'>FEFEE私教购买协议</view>
+          <view class='fw xyTitle'>[审慎阅读]在同意本协议前请务必审慎阅读、充分理解各条款内容，特别是免除或者限制责任的条款、法律适用和争议解决条款。 本协议对FEFEE运动APP、深圳市领犀科技有限公司及其全部子公司(以下简称"FEFEE运动”或"平台”)下各健身场馆(以下简称”场馆”)所使用的各类私教课程有效。
+          </view>
+          <view class='fw gz'>一、私教课程</view>
+          <text class='desItem'>1、FEFEE运动私教服务采用会员制服务模式，只有购买私教课程方能享受私人教练的各项专业健身服务及FEFEE相关配套服务。</text>
+          <text class='desItem'>2、取得私教会员资格应办理入会手续，具备中华人民共和国法律规定的与会员行为相适应的民事行为能力，并已知晓平台有关的规则与警示，承诺遵守FEFEE运动的相关规定。</text>
+          <text class='desItem'>3、因经营管理需要，FEFEE运动可能会针对不同会员健身需要办理不同类别的私教课程，但无论您购买何种私教课程，都将在享受私教会员权利的同时，受到本协议的约束。</text>
+          <text class='desItem'>4、只有同时满足以下条件:年满16周岁末满60周岁身体健康并向FEFEE运动购买了了私教课程，能如实提供和陈述个人信息，取得平台发放的电子私教课程的人士，方可成为FEFEE运动的有效会员。以上任一条件不满足，FEFEE运动有权拒绝向您提供服务。</text>
+          <view class='fw gz'>二、私教课程的取得方式</view>
+          <text class='desItem'>1、原始取得，指在微信公众账号“FEFEE沸沸运动”或沸沸运动小程序、填写真实、有效、全面的个人资料，办理课程购买手续并支付费用后取得的会员资格。</text>
+          <view class='fw gz'>三、私教课程的管理</view>
+          <text class='desItem'>1、私教课程仅供会员本人使用，一旦售出，非不可抗因素不予退课;在教练及会员双方沟通允许的前提下可以转让。因学员问题要转让课程的情况，将不享受购买时的优惠，将按照课程原价进行课程流转，差价需由学员自行承担:教练或平台因素需要更换教练的情况，课程流转同样享受购买时的优惠价格。 </text>
+          <text class='desItem'>2、会员在场馆训练时需遵守平台指定的各项守则，严重违反平台规章制度者，平台有权取消其会员资格无条件退还剩余费用。情节严重者，平台有权取消其会员资格不予退还剩余费用，终止一切服务。给平台或第三方造成损失的，会员应承担相关法律责任。 </text>
+          <text class='desItem'>3、私教课程结束后，若会员没有继续购买课程，平台系统自动取消该会员的私教会员权限，私教会员资格终止。 </text>
+          <view class='fw gz'>四、会员权利</view>
+          <text class='desItem'>1、依照所购买的私教课程类别享受相应的平台对私教会员作出的全部服务承诺。 </text>
+          <text class='desItem'>2、针对私教的服务，会员有提出批评、投诉及改进建议的权利。</text>
+          <text class='desItem'>3、会员在付款当月可以联系店长或客服申请开具全额订单发票,发票内容为健身服务费，明细为所购商品名称及数量;本公司为电子发票使用人，增值税普通发票只能开具电子发票，普通发票需要提供公司名称、纳税人识别号;增值税专用发票需要客户具备一般纳税人资质，开票信息提供公司名称、纳税人识别号、地址电话、开户行及账号(缺一不可)。</text>
+          <view class='fw gz'>五、会员义务</view>
+          <text class='desItem'>1、任何未经平台同意并私自办理变更手续的私教会员或向非私教会员转让会籍资格的行为均无效，场馆将不予接待。</text>
+          <text class='desItem'>2、为了您的健身安全，请穿着运动服饰、运动鞋参加运动。运动期间，不得参与违反国家法律法规的活动，不得赤裸上身或穿着不得体或违反道德规范的服饰进行运动，否则FEFEE有权劝离并取消当日运动权利。</text>
+          <text class='desItem fzColor'>3、FEFEE运动不接受怀孕期间/有重大疾病/病愈后没有有效医生证明的会员(手术后3个月内的人群、有心血管疾病者、不能剧烈运动伤者、孕妇及哺乳期女性、产后不足6个月内的人群)购买课程/会员卡，上述情况下FEFEE有权取消其会籍 资格无条件退款退课。</text>
+          <text class='desItem'>4、平台原则上不接受60周岁以上老人入会，能出具真实有效的健康证明者除外(需正规机构出具的有效证明)，但因隐瞒或错报个人健康信息发生的一切责任都由其本人承担。上述情况下FEFEE有权取消其会籍资格无条件退款退课。</text>
+          <text class='desItem'>5、严禁会员胁迫教练/FEFEE工作人员提供额外钱款利益或其他不当利益(包含但不仅限于索要优惠券、返现线下约课等)，上述情况下FEFEE有权取消其会籍资格无条件退款退课。</text>
+          <text class='desItem'>6、严禁会员骚扰、辱骂教练/FEFEE工作人员，泄露他人信息，影响对方正常工作生活，上述情况下FEFEE有权取消其会籍资格无条件退款退课，且保留追究其法律责任的权利。</text>
+          <text class='desItem'>7、严禁心肺功能疾病、脊椎病、皮肤病及-切传染病患者进入场馆，有以上疾病的患者隐瞒病情取得会员资格的，FEFEE有权取消其会籍资格并不予退还剩余费用，且保留追究其法律责任的权利。</text>
+          <text class='desItem'>8、严禁会员在场馆内销售任何商品，不得参与任何营利性健身指导，违反本条规定的，FEFEE有权取消其会籍资格并不予退还剩余费用。</text>
+          <text class='desItem'>9、严禁在场馆内大声喧哗，使用污秽语言,扰乱其他会员以及一切违法活动，有以上情况发生，FEFEE有权取消其会籍资格并不予退还剩余费用，终止一切服务，且保留追究其法律责任的权利。</text>
+          <text class='desItem'>10、严重违反场馆规章制度者(包括但不仅限于殴打、辱骂他人，恶意破坏器械等) ,FEFEE有权取消其会籍资格并不予退还剩余费用，终止一切服务。若造成平台和他人的损失，本人需对此承担责任，且FEFEE运动保留追究其法律责任的权利。</text>
+          <text class='desItem'>11、运动前严禁饮酒或饮用含酒精类饮料,因违反本条规定造成的人身伤害等意外情况，本人需对此承担责任。FEFEE有权取消其会籍资格并不予退还剩余费用，终止一切服务，且保留追究其法律责任的权利。</text>
+          <text class='desItem'>12、会员应自觉爱惜合理使用室内各项设施、设备、使用后须归放原位,禁止将室内各项设施、设备擅自带出场馆,如有损坏，丢失须追究相关人员责任，照价赔偿。情节严重或拒不赔偿者，FEFEE有权取消其会籍资格并不予退还剩余费用，终止一切服务，且保留追究其法律责任的权利。</text>
+          <text class='desItem'>13、如实向FEFEE运动提供个人信息资料,并在资料发生变动后及时通知FEFEE运动。进入场馆时凭电子会员卡， 随时接受工作人员验证和抽查。未征得场馆负责人同意，禁止在场馆内拍照、摄像或录音。</text>
+          <text class='desItem'>14、严禁未预约课程，强行进入操房上操课。</text>
+          <text class='desItem'>15、严禁<text class='fzColor'>十六周岁以下儿童和孕妇</text>进 入健身区域，对于擅自进入健身区域造成伤害或损失的，本场馆概不负责。</text>
+          <text class='desItem'>16、严禁在健身区内吸烟、进食。</text>
+          <text class='desItem'>17、严禁携带宠物进入场馆。</text>
+          <text class='desItem'>18、严禁在健身区内吸烟、进食、吐痰、乱扔垃圾，请自觉维护健身房的环境卫生。</text>
+          <view class='fw xyTitle'>以上情况，若经场馆工作人员/平台提醒仍未停止(不听劝阻)或情节严重，FEFEE有权取消其会籍资格无条件退款退课。</view>
+          <view class='fw gz'>六、教练职责</view>
+          <text class='desItem'>1、了解学员的健康状况及训练需求，定制科学的训练计划。</text>
+          <text class='desItem'>2、在约定训练时间内为学员提供专业的健身服务。</text>
+          <text class='desItem'>3、每次训练前后为学员说明训练规划和目的。</text>
+          <text class='desItem'>4、在约定时间内给私教会员传授健身健康、营养及自我保健知识。</text>
+          <text class='desItem'>5、在约定时间内提高私教会员的体质和体格水平。</text>
+          <text class='desItem'>6、和私教会员协定训练时间，准时开课，按时完成教学任务。</text>
+          <text class='desItem'>7、若健身教练休假或离职，平台将为私教会员重新安排健身教练，完成剩余次数。</text>
+          <view class='fw gz'>七、训练时间变更</view>
+          <text class='desItem'>1、如果私教会员希望变更原定训练时间，须在预约的课程时间开始前2小时前提出;如因学员因素造成旷课，未按时完成课程，系统会自动结算当节课时费用。</text>
+          <text class='desItem'>2、训练时间-旦确定，健身教练会按时等候私教会员。如果会员迟到，迟到的时间将不获补偿，训练时间不会延长，将于原定时间结束。</text>
+          <view class='fw gz'>八、权利保留</view>
+          <text class='desItem'>1、场馆营业时间原则上24小时,营业时间如有变动，会在无线公众账号后台以及门店做显著位置公示，学员须遵守该营业时间。</text>
+          <text class='desItem'>2、因国家政策或者法律法规的规定，场馆有权合理修改营业时间并在店内公示，恕不另行通知学员，该公示即视为通知。</text>
+          <text class='desItem'>3、因器械、设备(设施)检修、维护，场馆有权在某一时间段对某一项目或某类项目采取停用或限用措施。</text>
+          <text class='desItem'>4、其他出于学员安全及集体利益的需要，场馆有权采取必要措施以恢复经营秩序。</text>
+          <view class='fw gz'>九、免责条款</view>
+          <view class='fw xyTitle'>出现下列情形的，场馆不予承担任何责任</view>
+          <text class='desItem'>1、遇不可抗力(如战争、自然灾害等)造成场馆营业终止或学员课程不能继续，致使学员遭受损失。</text>
+          <text class='desItem'>2、学员所受损害是因其自身故意或过失造成的。</text>
+          <text class='desItem'>3、学员所受损害是场馆工作人员以外的任何第三方的故意或过失行为导致的。</text>
+          <text class='desItem'>4、学员不听劝阻，擅自进入或强行进入会员区域造成损害的,由其自身或致害方承担责任。</text>
+          <text class='desItem'>5、如因学员个人原因(如学员锻炼时口袋中财物落地,学员随意放置财物品而遗忘的)导致的贵重物品毁损、灭失、遗失的，场馆会积极配合提供相关线索。</text>
+          <text class='desItem'>6、因学员资料或个人信息发生变动未及时通知场馆，从而造成损失或学员权利受限的。</text>
+          <text class='desItem'>7、因教练个人原因造成无法继续在平台提供服务的情况，例如下架、拉黑、离职等过程中，造成学员不可避免的经济损失，须有教练自行承担，平台对教练行为进行管理和监督。</text>
+          <view class='fw gz'>十、安全提示</view>
+          <text class='desItem'>1、学员在锻练前，应先做必要的热身练习，以免受伤。</text>
+          <text class='desItem'>2、过度锻炼及违规锻炼均有受伤的可能，所以您在运动前对自身身体情况进行判断，并保持运动强度和时间的适当。</text>
+          <text class='desItem'>3、健身馆内任何运动项目及器械设施均有严格的操作方法和程序，请务必在专业人员的指导下或者安全手册下进行操作。</text>
+          <text class='desItem'>本合同的效力、解释、变更执行及争议的解决等均适用中华人民共和国法律。
+因本合同产生的任何争议，双方应协商解决，协商不成的，应提交深圳中级人民法院裁决。</text>
+          <view class='fw gz'>十一、特别声明</view>
+          <text class='desItem' style='color:#f96400'>在法律允许的范围内，为更好地服务学员之需要，FEFEE运动有权对相关内容进行修改，且修改后的条款自通知会员或在沸沸运动、微信公众号或其他传播渠道显著位置公示后，即对全体会员产生约束力。 FEFEE运动有权在任何时间暂时或永久修改或终上本协议或其中的任何部分，经修改的"条款”一经公布，立即自动生效。如果不同意所改动的内容，学员应主动取消已购买的课程。如果学员继续参加课程，则视为接受协议条款的变动。
+          </text>
+          <view class='fw gz'>十二、会员承诺</view>
+          <text class='desItem'>1、本人保证所提供的入会资料及个人信息真实有效。</text>
+          <text class='desItem'>2、本人身体健康且没有本协议约定的不适合进行运动的疾病。</text>
+          <text class='desItem'>3、本人已阅读、理解并同意上述条文。</text>
+          <text class='desItem'>4、您了解并同意，平台与私人教练间不存在任何形式的劳动关系，私人教练为入驻平台提供教练服务的独立个人。平台对教练的资质及教学行为的管理和监督，在任何情况下,均不构成平台对教练行为的担保。</text>
+            <view class='fw gz'>十三、法律适用及争议解决条款</view>
+          <text class='desItem'>本合同的效力、解释、变更、执行及争议的解决等均适用中华人民共和国法律。因本合同产生的任何争议，双方应协商解决，协商不成的，应提交深圳市中级人民法院裁决。</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
 </view>

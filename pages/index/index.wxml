@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class='imgBox'>
-  <image class='bgImg' src='../../images/find/banner.png'></image>
+  <image class='bgImg' src='{{imgs}}'></image>
 </view>
 <view wx:if="{{showModel}}" class="mask">
   <view class="model">

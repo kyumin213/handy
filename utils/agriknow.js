@@ -2,8 +2,8 @@ import request from './request.js'
 class agriknow {
   constructor() {
     // this._baseUrl = 'http://112.74.169.46:8093' //测试地址
-    this._baseUrl = 'https://www.handyfitness.com.cn/mini_member_api' //正式地址
-    // this._baseUrl = 'https://www.linkgooo.com/test_mini_member_api' //测试地址
+    // this._baseUrl = 'https://www.handyfitness.com.cn/mini_member_api' //正式地址
+    this._baseUrl = 'https://www.linkgooo.com/test_mini_member_api' //测试地址
     this._defaultHeader = {
       'Content-Type': 'application/json'
     }
@@ -25,14 +25,15 @@ class agriknow {
     return this._request.postRequest(this._baseUrl + '/personalLoad', data).then(res => res.data)
   }
   // 购买课程
-  getBuyCourse(courseType, releaseId, id, mobile, payType, discountPkid) {
+  getBuyCourse(courseType, releaseId, id, mobile, payType, level, discountPkcode) {
     let data = {
       courseType: courseType,
       releaseId: releaseId,
       id: id,
       mobile: mobile,
       payType: payType,
-      discountPkid: discountPkid
+      level: level,
+      discountPkcode: discountPkcode
     }
     return this._request.postRequest(this._baseUrl + '/buyCourse', data).then(res => res.data).catch(res => res.data)
   }
@@ -59,12 +60,12 @@ class agriknow {
     }
     return this._request.postRequest(this._baseUrl + '/courseDetail', data).then(res => res.data)
   }
-  // 查询汗滴卡
+  // 查询优惠券
   getCoupon(id) {
     let data = {
       id: id
     }
-    return this._request.postRequest(this._baseUrl + '/findHandyCardList', data).then(res => res.data)
+    return this._request.postRequest(this._baseUrl + '/meCoupon', data).then(res => res.data)
   }
   // 购买汗滴卡
   buyHandyCard(id, card, payType, number) {
@@ -141,6 +142,7 @@ class agriknow {
     }
     return this._request.postRequest(this._baseUrl + '/findStoreListByCity', data).then(res => res.data)
   }
+  // 用户信息
   getUserInfoData(id, nickName, gender, province, country, city, language, avatarUrl) {
     let data = {
       id: id,
@@ -161,6 +163,21 @@ class agriknow {
       storeCoachPkid: storeCoachPkid
     }
     return this._request.postRequest(this._baseUrl + '/storeCoachPrivateCourseList', data).then(res => res.data)
+  }
+  // 临时柜
+  getTempLockerOrderList(id) {
+    let data = {
+      id: id
+    }
+    return this._request.postRequest(this._baseUrl + '/tempLockerOrderList', data).then(res => res.data)
+  }
+  // 修改储物柜密码
+  updateLockerPwd(id, pwd) {
+    let data = {
+      id: id,
+      pwd: pwd
+    }
+    return this._request.postRequest(this._baseUrl + '/updateLockerPwd', data).then(res => res.data)
   }
 }
 export default agriknow

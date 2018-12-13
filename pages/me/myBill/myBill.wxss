@@ -1,4 +1,7 @@
 /* pages/me/myBill/myBill.wxss */
+page{
+  background: #fff;
+}
 .consumptionList{
   display: flex;
   align-items: center;

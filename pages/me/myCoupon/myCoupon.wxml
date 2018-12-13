@@ -1,0 +1,28 @@
+<!--pages/me/myCoupon/myCoupon.wxml-->
+<view class='con'>
+  <block wx:for="{{couponList}}" wx:key="{{index}}">
+    <view class='cardBox' bindtap='selectCard' data-index="{{index}}" wx:if="{{hashList}}">
+      <view class="cardList">
+        <view class='cardItems' bindtap='buyCourse'>
+          <view class="itemLeft">
+            <view class="item1 fzF">{{item.couponName}}</view>
+            <view class="item2 fzF">{{item.couponContent}}</view>
+            <view class='fz-24 item4'>有效期：{{item.begin}}-{{item.end}}</view>
+          </view>
+          <view class="itemRight">
+            <view class="item1"  wx:if="{{item.couponType!==2}}">
+              <text>￥</text>{{item.couponWorthMoney}}</view>
+            <view class="fz-24 item3">去使用</view>
+            <!-- <view class="fz-24 item3  {{item.status==true?'':'overdueBtn'}}" wx:if="{{item.status=1}}">已过期</view> -->
+          </view>
+        </view>
+        <view class="leftBy {{check===index?'active': ''}}"></view>
+        <view class="rightBy {{check===index?'active': ''}}"></view>
+      </view>
+    </view>
+  </block>
+  <view class='isnull' wx:if="{{hashList===false}}">
+    <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
+    <view class='nullTxt'>暂无优惠券</view>
+  </view>
+</view>

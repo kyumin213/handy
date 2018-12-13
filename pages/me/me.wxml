@@ -2,7 +2,7 @@
 <view>
 
   <view class='headBg'>
-    <image class='headBgImg' mode='widthFix' src='../../images/me/bg.png'></image>
+    <image class='headBgImg' mode='widthFix' src="{{imgs.imgBg}}"></image>
   </view>
 
   <view class='headCon'>
@@ -11,50 +11,43 @@
         <open-data type="userAvatarUrl" class="userinfo-avater" mode="cover"></open-data>
         <!-- <image class='headImg' src="{{userInfo.avatarUrl}}" mode='widthFix'></image> -->
       </view>
-      <view class='fzCol6 userName'>
+      <view class='userName'>
         <open-data type="userNickName" lang="zh_CN"></open-data>
       </view>
-      <!-- <view class='fzCol6 viewCode' bindtap='viewQRcode'>查看二维码</view> -->
-      <!-- <view>
-        <view class='fzCol6 growthHan'>汗的新生</view>
+      <view class='fzF viewCode' bindtap='codeAdmission'>查看二维码</view>
+      <view>
+        <view class='fzF growthHan'>增长值</view>
         <view class='growth'>
-          <text class='jd'></text>
+          <text class='jd' style="width:{{levelWidth}}%"></text>
         </view>
-        <view class='level'>Lv1</view>
-      </view> -->
-      <view class='fzCol6 footprint'>汗的足迹</view>
+        <view class='level'>Lv{{level}}</view>
+      </view>
+      <view class='footprint'>沸沸足迹</view>
       <view class='showPrint'>
         <view class='footItem'>
           <view class='Num'>{{personAll.entranceCount}}</view>
-          <view class='fzCol6 txt'>上课/次</view>
+          <view class='txt'>上课 / 次</view>
         </view>
         <view class='footItem'>
           <view class='Num'>{{personAll.memberBalanceMoney}}</view>
-          <view class='fzCol6 txt'>余额</view>
+          <view class='txt'>余额</view>
         </view>
         <view class='footItem'>
           <view class='Num'>{{personAll.privateSum}}</view>
-          <view class='fzCol6 txt'>私教/节</view>
+          <view class='txt'>私教 / 节</view>
         </view>
       </view>
     </view>
-    <view class='card' bindtap='myHandyCard'>
-      <text class='fzCol6 memberCard'>汗滴卡</text>
-      <view class='openUp'>
-        <text>详情</text>
-        <text class='jt'></text>
-      </view>
-    </view>
-
   </view>
   <view class='myAppoitment'>
-    <view class='fzCol6 yuTitle'>我的预约</view>
+    <view class='yuTitle'>我的预约</view>
     <view class='fzCol6 yuList'>
       <view class='yuItems' bindtap='djxShow'>
         <view class='itemImg'>
           <image class='listIcon' mode='widthFix' src='../../images/me/Waitfor@2x.png'></image>
         </view>
         <view class='itemTxt'>待进行</view>
+        <text class='fz-24 fzF statusNum' wx:if="{{stayStatus}}">{{stayNum}}</text>
       </view>
       <view class='yuItems' bindtap='jxzShow'>
         <view class='itemImg'>
@@ -64,7 +57,7 @@
       </view>
       <view class='yuItems' bindtap='ywcShow'>
         <view class='itemImg'>
-          <image class='listIcon' mode='widthFix' src='../../images/me/Completed@2x.png'></image>
+          <image class='listIcon' mode='widthFix' src='../../images/me/ywc.png'></image>
         </view>
         <view class='itemTxt'>已完成</view>
       </view>
@@ -83,89 +76,121 @@
       </view>
     </view>
   </view>
-  <view>
-    <view class='fzCol6 recharge' bindtap='rechargeCard'>
-      <view class='rechargeCard'>充值卡</view>
-      <view class='rechargeTxt'>
-        <text>充值</text>
-        <text class='jt'></text>
+  <view class='czList'>
+    <image class='czBg' src='../../images/me/czbg.png'></image>
+    <image class='hyBg' src='../../images/me/hyBg.png'></image>
+    <view class='cardItem'>
+      <view class='czCardBg' bindtap='rechargeCard'>
+        <view>
+          <image src='../../images/me/czIcon.png' class='icons'></image>
+        </view>
+        <view class='czTxt'>
+          充值卡
+        </view>
+        <view class='rechargeTxt'>
+          <text class='jt'></text>
+        </view>
+        <!-- <text class='sj'></text> -->
+      </view>
+      <view class='czCardBg' bindtap='openMemberCard'>
+        <view>
+          <image src='../../images/me/hyIcon.png' class='icons'></image>
+        </view>
+        <view class='memCard'>
+          会员卡
+        </view>
+        <!-- <text class='sjr'></text> -->
+        <view class='rechargeTxt'>
+          <text class='jt'></text>
+        </view>
       </view>
     </view>
   </view>
+  <view class='cardItem'>
+    <view class='czCard' bindtap='teamCard' data-code="lx003">
+      <view>
+        <image src='../../images/me/tcIcon.png' class='icons'></image>
+      </view>
+      <view class='czTxt'>
+        <view class='fzF fz-24'>团操包月</view>
+        <view class='fzF txtPrice'>仅售299</view>
+      </view>
+      <view class='rechargeTxt'>
+        <text class='jt'></text>
+      </view>
+    </view>
+    <view class='recharge' bindtap='coachCard' data-code="lx004">
+      <view>
+        <image src='../../images/me/sjIcon.png' class='icons'></image>
+      </view>
+      <view class='memCard'>
+        <view class='fzF fz-24'>私教包月</view>
+        <view class='fzF txtPrice'>仅售1999</view>
+      </view>
+      <view class='rechargeTxt'>
+        <text class='jt'></text>
+      </view>
+    </view>
+
+  </view>
   <view class='meList'>
     <view class='ListItems'>
-      <view class='items' bindtap='myBill'>
+      <view class='items' bindtap='lockers'>
         <view class='itemLeft'>
-          <image class='itemIcon' mode='widthFix' src='../../images/me/yhq.png'></image>
-          <text class='itemsTxt'>我的账单</text>
+          <view class='iconHeight'>
+            <image class='itemIcon' src='../../images/me/cwg.png'></image>
+          </view>
+          <view class='itemsTxt'>储物柜</view>
         </view>
-        <view>
+        <!-- <view>
           <text class='jt'></text>
-        </view>
-      </view>
-            <view class='items' bindtap='codeAdmission'>
-        <view class='itemLeft'>
-          <image class='itemIcon' mode='widthFix' src='../../images/me/meyy.png'></image>
-          <text class='itemsTxt'>二维码入场</text>
-        </view>
-        <view>
-          <text class='jt'></text>
-        </view>
-      </view>
-      <!-- <view class='items' bindtap='myTeamCourse'>
-        <view class='itemLeft'>
-          <image class='itemIcon' mode='widthFix' src='../../images/me/meyy.png'></image>
-          <text class='itemsTxt'>我的团体课程</text>
-        </view>
-        <view>
-          <text class='jt'></text>
-        </view>
-      </view> -->
-      <!-- <view class='items'>
-        <view class='itemLeft'>
-          <image class='itemIcon' mode='widthFix' src='../../images/me/meyy.png'></image>
-          <text class='itemsTxt'>储物柜</text>
-        </view>
-        <view>
-          <text class='jt'></text>
-        </view>
+        </view> -->
       </view>
       <view class='items' bindtap='coupon'>
         <view class='itemLeft'>
-          <image class='itemIcon2' mode='widthFix' src='../../images/me/yhq.png'></image>
-          <text class='itemsTxt'>优惠券</text>
+          <view class='iconHeight'>
+            <image class='itemIcon2' src='../../images/me/yhq.png'></image>
+          </view>
+          <view class='itemsTxt'>优惠券</view>
         </view>
-        <view>
+        <!-- <view>
           <text class='jt'></text>
+        </view> -->
+      </view>
+      <view class='items' bindtap='payPpwd'>
+        <view class='itemLeft'>
+          <view class='iconHeight'>
+            <image class='itemIcon3' src='../../images/me/pass.png'></image>
+          </view>
+          <view class='itemsTxt'>储物柜密码</view>
+        </view>
+      </view>
+    </view>
+    <view class='ListItems'>
+      <view class='items' bindtap='myBill'>
+        <view class='itemLeft'>
+          <view class='iconHeight'>
+            <image class='itemIcon' src='../../images/me/meyy.png'></image>
+          </view>
+          <view class='itemsTxt'>我的账单</view>
         </view>
       </view>
       <view class='items'>
         <view class='itemLeft'>
-          <image class='itemIcon' mode='widthFix' src='../../images/me/lxkf.png'></image>
-          <text class='itemsTxt'>联系客服</text>
-        </view>
-        <view>
-          <text class='jt'></text>
-        </view>
-      </view>
-      <view class='items' bindtap='invitingFriends'>
-        <view class='itemLeft'>
-          <image class='itemIcon4' mode='widthFix' src='../../images/me/yqhy.png'></image>
-          <text class='itemsTxt'>邀请汗友</text>
-        </view>
-        <view>
-          <text class='jt'></text>
+          <view class='iconHeight'>
+            <image class='itemIcon5' src='../../images/me/lxkf.png'></image>
+          </view>
+          <view class='itemsTxt'>联系客服</view>
         </view>
       </view>
-      <view class='items' bindtap='payPpwd'>
+      <view class='items' bindtap='fridens'>
         <view class='itemLeft'>
-          <image class='itemIcon5' mode='widthFix' src='../../images/me/paypwd.png'></image>
-          <text class='itemsTxt'>支付密码</text>
+          <view class='iconHeight'>
+            <image class='itemIcon6' src='../../images/me/yqhy.png'></image>
+          </view>
+          <view class='itemsTxt'>邀请好友</view>
         </view>
-        <view>
-          <text class='jt'></text>
-        </view>
-      </view> -->
+      </view>
     </view>
   </view>
   <view class='listBot'></view>

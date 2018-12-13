@@ -5,16 +5,32 @@
 </view> -->
 <view>
   <view class='cardimgBox'>
-    <image mode='widthFix' class='cardImg' src='../../../images/memberCard/chongzhi.png'></image>
+    <image class='cardImg' src='{{imgs}}'></image>
+  </view>
+  <view class='tops'>
+    <view class='fzF fw cardName'>会员卡</view>
+  </view>
+  <view>
+    <view class='fz-36 col3 buyTxt'>购买充值卡可享受沸沸价</view>
+    <view class='agreeItem'>
+      <view>
+        <checkbox-group bindchange="checkboxChange">
+          <label class="fz-28 checkboxBtn">
+            <checkbox class='checkBox' value="{{item.name}}" checked="{{checked}}" />我已阅读并同意
+          </label>
+        </checkbox-group>
+      </view>
+      <view class='fz-24 fzF viewUse' bindtap='chooseSezi'>(查看用户协议)</view>
+    </view>
   </view>
   <view class='cardDes'>
-    <!-- <view class='items'>
-      <view class='item1'>会员卡</view>
-      <view class='item2'>查看</view>
-    </view> -->
+    <view class='items' bindtap='memberCard'>
+      <view class='col3 item1'>会员卡</view>
+      <view class='col3 fw item2'>查看</view>
+    </view>
     <view class='items'>
-      <view class='item1'>余额</view>
-      <view class='item2'>￥{{allMonty}}</view>
+      <view class='col3 item1'>余额</view>
+      <view class='fzColor item2'>￥{{allMonty}}</view>
     </view>
     <!-- <view class='items'>
       <view class='item1'>优惠券</view>
@@ -24,55 +40,61 @@
   <view class='con'>
     <block wx:for="{{cardList}}" wx:key="{{index}}">
       <view class='cardBox' bindtap='selectCard' data-index="{{index}}">
-        <view class="cardList {{check===index?'active': ''}}">
+        <view class="cardList">
           <view class='cardItems'>
-            <view>
-              <view class="item1 {{check===index?'': 'color'}}">汗的充值卡</view>
-              <view class='fz-24 item2'>有效期{{item.expiryDate}}年</view>
+            <view class='itemLeft'>
+              <view class="fzF item1">充值卡</view>
+              <view class='fzF fz-24 item2'>（有效期{{item.expiryDate}}年）</view>
             </view>
-            <view class='itemRight'>
-              <view class="item1 {{check===index?'':'color'}}">
-                <text class="fh {{check===index?'':'color'}}">￥</text>{{item.money}}</view>
-              <view class="fz-24 item3 {{check===index? '': 'activeBtn'}}">充值卡</view>
+            <view class="itemRight {{check===index?'active': ''}}">
+              <view class="item1">
+                <text>￥</text>{{item.money}}</view>
+              <view class="fz-24 item3">充值卡</view>
             </view>
           </view>
-          <view class="leftBy {{check===index?'active': ''}}"></view>
-          <view class="rightBy {{check===index?'active': ''}}"></view>
+          <view class="leftBy"></view>
+          <view class="rightBy {{check===index?'rightActive': ''}}"></view>
         </view>
       </view>
     </block>
   </view>
   <view class='footer'>
     <view class='left'>
-      <text class='fz-24'>充值金额</text>
+      <text class='fz-24 colPrice'>充值金额</text>
       <text class='totalMoney'>￥{{totalMoney}}</text>
+      <view class='sj'></view>
     </view>
-    <button class='right' bindtap='subPayment' disabled='{{disable}}'>确认支付</button>
+    <view class='right'>
+      <button class="subBtn {{disable?'':'active'}}" bindtap='subPayment' disabled='{{disable}}'>确认支付</button>
+      <text class="sjr {{disable?'':'strOn'}}"></text>
+    </view>
   </view>
 </view>
-<!-- <view wx:else>
-  <view wx:if="{{xiaofei}}">
-    <view class='spendItems'>
+<view class='bgModel' wx:if="{{chooseSize}}" bindtap='hideModal'>
+  <view class="model" animation="{{animationData}}">
+    <scroll-view scroll-y='true' style="width: 100%;height:500px" class='use'>
       <view>
-        <view class='fw courseName'>瑜伽体验课</view>
-        <view class='times'>2018-05-06 20:56:56</view>
+        <view class='close' bindtap='hideModal'>
+          <text class='closeIcon'></text>
+        </view>
+        <!-- <view class='gzTitle'>适用时间：购买当日起有效期一年</view> -->
+        <view class='gzDes'>
+          <view class='fw gz'>充值须知</view>
+          <text class='desItem'>1、充值卡余额，可与代金券同时使用。</text>
+          <text class='desItem'>2、充值卡余额可用于支付所有类型课程。</text>
+          <text class='desItem'>3、团操课支付时会优先使用充值金额+代金券支付。</text>
+          <text class='desItem'>4、基于课程性质，充值卡余额支付私教和训练营课程无折扣。</text>
+          <text class='desItem'>5、每个ID仅限1人使用。</text>
+          <view class='fw gz'>退款须知:</view>
+          <view class='desItem'>沸沸充值卡金额长期有效，全国所有门店通用。如仍需销卡退款</view>
+          <view class='desItem'>请知晓:</view>
+          <text class='desItem'>1、账户内如有赠送金额，赠送部分直接注销，只退还实际现金充值金额（超猩卡余额消费顺序：先消费现金充值金额，现金充值金额消费完毕后才可消费赠送金额），另外兑换码兑换金额无法申请提现。</text>
+          <text class='desItem'>2、充值卡金额申请提现（退卡）仅支持全额提现，不支持某笔超猩卡充值订单退款。</text>
+          <text class='desItem'>3、已开发票部分无法退款。</text>
+          <text class='desItem'>4、退款后将不再享受购买团操课9.5折优惠；且1年内再次充值时也不再享受团操课折扣权益。 </text>
+          <text class='desItem'>5、退卡金额原路返回，5个工作日内到账。</text>
+        </view>
       </view>
-      <view class='money'>-100</view>
-    </view>
-    <view class='spendItems'>
-      <view>
-        <view class='fw courseName'>瑜伽体验课</view>
-        <view class='times'>2018-05-06 20:56:56</view>
-      </view>
-      <view class='money'>-100</view>
-    </view>
-    <view class='spendItems'>
-      <view>
-        <view class='fw courseName'>瑜伽体验课</view>
-        <view class='times'>2018-05-06 20:56:56</view>
-      </view>
-      <view class='money'>-100</view>
-    </view>
+    </scroll-view>
   </view>
-  <view ex:else class='isnull'>暂无消费记录~</view>
-</view> -->
+</view>

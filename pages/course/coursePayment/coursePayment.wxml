@@ -1,60 +1,61 @@
 <!--pages/course/coursePayment/coursePayment.wxml-->
 <view>
-  <view class='courseDes'>
-    <view class='des'>
-      <view class='fw desTxt'>{{names}}</view>
-      <view class='fw fzColor price'>￥{{price}}</view>
+  <view class='courseDesTop'>
+    <view class='courseDes'>
+      <view class='des'>
+        <view class='fw desTxt'>{{names}}</view>
+        <view class='fw price'>￥{{price}}</view>
+      </view>
+      <view class='courseTime'>
+        <text>时间：</text>
+        <text>{{currentData}} {{start}}-{{end}}</text>
+      </view>
+      <view class='address'>
+        <text>地点：</text>
+        <text class='addressTxt'>{{address}}</text>
+      </view>
     </view>
-    <view class='courseTime'>
-      <text>时间：</text>
-      <text>{{currentData}} {{start}}-{{end}}</text>
+    <view class='desList'>
+      <view class='peopleNum'>
+        <text class='fw NumTxt'>人数</text>
+        <view>
+          <button class='peoBtn'>1人</button>
+        </view>
+      </view>
+      <view class='peopleNum card'>
+        <text class='fw NumTxt'>权益卡扣卡</text>
+        <view bindtap='memberCard'>
+          <text class='cardTxt'>确认开通后，可省{{moneys}}元</text>
+          <text class='jt'></text>
+        </view>
+      </view>
+      <view class='peopleNum card' bindtap='coupon'>
+        <text class='fw NumTxt'>优惠券</text>
+        <view>
+          <text class='fzColor cardTxt' wx:if="{{couponList}}"><text class='fzColor' wx:if="{{coupons}}">-</text>{{couponNum}}</text>
+          <text class='fzCol6 cardTxt' wx:if="{{couponList==false}}">暂无</text>
+          <text class='jt'></text>
+        </view>
+      </view>
     </view>
-    <!-- <view class='address'>
-      <text>地点：</text>
-      <text class='addressTxt'>深圳市南山区深南大道9680号大冲商务
-         中心A座1600室（一号线B出口）</text>
-    </view> -->
   </view>
-  <view class='desList'>
-    <view class='peopleNum'>
-      <text class='fw NumTxt'>人数</text>
-      <view>
-        <button class='peoBtn'>1人</button>
-      </view>
-    </view>
-    <!-- <view class='peopleNum card'>
-      <text class='fw NumTxt'>汗卡折扣卡</text>
-      <view>
-        <text class='cardTxt'>确认开通后，可省10元</text>
-        <text class='jt'></text>
-      </view>
-    </view>
-    <view class='peopleNum card' bindtap='coupon'>
-      <text class='fw NumTxt'>优惠券</text>
-      <view>
-        <text class='cardTxt'>暂无</text>
-        <text class='jt'></text>
-      </view>
-    </view> -->
-  </view>
+
   <view class='payType'>
     <view class='payTitle'>
-      <text class='txt'>支付方式</text>
+      <text class='fw txt'>支付方式</text>
     </view>
     <view class='payList'>
       <view class='payLeft'>
-        <image class='hanIcon' mode='widthFix' src='../../../images/pay/hanPayLogo.png'></image>
-        <text class='hanTxt'>汗的支付</text>
+        <image class='hanIcon' src='../../../images/pay/ff.png'></image>
+        <text class='hanTxt'>沸沸支付</text>
       </view>
       <view class='payRight' bindtap='hanPay'>
         <text class="selectPay {{hanPay?'selectActive': ''}}"></text>
-        <!-- <image mode='widthFix' class='hanOn' src='../../../images/pay/payActive.png' wx:if="{{hanPay}}"></image>
-        <image mode='widthFix' class='hanOn' src='../../../images/pay/default.png' wx:else></image> -->
       </view>
     </view>
     <view class='payList'>
       <view class='payLeft'>
-        <image class='hanIcon2' mode='widthFix' src='../../../images/pay/wxPay.png'></image>
+        <image class='hanIcon' src='../../../images/pay/wxPay.png'></image>
         <text class='hanTxt'>微信支付</text>
       </view>
       <view class='payRight' bindtap='wxPay'>
@@ -68,12 +69,111 @@
       <text class='tipsRight'>若团操预约在开课6小时前取消，本预约已付金额
       退回，若在取消前已有免入場，其入埸金额補扣</text>
     </view>
+    <view class='agreeItem'>
+      <view>
+        <checkbox-group bindchange="checkboxChange">
+          <label class="fz-28 checkboxBtn">
+            <checkbox class='checkBox' value="{{item.name}}" checked="{{checked}}" />我已阅读并同意
+          </label>
+        </checkbox-group>
+      </view>
+      <view class='fz-28 fzColor viewUse' bindtap='chooseSezi'>(查看用户协议)</view>
+    </view>
   </view>
   <!-- <view class='comfir' bindtap='subPayment'>
     <text class='comfirBtn'>确认支付</text>
     <text class='payMoney'>￥{{price}}</text>
   </view> -->
-  <button class='comfir' bindtap='subPayment' disabled="{{disBtn}}" data-name="{{courseList.fitnessCourseName}}" data-time="{{currentData}}" data-stores="{{courseList.storeName}}">确认支付
-    <text class='payMoney'>￥{{price}}</text>
+  <button class='comfir' wx:if="{{!useCoupon}}" bindtap='subPayment' disabled="{{disable}}" data-name="{{courseList.fitnessCourseName}}" data-time="{{currentData}}" data-stores="{{courseList.storeName}}">确认支付
+    <text class='payMoney'>￥{{totalPrice}}</text>
   </button>
+  <button class='comfir' wx:else bindtap='subPayment' disabled="{{disable}}" data-name="{{courseList.fitnessCourseName}}" data-time="{{currentData}}" data-stores="{{courseList.storeName}}">确认支付
+    <text class='payMoney'>￥{{nowPrice}}</text>
+  </button>
+</view>
+<view class='bgModel' wx:if="{{chooseSize}}" bindtap='hideModal'>
+  <view class="model" animation="{{animationData}}">
+    <scroll-view scroll-y='true' style="width: 100%;height:500px" class='use'>
+      <view>
+        <view class='close' bindtap='hideModal'>
+          <text class='closeIcon'></text>
+        </view>
+        <!-- <view class='gzTitle'>适用时间：购买当日起有效期一年</view> -->
+        <view class='gzDes'>
+          <view class='fw gz'>FEFEE团操购买协议</view>
+          <view class='fw xyTitle'>[审慎阅读]在同意本协议前请务必审慎阅读、充分理解各条款内容，特别是免除或者限制责任的条款、法律适用和争议解决条款。 本协议对沸沸运动小程序、深圳市领犀科技有限公司及旗下品牌FEFEE沸沸运动(以下d简称”FEFEE运动”)下各健身场馆(以下简称“场馆”)所销售的各类额外付费团操课程有效。
+          </view>
+          <view class='fw gz'>一、团操课程</view>
+          <text class='desItem'>1、FEFEE运动团操服务采用会员制服务模式，只有购买会员卡或课程方能享受相关服务。</text>
+          <text class='desItem'>2、取得团操课程学习资格应办理入会手续，具备中华人民共和国法律规定的与会员行为相适应的民事行为能力,并已知晓平台有关的规则与警示，承诺遵守FEFEE运动的相关规定。</text>
+          <text class='desItem'>3、视个人需要，会员可能会针对自身情况购买不同类别的课程,但无论您购买何种团操课程，都将在享受会员权利的同时，受到本协议的约束。</text>
+          <text class='desItem'>4、只有同时满足以下条件:年满16周岁未满60周岁身体健康并向FEFEE运动购买了了团操课程，能如实提供和陈述个人信息，取得平台发放的电子课程的人士，方可成为FEFEE运动的有效会员。以上任一条件不满足， FEFEE运动有权拒绝向您提供服务。</text>
+          <view class='fw gz'>二、团操课程的取得方式</view>
+          <text class='desItem'>1、原始取得，指在微信公众账号“FEFEE沸沸运动”或沸沸运动小程序、填写真实、有效、全面的个人资料，办理会员卡/课程购买手续并支付费用后取得的会员资格。</text>
+          <text class='desItem'>2、免费团操课程仅限已取得FEFEE会员资格的会员购买(预约)，会员资格的取得及管理详见《FEFEE运动用户协议》。</text>
+          <text class='desItem'>3、收费团操课程对外开放，全体学员均可购买。</text>
+          <text class='desItem'>3、已开发票部分无法退款。</text>
+          <text class='desItem'>4、本课程仅供已购买的学员本人使用。 </text>
+          <text class='desItem'>5、会员在场馆训练时需遵守平台指定的各项守则，严重违反平台规章制度者，平台有权取消其会员资格无条件退还剩余费用。情节严重者，平台有权取消其会员资格不予退还剩余费用，终止一切服务。给平台或第三方造成损失的，会员应承担相关法律责任。</text>
+          <text class='desItem'>6、本课程结束后，若学员有缺席课程的情况，后台将自动取消该学员对本次缺席课程的权益，本次课程的权益一经取消,FEFEE运动不予该学员进行补课、退费和转费续读等补偿。</text>
+          <text class='desItem'>7、只购买收费团操课程的会员，课程结束后，若会员没有继续购买课程，平台系统自动取消该会员的团操课程会员权限，团操课程会员资格终止。会员卡会员期满后，若会员逾期不续费缴费，场馆后台自动取消该会员的会员权限(同时自动取消该会员预约免费团操课程的会员权限) ,会员资格终止。</text>
+          <view class='fw gz'>三、学员权利</view>
+          <text class='desItem'>1、已购买本课程的学员享受相应的课程场馆对该学员作出的全部服务承诺。 </text>
+          <text class='desItem'>2、针对本课程的服务，学员有提出批评、投诉及改进建议的权利。 </text>
+          <text class='desItem'>3、会员在付款当月可以联系店长或客服申请开具全额订单发票发票内容为健身服务费，明细为所购商品名称及数量;本公司为电子发票使用人，增值税普通发票只能开具电子发票，普通发票需要提供公司名称、纳税人识别号;增值税专用发票需要客户具备一般纳税人资质，开票信息提供公司名称纳税人识别号、地址电话、开户行及账号(缺一不可) 。 </text>
+          <view class='fw gz'>四、学员义务</view>
+          <text class='desItem'>1、任何未经平台同意并私自办理变更手续的会员或向非FEFEE会员转让会籍资格的行为均无效，场馆将不予接待。 </text>
+          <text class='desItem'>2、为了您的健身安全，请穿着运动服饰、运动鞋参加运动。运动期间，不得参与违反国家法律法规的活动，不得赤裸上身或穿着不得体或违反道德规范的服饰进行运动，否则FEFEE有权劝离并取消当日运动权利。 </text>
+          <text class='desItem'>3、FEFEE运动不接受怀孕期间/有重大疾病/病愈后没有有效医生证明的会员(手术后3个月内的人群、有心血管疾病者、不能剧烈运动伤者、孕妇及哺乳期女性、产后不足6个月内的人群)购买课程/会员卡，上述情况下FEFEE有权取消其会籍资格无条件退款退课。 </text>
+          <text class='desItem'>4、平台原则上不接受60周岁以上老人入会，能出具真实有效的健康证明者除外(需正规机构出具的有效证明)，但因隐瞒或错报个人健康信息发生的一切责任都由其本人承担。上述情况下FEFEE有权取消其会籍资格无条件退款退课。 </text>
+          <text class='desItem'>5、严禁会员胁迫教练/FEFEE工作人员提供额外钱款利益或其他不当利益(包含但不仅限于索要优惠券、返现、线下约课等) ,上述情况下FEFEE有权取消其会籍资格无条件退款退课。 </text>
+          <text class='desItem'>6、严禁会员骚扰、辱骂教练/FEFEE工作人员,泄露他人信息，影响对方正常工作生活，上述情况下FEFEE有权取消其会籍资格无条件退款退课，且保留追究其法律责任的权利。 </text>
+          <text class='desItem'>7、严禁心肺功能疾病、脊椎病、皮肤病及一切传染病患者进入场馆， 有以上疾病的患者隐瞒病情取得会员资格的，FEFEE有权取消其会籍资格并不予退还剩余费用，且保留追究其法律责任的权利。 </text>
+          <text class='desItem'>8、严禁会员在场馆内销售任何商品，不得参 与任何营利性健身指导，违反本条规定的，FEFEE有权取消其会籍资格并不予退还剩余费用。</text>
+          <text class='desItem'>9、严禁在场馆内大声喧哗，使用污秽语言,扰乱其他会员以及一-切违法活动，有以上情况发生，FEFEE有权取消其会籍资格并不予退还剩余费用，终止-一切服务，且保留追究其法律责任的权利。 </text>
+          <text class='desItem'>10、未入驻FEFEE教练平台的会员在FEFEE场馆内都不能进行长时间的教学指导。包括朋友、亲人之间的过长时间互相指导，一般超过 30分钟，持续性的教学动作FEFEE都默认等同于黑私教学行为。FEFEE有权取消其会籍资格并不予退还剩余费用，终止一切服务。 </text>
+          <text class='desItem'>11、严重违反场馆规章制度者( 包括但不仅限于殴打、辱骂他人，恶意破坏器械等)，FEFEE有权取消其会籍资格并不予退还剩余费用，终止-切服务。若造成平台和他人的损失，本人需对此承担责任，且FEFEE运动保留追究其法律责任的权利。</text>
+          <text class='desItem'>12、运动前严禁饮酒或饮用含酒精类饮料，因违反本条规定造成的人身伤害等意外情况，本人需对此承担责任。FEFEE有权取消其会籍资格并不予退还剩余费用，终止-切服务，且保留追究其法律责任的权利。 </text>
+          <text class='desItem'>13、会员应自觉爱借合理使用室内各项设施、设备、使用后须归放原位，禁止将室内各项设施、设备擅自带出场馆，如有损坏，丢失须追究相关人员责任，照价赔偿。情节严重或拒不赔偿者，FEFEE有权取消其会籍资格并不予退还剩余费用，终止一切服务，且保留追究其法律责任的权利。 </text>
+          <text class='desItem'>14、如实向FEFEE运动提供个人信息资料,并在资料发生变动后及时通知FEFEE运动。进入场馆时凭电子会员卡，随时接受工作人员验正和抽查。</text>
+          <text class='desItem'>15、未征得场馆负责人同意，禁止在场馆内拍照、摄像或录音。严禁未预约课程， 强行进入操房 上操课。</text>
+          <text class='desItem'>16、严禁十六周岁以下儿童和孕妇进 入健身区域，对于擅自进入健身区域造成伤害或损失的，本场馆概不负责。</text>
+          <text class='desItem'>17、严禁在健身区内吸烟、 进食。</text>
+          <text class='desItem'>18、严禁携带宠物进入场馆。</text>
+          <text class='desItem'>19、严禁在健身区内吸烟、进食、吐痰、乱扔垃圾，请自觉维护健身房的环境卫生。</text>
+          <view class='fw xyTitle'>以上情况，若经场馆工作人员/平台提醒仍未停止(不听劝阻)或情节严重,FEFEE有权取消其会籍资格无条件退款退课</view>
+          <view class='fw gz'>五、 已购买课程使用期限告知</view>
+          <text class='desItem'>FEFEE运动所有课程均设有使用时间限制。如果购买人在购买之日算起后超过约定使用有效期的情况，学员上课资格视为已过期并作废处理。</text>
+          <view class='fw gz'>六、权利保留</view>
+          <text class='desItem'>1、场馆营业时间原则上24小时，营业时间有变动，会在维修公众号后台以及门店做显著位置公示，学员须遵守该营业时间。</text>
+          <text class='desItem'>2、因国家政策或者法律法规的规定，场馆有权合理修改营业时间并在店内公示，恕不另行通知学员，该公示即视为通知。</text>
+          <text class='desItem'>3、因器械、设备(设施)检修、维护，场馆有权在某一时间段对某一项识或某类项目来取停用或限用措施。</text>
+          <text class='desItem'>4、其他出于学员安全及集体利益的需要，场馆有权采取必要措施以恢复经营秩序。</text>
+          <view class='fw gz'>七、免责条款</view>
+          <view class='fw xyTitle'>出现下列情形的，场馆不予承担任何责任</view>
+          <text class='desItem'>1、遇不可抗力(如战争、自然灾害等)造成场馆营业终止或学员课程不能继续，致使学员遭受损失。</text>
+          <text class='desItem'>2、学员所受损害是因其自身故意或过失造成的。</text>
+          <text class='desItem'>3、学员所受损害是场馆工作人员以外的任何第三方的故意或过失行为导致的。</text>
+          <text class='desItem'>4、学员不听劝阻，擅自进入或强行进入会员区域造成损害的，由其自身或致害方承担责任。</text>
+          <text class='desItem'>5、如因学员个人原因(如学员锻炼时口袋中财物落地，学员随意放置财物品而遗忘的)导致的贵重物品毁损、灭失、遗失的,场馆会积极配合提供相关线索。</text>
+          <text class='desItem'>6、因学员资料或个人信息发生变动未及时通知场馆，从而造成损失或学员权利受限的。</text>
+          <view class='fw gz'>八、安全提示</view>
+          <text class='desItem'>1、学员在锻练前，应先做必要的热身练习，以免受伤。</text>
+          <text class='desItem'>2、过度锻炼及违规锻炼均有受伤的可能，所以您在运动前对自身身体情况进行判断，并保持运动强度和时间的适当。</text>
+          <text class='desItem'>3、健身馆内任何运动项目及器械设施均有严格的操作方法和程序，请务必在专业人员的指导下或者安全手册下进行操作。</text>
+          <view class='fw gz'>九、特别声明</view>
+          <text class='desItem'>在法律允许的范围内，为更好地服务学员之需要，FEFEE运动有权对相关内容进行修改，且修改后的条款自通知会员或在FEFEE运动网站、APP,微信公众号或其他传播渠道显著位置公示后，即对全体会员产生约束力。</text>
+          <text class='desItem'>FEFEE运动有权在任何时间暂时或永久修改或终止本协议或其中的任何部分。经修改的”条款”一经公布，立即自动生效。如果不同意所改动的内容，学员应主动取消已购买的课程。如果学员继续参加课程，则视为接受协议条款的变动。</text>
+          <view class='fw gz'>十、学员承诺</view>
+          <text class='desItem'>1、本人保证所提供的入学资料及个人信息真实有效。</text>
+          <text class='desItem'>2、本人身体健康且没有本协议约定的不适合进行运动的疾病。</text>
+          <text class='desItem'>3、本人已阅读、理解并同意上述条文</text>
+          <text class='desItem'>4、您了解并同意，平台与团操教练间不存在任何形式的劳动关系，团操教练为入驻平台提供教练服务的独立个人。平台对教练的资质及教学行为的管理和监督，在任何情况下,均不构成平台对教练行为的担保。</text>
+          <view class='fw gz'>十一、法律适用及争议解决条款</view>
+          <text class='desItem'>本合同的效力、解释、变更执行及争议的解决等均适用中华人民共和国法律。
+因本合同产生的任何争议，双方应协商解决，协商不成的，应提交深圳中级人民法院裁决。</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
 </view>

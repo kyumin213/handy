@@ -12,7 +12,7 @@
   width: 194rpx;
   height: 194rpx;
   border-radius: 100%;
-  border: 6rpx solid #f00;
+  border: 6rpx solid #F0E0D3;
   overflow: hidden;
 }
 
@@ -63,9 +63,9 @@
   width: 598rpx;
   height: 98rpx;
   border-radius: 10rpx;
-  background: #d71718;
+  background: #005b6d;
   color: #fff;
   font-size: 36rpx;
-  margin-top: 74rpx;
-  box-shadow: 0 4rpx 4rpx 2rpx #ff696a;
+  margin-top: 14rpx;
+  /* box-shadow: 0 4rpx 4rpx 2rpx #005b6d; */
 }

@@ -1,54 +1,63 @@
 <!--pages/course/paymentSuccess/paymentSuccess.wxml-->
 
-<view class='top'>
-</view>
-<view class='head'>
-  <!-- <image mode='widthFix' class='headImg' src="{{userInfo.avatarUrl}}"></image> -->
-  <open-data type="userAvatarUrl" class="headImg" mode="cover"></open-data>
-</view>
-<view wx:if="{{hashList}}">
-  <view class='tips'>
-    <view class='fw success'>支付成功</view>
-    <view class='des'>智能场馆，全场馆提供智能健身服务</view>
+<view class='conBg'>
+  <view class='succIcon' wx:if="{{hashList}}">
+    <text class='icon'></text>
   </view>
-  <view class='fzColor fw moneys' wx:if="{{showList}}">金额￥{{money}}</view>
-  <view class='con' wx:if="{{storeMsgList}}">
-    <view class='items'>
-      <text class='fw txtTit'>课程</text>
-      <text class='txtCon'>{{names}}</text>
-    </view>
-    <view class='items'>
-      <text class='fw txtTit'>门店</text>
-      <text class='txtCon'>{{store}}</text>
-    </view>
-    <view class='items'>
-      <text class='fw txtTit'>时间</text>
-      <text class='txtCon'>{{times}} {{start}}-{{end}}</text>
-    </view>
+  <view class='errIcon'  wx:if="{{!hashList}}">
+    <text class='icons'></text>
   </view>
-  <view class='con' wx:if="{{coachList}}">
-    <view class='items'>
-      <text class='fw txtTit'>课程</text>
-      <text class='txtCon'>{{courseName}}</text>
+  <!-- <view class='top'>
+  </view> -->
+  <!-- <view class='head'>
+    <image mode='widthFix' class='headImg' src="{{userInfo.avatarUrl}}"></image>
+    <open-data type="userAvatarUrl" class="headImg" mode="cover"></open-data>
+  </view> -->
+  <view>
+    <view class='tips'>
+      <view class='fw success' wx:if="{{hashList}}">支付成功</view>
+      <view class='fw success' wx:else>支付失败</view>
+      <view class='des'>智能场馆，全场馆提供智能健身服务</view>
     </view>
-    <view class='items'>
-      <text class='fw txtTit'>教练</text>
-      <text class='txtCon'>{{coachName}}</text>
+    <view class='fzColor fw moneys' wx:if="{{showList}}">金额￥{{money}}</view>
+    <view class='con' wx:if="{{storeMsgList}}">
+      <view class='items'>
+        <text class='fw txtTit'>课程</text>
+        <text class='txtCon'>{{names}}</text>
+      </view>
+      <view class='items'>
+        <text class='fw txtTit'>门店</text>
+        <text class='txtCon'>{{store}}</text>
+      </view>
+      <view class='items'>
+        <text class='fw txtTit'>时间</text>
+        <text class='txtCon'>{{times}} {{start}}-{{end}}</text>
+      </view>
     </view>
-    <view class='items'>
-      <text class='fw txtTit'>课时</text>
-      <text class='txtCon'>{{hour}}课时</text>
-    </view>
-    <view class='items'>
-      <text class='fw txtTit'>总价</text>
-      <text class='txtCon'>￥{{tm}}</text>
+    <view class='con' wx:if="{{coachList}}">
+      <view class='items'>
+        <text class='fw txtTit'>课程</text>
+        <text class='txtCon'>{{courseName}}</text>
+      </view>
+      <view class='items'>
+        <text class='fw txtTit'>教练</text>
+        <text class='txtCon'>{{coachName}}</text>
+      </view>
+      <view class='items'>
+        <text class='fw txtTit'>课时</text>
+        <text class='txtCon'>{{hour}}课时</text>
+      </view>
+      <view class='items'>
+        <text class='fw txtTit'>总价</text>
+        <text class='txtCon'>￥{{tm}}</text>
+      </view>
     </view>
   </view>
 </view>
-<view wx:else class='isError'>
+<!-- <view class='isError'>
   <view class='fw fail'>支付失败</view>
   <view class='fzColor errorTxt'>{{message}}</view>
-</view>
+</view> -->
 
-<view class='backBtn' bindtap='backBtn'>返回</view>
-<!-- <view class='inviting' bindtap='invitingFriends'>邀请好友</view> -->
+<view class='inviting' bindtap='backBtn'>返回</view>
+<!-- <view class='inviting' wx:if="{{hashList}}" bindtap='invitingFriends'>邀请好友</view> -->

@@ -2,17 +2,11 @@
 
 page {
   height: auto;
+  background: #f2f2f2;
 }
-
-.bg-c {
-  width: 100%;
-  background: #fff;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  overflow-y: auto;
-}
-
+/* .headImg{
+  margin-bottom: 18rpx;
+} */
 .topImg {
   width: 100%;
   height: 468rpx;
@@ -38,6 +32,13 @@ page {
   overflow: auto;
 }
 
+.courAddress {
+  width: 100%;
+  height: 318rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+
 .courseTit {
   display: flex;
   align-items: center;
@@ -45,6 +46,7 @@ page {
   height: 118rpx;
   padding: 0 36rpx 0 32rpx;
   border-bottom: 2rpx solid #f2f2f2;
+  background: #fff;
 }
 
 .courseTit .coachTxt {
@@ -53,9 +55,10 @@ page {
   height: 50rpx;
   text-align: center;
   line-height: 50rpx;
-  background: #d71718;
+  background: #f96400;
   color: #fff;
   margin-right: 26rpx;
+  border-radius: 10rpx;
 }
 
 .courseTit .courseName {
@@ -71,12 +74,19 @@ page {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 34rpx auto 34rpx 74rpx;
+  margin: 0 auto 0 74rpx;
+  padding-top: 30rpx;
+}
+
+.adressItem {
+  /* margin-top: 70rpx; */
+  padding-bottom: 30rpx;
+  padding-top: 60rpx;
 }
 
 .buyCourse .icon1 {
-  width: 48rpx;
-  height: 48rpx;
+  width: 38rpx;
+  height: 40rpx;
 }
 
 .buyCourse .nums {
@@ -84,56 +94,58 @@ page {
   margin-left: 28rpx;
 }
 
-.bor {
-  border-bottom: 24rpx solid #f2f2f2;
+.buyCourse .address {
+  text-decoration: underline;
 }
-.courseTypes{
+
+.courseTypes {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
+
 /* 课程tab */
 
 .detailTab {
   width: 100%;
   text-align: center;
-  border-top: 24rpx solid #f2f2f2;
-  background: #fff;
+  background: #f2f2f2;
   z-index: 999;
 }
 
 .detailTab .tabs {
   width: 690rpx;
-  height: 66rpx;
-  line-height: 66rpx;
-  border: 4rpx solid #d60b0b;
-  margin: 36rpx auto 28rpx auto;
+  height: 96rpx;
+  line-height: 96rpx;
+  margin: 0 auto;
   font-size: 32rpx;
+  box-sizing:border-box;
 }
 
 .tabs .items {
   display: inline-block;
   width: 213rpx;
-  height: 46rpx;
+  height: 96rpx;
   text-align: center;
-  line-height: 46rpx;
+  line-height: 96rpx;
+  box-sizing: border-box;
+  /* padding-bottom: 20rpx; */
 }
 
 .tabs .active {
-  background: #ececec;
-  color: #333;
   font-weight: bold;
+  border-bottom: 8rpx solid #f96400;
+  color: #333;
 }
 
 .curriculumItem {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: auto;
-  padding: 18rpx 50rpx 54rpx 48rpx;
+  height: 204rpx;
+  padding: 28rpx 50rpx 28rpx 48rpx;
   box-sizing: border-box;
-  border-bottom: 24rpx solid #f2f2f2;
-  /* margin-top: 34rpx; */
+  /* border-bottom: 24rpx solid #f2f2f2; *//* margin-top: 34rpx; */
   background: #fff;
   /* border-top: 4rpx solid #211e1e;
   border-bottom: 4rpx solid #1e211e; */
@@ -146,8 +158,8 @@ page {
 }
 
 .imgBox .attenImg {
-  width: 202rpx;
-  height: 202rpx;
+  width: 148rpx;
+  height: 148rpx;
   border-radius: 100%;
   background: #ccc;
   background-size: cover;
@@ -169,7 +181,8 @@ page {
   /* display: inline-block; */
   line-height: 36rpx;
 }
-.attenName{
+
+.attenName {
   font-size: 30rpx;
   color: #333;
 }
@@ -227,13 +240,13 @@ page {
 .prices .price {
   display: inline-block;
   font-size: 36rpx;
-  color: #d71718;
+  color: #f96400;
 }
 
 .prices .priceIcon {
   display: inline-block;
   font-size: 24rpx;
-  color: #d71718;
+  color: #f96400;
 }
 
 .hanPrice {
@@ -244,14 +257,14 @@ page {
   text-align: center;
   font-size: 20rpx;
   color: #fff;
-  background: #d71718;
+  background: #f96400;
   border-radius: 6rpx;
   margin-left: 10rpx;
 }
 
 .startTime .times {
   font-size: 26rpx;
-  color: #d71718;
+  color: #f96400;
 }
 
 .startTime .appointment {
@@ -260,7 +273,7 @@ page {
   line-height: 60rpx;
   text-align: center;
   border-radius: 10rpx;
-  background: #d71718;
+  background: #f96400;
   color: #fff;
   font-size: 30rpx;
   margin-top: 18rpx;
@@ -279,38 +292,34 @@ page {
   height: 84rpx;
 }
 
+.courseBtn {
+  background: #fff;
+}
+
+.coursejs {
+  background: #fff;
+  margin: 18rpx auto 0 auto;
+  padding-top: 40rpx;
+}
+
 .titles {
-  width: 252rpx;
-  height: 46rpx;
-  line-height: 46rpx;
-  background: #d71718;
+  width: 202rpx;
+  height: 74rpx;
+  line-height: 74rpx;
+  background: #005b6d;
   color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16rpx;
-  margin: 40rpx auto auto auto;
-  position: relative;
+  margin: 0 auto 52rpx auto;
+  text-align: center;
+  border-radius: 20rpx;
 }
 
-.titles::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: -120rpx;
-  width: 104rpx;
-  height: 2rpx;
-  background: #d60b0b;
+.titles .txtNum {
+  font-size: 48rpx;
+  margin-right: 8rpx;
 }
 
-.titles::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: -120rpx;
-  width: 104rpx;
-  height: 2rpx;
-  background: #d60b0b;
+.titles .txtName {
+  font-size: 26rpx;
 }
 
 .enDetail {
@@ -320,23 +329,47 @@ page {
   margin-top: 26rpx;
 }
 
+.courseNameTitle {
+  width: 100%;
+  text-align: center;
+}
+
 .courseCon {
   display: inline-block;
   height: 44rpx;
   line-height: 44rpx;
-  color: #fff;
+  color: #333;
   font-size: 32rpx;
-  background: #d71718;
-  padding: 0 12rpx;
-  /* margin-left: 34rpx;
-  margin-top: 46rpx; */
-  margin: 46rpx 0 24rpx 34rpx;
+  background: #ececec;
+  padding: 0 20rpx;
+  border-radius: 22rpx;
+  margin: 0 auto 24rpx auto;
 }
 
 .conTex {
   font-size: 30rpx;
   line-height: 48rpx;
-  margin: 0 30rpx 50rpx 30rpx;
+  padding: 0 30rpx 52rpx 56rpx;
+  /* text-align: center; */
+}
+
+.reminderList {
+  width: auto;
+  margin-left: 64rpx;
+  position: relative;
+}
+
+.reminderItem {
+  display: inline-block;
+  position: absolute;
+  left: -64rpx;
+  width: 52rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  text-align: center;
+  border-radius: 100%;
+  background: #005b6d;
+  color: #fff;
 }
 
 .useImg {
@@ -353,15 +386,17 @@ page {
   right: 0;
   height: 98rpx;
   line-height: 98rpx;
-  background: #d71718;
+  background: #f96400;
   color: #fff;
   text-align: center;
   margin-top: 110rpx;
+  z-index: 999;
 }
 
 .mart {
   height: auto;
-  padding-bottom: 70rpx;
+  padding-bottom: 134rpx;
+  background: #fff;
 }
 
 .box {
@@ -371,14 +406,86 @@ page {
 .marts {
   padding-bottom: 140rpx;
 }
+/* .marts1{
+  margin-top: 20rpx;
+} */
 
-.marts2{
+.marts2 {
   height: auto;
-  padding-bottom: 80rpx;
-  border-bottom: 24rpx solid #f2f2f2;
-
+  padding-bottom: 0;
+  background: #fff;
 }
 
 .startTime .endBtn, .endBtn {
   background: #ccc;
+}
+
+/* 使用流程 */
+
+.stepList {
+  margin-bottom: 66rpx;
+}
+
+.stepItem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 98rpx;
+  margin-bottom: 54rpx;
+}
+
+.stepImg {
+  position: absolute;
+  left: 44rpx;
+  bottom: 20rpx;
+  z-index: 100;
+}
+
+.stepIcon {
+  width: 144rpx;
+  height: 58rpx;
+}
+
+.stepTxt {
+  display: inline-block;
+  width: 562rpx;
+  height: 98rpx;
+  line-height: 98rpx;
+  border-radius: 20rpx;
+  background: #f2f2f2;
+  color: #333;
+  font-size: 28rpx;
+  padding-left: 64rpx;
+  box-sizing: border-box;
+  position: relative;
+  left: 146rpx;
+  z-index: 99;
+}
+
+.stepTxt::before {
+  content: 'STEP1';
+  font-weight: bold;
+  position: absolute;
+  left: -102rpx;
+  top: 20rpx;
+  width: 144rpx;
+  height: 58rpx;
+  line-height: 58rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  background: #005b6d;
+  font-size: 36rpx;
+  color: #f96400;
+}
+
+.step2::before {
+  content: 'STEP2';
+}
+
+.step3::before {
+  content: 'STEP3';
+}
+
+.step4::before {
+  content: 'STEP4';
 }

@@ -1,11 +1,67 @@
 /* pages/course/paymentSuccess/paymentSuccess.wxss */
-
+page{
+  background: #005B6D;
+}
+.conBg{
+  background: #fff;
+  border-radius: 20rpx;
+  margin: 22rpx 30rpx auto 30rpx;
+  padding: 72rpx 0 122rpx 0;
+}
 .top {
   width: 100%;
   height: 126rpx;
-  background: #d71718;
+  background: #005B6D;
 }
+/* 支付成功图标 */
 
+/* 支付失败图标 */
+.errIcon, .succIcon{
+  width: 162rpx;
+  height: 162rpx;
+  background: #B1B1B1;
+  border-radius: 100%;
+  margin: 0 auto 32rpx auto;
+  position: relative;
+}
+.succIcon{
+  background: #F96400;
+}
+.succIcon .icon{
+  display: inline-block;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 80rpx;
+  height: 36rpx;
+  margin-left: -40rpx;
+  margin-top: -15rpx;
+  border-left: 8rpx solid #fff;
+  border-bottom: 8rpx solid #fff;
+  transform: rotate(-45deg);
+}
+.errIcon .icons{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: inline-block;
+  width: 10rpx;
+  height: 80rpx;
+  background: #fff;
+  margin-top: -40rpx;
+  margin-left: -5rpx;
+  border-radius: 30rpx;
+  transform: rotate(-45deg);
+}
+.icons::before{
+  content: '';
+  width: 10rpx;
+  height: 80rpx;
+  background: #fff;
+  border-radius: 30rpx;
+  position: absolute;
+  transform: rotate(-90deg);
+}
 .head {
   width: 202rpx;
   height: 202rpx;
@@ -26,7 +82,7 @@
 .tips {
   width: 100%;
   text-align: center;
-  margin-top: 64rpx;
+  margin-top:36rpx;
 }
 
 .tips .success {
@@ -36,8 +92,8 @@
 
 .tips .des {
   font-size: 28rpx;
-  color: #d71718;
-  margin: 14rpx 0 38rpx 0;
+  color: #666666;
+  margin: 30rpx 0 38rpx 0;
 }
 
 .con .items {
@@ -62,7 +118,7 @@
 .inviting {
   height: 98rpx;
   line-height: 98rpx;
-  background: #363636;
+  background: #F96400;
   text-align: center;
   font-size: 36rpx;
   color: #fff;

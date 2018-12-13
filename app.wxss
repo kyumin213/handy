@@ -8,11 +8,21 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
 .fz-24{
   font-size: 24rpx;
 }
 .fz-28{
   font-size: 28rpx;
+}
+.fz-26{
+  font-size: 26rpx;
+}
+.fz-36{
+  font-size: 36rpx;
+}
+.fz-32{
+  font-size: 32rpx;
 }
 button::after{
   border: none;
@@ -30,10 +40,22 @@ view{
   display: none;
 }
 .fzColor{
-  color: #D71718;
+  color: #F96400;
+}
+.fzF{
+  color: #fff;
 }
 .fzCol6{
   color: #666666;
+}
+.col3{
+  color: #333;
+}
+.bgF{
+  background: #fff;
+}
+.bgC{
+  background: #F96400;
 }
 /* 选择支付方式 */
 .selectPay{
@@ -57,8 +79,8 @@ view{
   transform: rotate(-45deg);
 }
 .selectActive{
-  background: #D71718;
-  border-color: #D71718;
+  background: #F96400;
+  border-color: #F96400;
 }
 /* 为空时 */
 .isnull{
@@ -72,6 +94,148 @@ view{
 }
 .nullTxt{
   font-size: 28rpx;
-  color: #B3B3B3;
+  color: #F96400;
   margin-top: 40rpx;
+}
+/* 三角箭头 */
+.jt {
+  display: inline-block;
+  border-top: 13rpx solid transparent;
+  border-left: 22rpx solid #999999;
+  border-bottom: 13rpx solid transparent;
+  margin-left: 16rpx;
+}
+page{
+  background: #F2F2F2;
+}
+/* 使用规则 */
+.buyTxt {
+  text-align: center;
+  margin: 36rpx auto 22rpx auto;
+}
+
+.viewUse {
+  width: 210rpx;
+  /* height: 50rpx; */
+  /* background: #005b6d; */
+  /* border-radius: 26rpx; */
+  text-align: center;
+  /* line-height: 50rpx; */
+  /* margin: 0 auto 56rpx auto; */
+  margin-left: 30rpx;
+}
+.agreeItem{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 98rpx;
+}
+.checkboxBtn{
+  display: inline-block;
+  height: 32rpx;
+}
+.bgModel{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .1);
+  z-index: 1000;
+}
+.model {
+  height: 100%;
+}
+
+.use {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.close {
+  height: 120rpx;
+  line-height: 120rpx;
+  margin-left: 30rpx;
+  border-bottom: 2rpx solid #f2f2f2;
+}
+
+.closeIcon {
+  display: inline-block;
+  width: 4rpx;
+  height: 40rpx;
+  background: #333;
+  transform: rotate(45deg);
+  margin-left: 10rpx;
+}
+
+.closeIcon::before {
+  content: '';
+  width: 4rpx;
+  height: 40rpx;
+  background: #333;
+  position: absolute;
+  transform: rotate(-90deg);
+}
+
+.gzTitle {
+  height: 102rpx;
+  line-height: 102rpx;
+  font-size: 30rpx;
+  margin-left: 30rpx;
+}
+
+.gz {
+  color: #262626;
+  font-size: 36rpx;
+  margin-top: 24rpx;
+}
+.xyTitle{
+  color: #262626;
+  margin: 24rpx 30rpx 0 0;
+  line-height: 48rpx;
+  font-size: 28rpx;
+}
+.gzDes {
+  margin: 0 30rpx 0 30rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+.gzDes .desItem:last-child{
+  margin-bottom: 80rpx;
+}
+.desItem {
+  display: inline-block;
+  margin-top: 28rpx;
+  line-height: 48rpx;
+  color: #666;
+}
+/* checkBox */
+/*checkbox 选项框大小  */
+checkbox .wx-checkbox-input {
+  width: 32rpx;
+  height: 32rpx;
+  margin-top: -4rpx;
+}
+/*checkbox选中后样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #F96400;
+  border-color: #F96400;
+}
+/*checkbox选中后图标样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 28rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
 }

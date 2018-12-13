@@ -8,7 +8,7 @@ Page({
   data: {
     param: "",
     memberBalanceMoney: "0",
-    courseReleaseMoney: null,
+    courseReleaseMoney: '',
     id: null,
     phone: null,
     releaseId: null,
@@ -18,10 +18,10 @@ Page({
     level: null,
     hanPay: false,
     wxPay: true,
-    fitnessCourseName: null,
-    storeAddress: null,
+    fitnessCourseName: '',
+    storeAddress: '',
     hashTime: false,
-    time: null
+    time: ''
   },
 
   /**
@@ -173,12 +173,18 @@ Page({
             'signType': 'MD5',
             'paySign': res.data.data.paySign,
             'success': function(payres) {
+              wx.switchTab({
+                url: '../index/index',
+              })
               wx.showModal({
                 title: '支付返回',
                 content: JSON.stringify(payres),
               })
             },
             'fail': function(payres) {
+              wx.switchTab({
+                url: '../index/index',
+              })
               wx.showModal({
                 title: '支付返回',
                 content: JSON.stringify(payres),

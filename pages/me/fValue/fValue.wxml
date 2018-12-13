@@ -1,0 +1,22 @@
+<!--pages/me/fValue/fValue.wxml-->
+<view class='box'>
+  <view>
+    <view class='topP'>
+      <view class='con'>
+        <view class='tops'></view>
+      </view>
+      <view class='con'>
+        <view class='topBg'></view>
+      </view>
+    </view>
+    <view class='bott'>
+      <view class='con'>
+        <view class='center'></view>
+      </view>
+      <view class='con'>
+        <view class='cenBg'></view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='fz-36 fzF backBtn'>返回</view>

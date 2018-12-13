@@ -1,32 +1,34 @@
 <!--pages/me/payPwd/payPwd.wxml-->
 <view>
   <view class='con'>
-   <form bindsubmit='subPayPwd'>
-    <view class='pwd'>
-      <view class='pwdItem'>
-        <view class='pwdLeft'>
-          <image class='pwdIcon' mode='widthFix' src='../../../images/pay/setpwd.png'></image>
-          <input placeholder='设置密码' name="pwd" type='{{types}}'></input>
+    <form bindsubmit='subPayPwd'>
+      <view class='pwd'>
+        <view class='pwdItem'>
+          <view class='pwdLeft'>
+            <image class='pwdIcon' mode='widthFix' src='../../../images/pay/setpwd.png'></image>
+            <input placeholder='设置密码' name="pwd" type='number' password="{{ispass}}" value="{{pwd1}}" maxlength='6' bindinput='pwd1'></input>
+            <text class='fzColor' wx:if="{{pwdErr!=''}}">密码不一致</text>
+          </view>
+          <view>
+            <image bindtap='showPwd' class='pwdRight' mode='widthFix' src='../../../images/pay/showpwd.png' wx:if="{{pwd===true}}"></image>
+            <image bindtap='showPwd' class='pwdRight' mode='widthFix' src='../../../images/pay/hidepwd.png' wx:else></image>
+          </view>
         </view>
-        <view>
-          <image bindtap='showPwd' class='pwdRight' mode='widthFix' src='../../../images/pay/showpwd.png' wx:if="{{pwd===true}}"></image>
-          <image bindtap='showPwd' class='pwdRight' mode='widthFix' src='../../../images/pay/hidepwd.png' wx:else></image>
+        <view class='pwdItem'>
+          <view class='pwdLeft'>
+            <image class='pwdIcon' mode='widthFix' src='../../../images/pay/setpwd.png'></image>
+            <input placeholder='请确认密码' name="pwd" type='number'  password="{{ispass2}}" value="{{pwd2}}" maxlength='6' bindinput="pwd2"></input>
+            <text class='fzColor' wx:if="{{pwdErr}}">密码不一致</text>
+          </view>
+          <view>
+            <image bindtap='comfirPwd' class='pwdRight' mode='widthFix' src='../../../images/pay/showpwd.png' wx:if="{{hiddenPwd===true}}"></image>
+            <image bindtap='comfirPwd' class='pwdRight' mode='widthFix' src='../../../images/pay/hidepwd.png' wx:else></image>
+          </view>
         </view>
       </view>
-      <view class='pwdItem'>
-        <view class='pwdLeft'>
-          <image class='pwdIcon' mode='widthFix' src='../../../images/pay/setpwd.png'></image>
-          <input placeholder='请确认密码' name="pwd" type='{{pwdType}}'></input>
-        </view>
-        <view>
-          <image bindtap='comfirPwd' class='pwdRight' mode='widthFix' src='../../../images/pay/showpwd.png' wx:if="{{hiddenPwd===true}}"></image>
-          <image bindtap='comfirPwd' class='pwdRight' mode='widthFix' src='../../../images/pay/hidepwd.png' wx:else></image>
-        </view>
+      <view>
+        <button class='subPwd' form-type='subPwd' bindtap='subPwd' disabled="{{disabled}}">完成</button>
       </view>
-    </view>
-    <view>
-      <button class='subPwd' form-type='subPwd'>完成</button>
-    </view>
-   </form>
+    </form>
   </view>
 </view>

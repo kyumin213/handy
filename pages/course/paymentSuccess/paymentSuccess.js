@@ -42,7 +42,7 @@ Page({
     let hour = options.hour
     let tm = options.tm
     var end = options.end
-    var message = options.message
+    // var message = options.message
     var money = options.money
     if (courseName != undefined || coachName != undefined || hour != undefined || tm != undefined) {
       that.setData({
@@ -77,9 +77,9 @@ Page({
         storeMsgList: false
       })
     }
-    that.setData({
-      message: message
-    })
+    // that.setData({
+    //   message: message
+    // })
     if (success === '200') {
       that.setData({
         hashList: true

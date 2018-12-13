@@ -1,18 +1,20 @@
 <!--pages/me/myCardList/myCardList.wxml-->
 <view wx:if="{{hashList}}">
   <view class='cons'>
-    <view class='fzCol6 selectCard'>选择卡片</view>
-    <scroll-view class="scroll-view_H" scroll-x='true' style="width: 100%">
+    <view class='col3 fz-36 selectCard'>选择卡</view>
+    <scroll-view class="scroll-view_H" scroll-x='true' style="width: 100%;height:400rpx">
       <view scroll-x='true' class='wrap'>
         <view class="items" bindtap='selectCardType' data-index="{{index}}" wx:for="{{handyCardList}}" wx:key="{{index}}">
           <view class='imgItem' id="cardImgBox">
             <image class="cardType {{check===index?'borderCol':''}}" src="{{item.handyCardImgurl}}"></image>
-            <text class='select' wx:if="{{check===index}}"></text>
+            <!-- <text class='select' wx:if="{{check===index}}"></text> -->
+            <view class='cardBom'>
+              <text class='fzF nameTxt'>{{item.handyCardName}}</text>
+              <!-- <text class='fz-28 fzCol6'>{{item.endtime}}</text> -->
+              <text class='fzF useTxt' bindtap='chooseSezi'>(使用规则)</text>
+            </view>
           </view>
-          <view class='cardBom'>
-            <text class='fz-28 fzCol6'>{{item.handyCardName}}</text>
-            <text class='fz-28 fzCol6'>{{item.endtime}}</text>
-          </view>
+
         </view>
       </view>
     </scroll-view>
@@ -24,41 +26,80 @@
       </block>
     </swiper> -->
   </view>
-  <view class='fzCol6 selectTime'>选择时间</view>
+  <view class='col3 fz-36 selectTime'>选择时间</view>
   <view class='con' wx:if="{{hashList===true}}">
     <block wx:for="{{handyCardList}}" wx:key="{{index}}">
       <view class='cardBox' bindtap='selectCard' data-index="{{index}}" wx:if="{{check===index}}">
-        <view class="cardList {{check===index?'bor':''}}">
+        <view class="cardList">
           <view class='cardItems'>
-            <view>
-              <view class="item1 {{check===index?'': 'color'}}">汗的{{item.handyCardName}}</view>
-              <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===1}}">有效期{{item.handyCardTimeType}}个月</view>
-              <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===2}}">有效期3个月</view>
-              <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===3}}">有效期6个月</view>
-              <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===4}}">有效期1年</view>
-              <view class='fz-24 item2' wx:if="{{item.handyCardTimeType===5}}">有效期1天</view>
+            <view class='itemLeft'>
+              <view class="fzF item1">{{item.handyCardName}}</view>
+              <view class='fz-24 fzF item2' wx:if="{{item.handyCardTimeType===1}}">有效期{{item.handyCardTimeType}}个月</view>
+              <view class='fzF fz-24 item2' wx:if="{{item.handyCardTimeType===2}}">有效期3个月</view>
+              <view class='fzF fz-24 item2' wx:if="{{item.handyCardTimeType===3}}">有效期6个月</view>
+              <view class='fzF fz-24 item2' wx:if="{{item.handyCardTimeType===4}}">有效期1年</view>
+              <view class='fzF fz-24 item2' wx:if="{{item.handyCardTimeType===5}}">有效期1天</view>
+              <view class='fzF fz-24 item2' wx:if="{{item.handyCardTimeType===6}}">有效期1年</view>
             </view>
-            <view class='itemRight'>
-              <view class="item1 {{select===index?'':'color'}}">
-                <text class="fh {{select===index?'':'color'}}">￥</text>{{item.handyCardMoney}}</view>
-              <view class="fz-24 item3 {{select===index? '': 'activeBtn'}}">{{item.handyCardName}}</view>
+            <view class="itemRight {{select===index?'active': ''}}">
+              <view class="item1">
+                <text>￥</text>{{item.handyCardMoney}}</view>
+              <view class="fz-24 item3">{{item.handyCardName}}</view>
             </view>
           </view>
-          <view class="leftBy {{select===index?'active': ''}}"></view>
-          <view class="rightBy {{select===index?'active': ''}}"></view>
+          <view class="leftBy"></view>
+          <view class="rightBy {{select===index?'rightActive': ''}}"></view>
         </view>
       </view>
     </block>
   </view>
-  <view class='footer'>
+  <view class='footer' wx:if="{{disable}}">
     <view class='left'>
-      <!-- <text class='fz-24'>充值金额</text> -->
+      <text class='fz-24 moneyTxt'>金额</text>
       <text class='totalMoney'>￥{{totalMoney}}</text>
+      <view class='sj'></view>
     </view>
-    <button class="right" disabled='{{disable}}' bindtap='subPayment'>确认支付</button>
+    <view class='right'>
+      <button class="subBtn" bindtap='subPayment'>确认支付</button>
+      <text class="sjr"></text>
+    </view>
   </view>
 </view>
 <view class='isnull' wx:else>
   <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
   <view class='nullTxt'>暂无会员卡信息</view>
+</view>
+<view class='bgModel' wx:if="{{chooseSize}}" bindtap='hideModal'>
+  <view class="model" wx:if="{{chooseSize}}" animation="{{animationData}}">
+    <scroll-view scroll-y='true' style="width: 100%;height:550px" class='use'>
+      <view>
+        <view class='close' bindtap='hideModal'>
+          <text class='closeIcon'></text>
+        </view>
+        <!-- <view class='gzTitle'>适用时间：购买当日起有效期一年</view> -->
+      
+        <view class='gzDes'>
+          <view class='fw gz'>会员使用守则</view>
+          <text class='desItem'>1．您在本会所内应当举止文明，言语规范，并保管好您的随身物品。</text>
+          <text class='desItem'>2．若您患有任何不适应本会所活动的疾病，在入会前须向本会所说明并申报以往病史。</text>
+          <text class='desItem'>3．请勿携带任何含酒精的饮料进入本会所，本会所亦不接待饮酒后人士。</text>
+          <text class='desItem'>4．您在健身时须穿着相应的运动装，不得穿着牛仔裤、拖鞋、皮鞋等，不可佩戴影响正常运动的饰品。</text>
+          <text class='desItem'>5．请您在使用储物柜时遵照公共更衣柜或储物柜的使用规定。</text>
+          <text class='desItem'>6．您在使用配有安全带的器械时，应当系好安全带。</text>
+          <text class='desItem'>7．请您在使用健身器具后，将器具放回原位，须爱护、爱惜场内设施、设备。</text>
+          <text class='desItem'>8．您在离开会所时，请携带好您的随身物品，前往前台办妥离场手续后离开。</text>
+          <text class='desItem'>9．请您或其陪同来宾均不要擅自挪用本会所范围内的任何财物。</text>
+          <text class='desItem'>10．若您对本会所包括健身器械在内的任何财物造成破坏时，须按价做出赔偿。</text>
+          <text class='desItem'>11．您不可在本会所内进行任何未经许可的付费活动。</text>
+          <text class='desItem'>12．您不可以任何形式在本会所从事与经营服务有冲突的盈利与非盈利行为。</text>
+          <text class='desItem'>13．您不可在本会所内有任何破坏本会所良好形象的言行。</text>
+          <text class='desItem'>14．您不可在本会所内进行任何违规、违法活动。</text>
+          <text class='desItem'>15．您须对您在本会所内的一切个人或集体行为负责。</text>
+          <text class='desItem'>16．若您所属同行教练不得在本会所内向其他会员提供健身咨询、健身器械使用等指导方面的服务。</text>
+          <text class='desItem'>17．会所营业时间以商场时间为准，特殊原因将发出公总号及通知，请关注公总号及公告栏。</text>
+          <text class='desItem'>18．未成年人禁止独立进入场内进行运动。</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
 </view>

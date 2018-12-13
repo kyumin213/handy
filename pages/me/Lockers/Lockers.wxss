@@ -1,0 +1,148 @@
+/* pages/me/Lockers/Lockers.wxss */
+
+/* @import  '../useCoupon/useCoupon.wxss'; */
+
+page {
+  background: #f2f2f2;
+}
+
+.tabSelect {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 126rpx;
+  height: 90rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+.lockerList{
+  margin-top: 12rpx;
+}
+.tabSelect .CabinetType {
+  position: relative;
+  height: 90rpx;
+  line-height: 90rpx;
+  box-sizing: border-box;
+  color: #474747;
+}
+
+.tabSelect .useTxt {
+  height: 100%;
+  line-height: 90rpx;
+  padding: 0 38rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+}
+
+.tabSelect .active {
+  border-bottom: 6rpx solid #f96400;
+}
+
+/* 添加柜子 */
+
+.lockerAdd {
+  width: 696rpx;
+  height: 210rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16rpx auto;
+}
+
+.addLeft {
+  margin-left: 32rpx;
+  height: 100%;
+}
+
+.addTemp {
+  width: 222rpx;
+  height: 54rpx;
+  border-radius: 28rpx;
+  background: #f96400;
+  text-align: center;
+  line-height: 54rpx;
+  margin: 32rpx 0 50rpx 0;
+}
+
+.lockerAdd .notHir {
+  margin-left: 14rpx;
+}
+
+.lockerAdd .addIcon {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 100%;
+  border: 6rpx solid #005b6d;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.addRight {
+  margin-right: 54rpx;
+}
+
+.lockerAdd .addIcon .hen {
+  width: 64rpx;
+  height: 10rpx;
+  background: #005b6d;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -32rpx;
+  margin-top: -4rpx;
+}
+
+.lockerAdd .addIcon .hen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 64rpx;
+  height: 10rpx;
+  background: #005b6d;
+  transform: rotate(-90deg);
+}
+
+/* 临时柜列表 */
+
+.lockerItem {
+  width: 696rpx;
+  height: 210rpx;
+  border-radius: 20rpx;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.lockerItem .lockerImg{
+  width: 130rpx;
+  height: 130rpx;
+}
+.lockerItem .addTemp{
+  background: #fff;
+  margin-bottom: 22rpx;
+}
+.lockerItem .lockerName{
+  margin-right: 46rpx;
+}
+.lockerItem .useTime{
+  margin-top: 20rpx;
+}
+/* 密码设置 */
+.setPwd{
+  width: 690rpx;
+  height: 102rpx;
+  line-height: 102rpx;
+  text-align: center;
+  border-radius: 14rpx;
+  position: fixed;
+  bottom: 38rpx;
+  left: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24rpx 0 40rpx;
+  box-sizing: border-box;
+}

@@ -41,41 +41,12 @@ Page({
     })
 
   },
-  // 自动刷新
-  // refresh: function () {
-  //   let that = this
-  //   let newData = new Date()
-  //   let y = newData.getFullYear()
-  //   let month = newData.getMonth()
-  //   let d = newData.getDate()
-  //   let h = newData.getHours()
-  //   let m = newData.getMinutes()
-  //   let s = newData.getSeconds()
-  //   if (month < 10) {
-  //     month = '0' + month
-  //   }
-  //   if (d < 10) {
-  //     d = '0' + d
-  //   }
-  //   if (h < 10) {
-  //     h = '0' + h
-  //   }
-  //   if (m < 10) {
-  //     m = '0' + m
-  //   }
-  //   if (s < 10) {
-  //     s = '0' + s
-  //   }
-  //   let times = y + '-' + month + '-' + d + ' ' + h + ':' + m + ':' + s
-  //   let id = that.data.id
-  //   let courseCode = that.data.courseCode
-  //   let datas = {
-  //     id: id,
-  //     nowDate: times
-  //   }
-  //   let txt = JSON.stringify(datas)
-  //   qrcode.makeCode(txt)
-  // },
+// 购课
+  toBuyCourse:function(){
+    wx.switchTab({
+      url: '../../course/course'
+    })
+  },
   onShow: function () {
     let that = this
     var txt = that.data.text

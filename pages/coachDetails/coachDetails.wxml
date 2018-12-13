@@ -8,19 +8,15 @@
       <view class="Tabs {{menuFixed ? 'fixed': ''}}">
         <view class="{{currentTab=='1'? 'active':''}} items" id="1" bindtap='coachjj' data-current="1">
           <text>教练简介</text>
-          <!-- <text class="{{currentTab=='1'?'':'hidden'}} borBom"></text> -->
         </view>
-        <view class="{{currentTab=='2'? 'active':''}} items" id="2" bindtap='goodsCourse' data-current="2">
+        <!-- <view class="{{currentTab=='2'? 'active':''}} items" id="2" bindtap='goodsCourse' data-current="2">
           <text>擅长课程</text>
-          <!-- <text class="{{currentTab=='2'?'':'hidden'}} borBom"></text> -->
         </view>
         <view wx:if="{{hashZS}}" class="{{currentTab=='3'? 'active':''}} items" id="3" bindtap='renz' data-current="3">
           <text>认证证书</text>
-          <!-- <text class="{{currentTab=='3'?'':'hidden'}} borBom"></text> -->
-        </view>
-        <view class="{{currentTab=='4'? 'active':''}} items" wx:if="{{coachType!=2}}" id="4" bindtap='ReleaseCourse' data-current="4">
+        </view> -->
+        <view class="{{currentTab=='2'? 'active':''}} items" wx:if="{{coachType!=2}}" id="2" bindtap='ReleaseCourse' data-current="2">
           <text>近期排课</text>
-          <!-- <text class="{{currentTab=='4'?'':'hidden'}} borBom"></text> -->
         </view>
       </view>
     </view>
@@ -34,19 +30,26 @@
               <view class='coachName'>{{coachData.storeCoachName}}</view>
             </view>
             <view class='profile'>
-              <!-- {{coachData.storeCoachSynopsis}} -->
-              {{jian}}
+              {{coachData.storeCoachSynopsis}}
+              <!-- <text>{{jian}}</text> -->
+              <block wx:for="{{conText.goodCourse}}" wx:key="{{index}}" wx:if="{{!more}}">
+                <text class='coachGoods'>
+                  <text class='courseGood'>{{item.goods}}、</text>
+                </text>
+              </block>
+              <block wx:for="{{conText.certificateList}}" wx:key="{{index}}">
+                <text class='certificateList'>
+                  <text class='certificateItem'>{{item.text}}</text>
+                </text>
+              </block>
             </view>
           </view>
           <view class="{{more?'show':'hidden'}} more" bindtap='moreView'>
-            <text class='jt'></text>
+            <text class='moreView'></text>
           </view>
         </view>
-        <view class="item2" id='items2' data-current="2">
+        <!-- <view class="item2" id='items2' data-current="2">
           <view class='bgF item2Top'>
-            <!-- <view class='titleBg'>
-              <image mode='widthFix' class='logoICon' src='../../images/course/login.png'></image>
-            </view> -->
             <view class='goodTitle'>
               <view class='fw titles'>
                 <text>擅</text>
@@ -54,43 +57,12 @@
                 <text>课</text>
                 <text>程</text>
               </view>
-              <!-- <view class='fw enDetail'>GOOD AT COURSE</view> -->
             </view>
-            <!-- <view class='fw coachGood'>
-              <text class='goodsAt'>{{coachData.storeCoachName}}教练擅长</text>
-            </view> -->
             <view class='goodDes'>
-              <!-- {{conText.goodCourse}} -->
               <view wx:for="{{conText.goodCourse}}" wx:key="{{index}}">
                 <view class='courseGood'>{{item.goods}}</view>
               </view>
             </view>
-            <!-- <view wx:if="{{!more2}}">
-        <view class='imgList'>
-          <image mode='widthFix' class='imgItem'></image>
-          <image mode='widthFix' class='imgItem'></image>
-          <image mode='widthFix' class='imgItem'></image>
-        </view>
-        <view class='imgList'>
-          <image mode='widthFix' class='imgItem'></image>
-          <image mode='widthFix' class='imgItem'></image>
-          <image mode='widthFix' class='imgItem'></image>
-        </view>
-      </view> -->
-          </view>
-          <view class="{{more2?'show':'hidden'}} more" bindtap='moreGood'>
-            <text class='jt'></text>
-          </view>
-        </view>
-        <view class="item3" id='items3' data-current="3" wx:if="{{hashZS}}">
-          <view class='goodTitle'>
-            <view class='fw titles'>
-              <text>认</text>
-              <text>证</text>
-              <text>证</text>
-              <text>书</text>
-            </view>
-            <!-- <view class='fw enDetail'>AUTHENTICATION CERTIFICATE</view> -->
           </view>
           <view class='certifiList'>
             <block wx:for="{{conText.certificateList}}" wx:key="{{index}}">
@@ -102,34 +74,31 @@
               </view>
             </block>
           </view>
-          <!-- <view class='certificateList'>
-      <image mode='widthFix' class='certificateIcon'></image>
-      <view class='certificateItem'>中国健美协会国家级私人教练</view>
-    </view> -->
-        </view>
+        </view> -->
         <view class="item4" id='items4' data-current="4" wx:if="{{coachType!=2}}">
-          <!-- <view class='titleBg'>
-            <image mode='widthFix' class='logoICon' src='../../images/course/login.png'></image>
-          </view> -->
           <view class='goodTitle'>
-            <view class='fw titles'>
-              <text>近</text>
-              <text>期</text>
-              <text>排</text>
-              <text>课</text>
+            <view class='titles'>
+              <view class='txtNum'>02</view>
+              <view class='txtName'>教练排课</view>
             </view>
-            <!-- <view class='fw enDetail'>THE RECENT CURRICULUM ARRANGEMENT</view> -->
           </view>
           <view class='dates'>
             <view class='showWeek'>
               <view class='weekDays'>
                 <block wx:for="{{week}}" wx:key="{{index}}">
-                  <text class='weekDay' data-index="{{index}}">{{item}}</text>
+                  <!-- <text class='weekDay' data-index="{{index}}">{{item}}</text> -->
+                  <view class='weekDay' data-index="{{index}}">
+                    <text class="weeks {{check==index?'fzF':''}}">{{item}}</text>
+                  </view>
                 </block>
               </view>
               <view class='dayDatas'>
                 <block wx:for="{{dates}}" wx:key="{{index}}">
-                  <text class="{{check==index?'active':''}} dayData" data-index="{{index}}" bindtap='courseTime'>{{item}}</text>
+                  <!-- <text class="{{check==index?'active':''}} dayData" data-index="{{index}}" bindtap='courseTime'>{{item}}</text> -->
+                  <view class="dayData" data-index="{{index}}" bindtap='courseTime'>
+                    <text class="days {{check==index?'fzF':''}}">{{item}}</text>
+                    <text class='active' wx:if="{{check==index}}"></text>
+                  </view>
                 </block>
               </view>
             </view>
@@ -137,7 +106,7 @@
           <view wx:if="{{hashList}}">
             <view class='curriculumItem' wx:for="{{courseList}}" wx:key="{{index}}" data-index="{{index}}">
               <view class='curriLeft' bindtap='courseDetails' data-id="{{item.courseReleasePkcode}}" data-price="{{item.courseReleaseMoney}}" data-names="{{item.fitnessCourseName}}" data-start="{{item.coursePlanBegtime}}" data-end="{{item.coursePlanEndtime}}" data-url="{{item.storeCoachHeadimg}}"
-                data-status="{{item.isbook}}" data-store="{{item.storeName}}">
+                data-status="{{item.isbook}}" data-store="{{item.storeName}}" data-address="{{item.storeAddress}}">
                 <view class='headImgBox'>
                   <image class='curriculumImg' src="{{item.storeCoachHeadimg}}"></image>
                 </view>
@@ -148,16 +117,16 @@
                   </view>
                   <view class='prices'>
                     <text class='price'>￥{{item.courseReleaseMoney}}</text>
-                    <text class='hanPrice'>汗卡价￥{{item.courseReleaseMoney}}</text>
+                    <text class='hanPrice'>沸沸价￥{{item.courseReleaseMoney}}</text>
                   </view>
                 </view>
               </view>
 
               <view class='startTime'>
                 <view class='fw times' bindtap='courseDetails' data-id="{{item.courseReleasePkcode}}" data-price="{{item.courseReleaseMoney}}" data-names="{{item.fitnessCourseName}}" data-start="{{item.coursePlanBegtime}}" data-end="{{item.coursePlanEndtime}}" data-url="{{item.storeCoachHeadimg}}"
-                  data-status="{{item.isbook}}" data-store="{{item.storeName}}">{{item.coursePlanBegtime}}-{{item.coursePlanEndtime}}</view>
+                  data-status="{{item.isbook}}" data-store="{{item.storeName}}" data-address="{{item.storeAddress}}">{{item.coursePlanBegtime}}-{{item.coursePlanEndtime}}</view>
                 <view class='appointment' wx:if="{{item.isbook==1}}" data-index="{{index}}" bindtap='yue' id='{{item.courseReleasePkcode}}' data-store="{{item.storeName}}" data-names="{{item.fitnessCourseName}}" data-start="{{item.coursePlanBegtime}}" data-end="{{item.coursePlanEndtime}}"
-                  data-price="{{item.courseReleaseMoney}}">预约</view>
+                  data-price="{{item.courseReleaseMoney}}" data-address="{{item.storeAddress}}">预约</view>
                 <view class='appointment endBtn' wx:if="{{item.isbook==0}}" data-index="{{index}}">结束</view>
               </view>
             </view>

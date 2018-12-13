@@ -5,44 +5,30 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #D71718;
+  background: #005B6D;
 }
 .con{
-  width: 90%;
-  height: 700rpx;
+  height: 758rpx;
   background: #fff;
   border-radius: 20rpx;
-  margin: 100rpx auto 0 auto;
+  margin: 28rpx 54rpx 0 54rpx;
   box-sizing: border-box;
+  padding-top: 100rpx;
+}
+.txt{
+  font-size: 30rpx;
 }
 .resh{
-  margin-top: 50rpx;
-  text-align: center;
-  color: #999;
-}
-/* .input-wrapper {
-    margin: 40rpx auto 0 auto;
-    width: 600rpx;
-    height: 88rpx;
-    border: 2rpx solid #ddd;
-    border-radius: 16rpx;
-    padding-left: 10rpx;
-    padding-right: 10rpx;
+  margin-top: 24rpx;
 }
 
-.input-wrapper input {
-    font-size: 32rpx;
-    line-height: 88rpx;
-    height: 100%;
-}
-*/
 .button-wrapper {
   text-align: center;
-  padding-top: 100rpx;
+  padding-top: 86rpx;
 } 
 
 .canvas {
-    margin: 70rpx auto 0 auto;
+    margin: 0 auto;
     width: 180px;
     height: 180px;
     /* border: 1px solid black; */

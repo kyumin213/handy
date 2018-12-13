@@ -17,7 +17,10 @@
         <view class='fw names' wx:if="{{item.product===12}}">微信支付进出场费用 </view>
         <view class='fw names' wx:if="{{item.product===13}}">微信支付储物柜费用 </view>
         <view class='fw names' wx:if="{{item.product===14}}">微信支付场内商品 </view>
-        <view class='fw names' wx:if="{{item.product===16}}">微信支付购买汗滴卡</view>
+        <view class='fw names' wx:if="{{item.product===16}}">购买会员卡</view>
+        <view class='fw names' wx:if="{{item.product===17}}">购买权益卡</view>
+        <view class='fw names' wx:if="{{item.product===18}}">购买团课卡</view>
+        <view class='fw names' wx:if="{{item.product===19}}">购买私教卡</view>
         <view class='fzCol6 times'>{{item.ctime}}</view>
       </view>
       <view>

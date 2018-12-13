@@ -6,7 +6,8 @@
       <open-data type="userAvatarUrl" class="userinfo-avater" mode="cover"></open-data>
       <!-- <image class='userHead' mode='widthFix' src="{{userInfo.avatarUrl}}"></image> -->
     </view>
-    <view class='headTxt'>欢迎<open-data type="userNickName" lang="zh_CN"></open-data>来到汗的健身</view>
+    <view class='headTxt'>欢迎
+      <open-data type="userNickName" lang="zh_CN"></open-data>来到沸沸运动</view>
   </view>
   <view>
     <view>
@@ -17,7 +18,99 @@
       </view>
     </view>
   </view>
+  <view class='agreeItem'>
+    <view>
+      <checkbox-group bindchange="checkboxChange">
+        <label class="fz-28 checkboxBtn">
+          <checkbox class='checkBox' value="{{item.name}}" checked="{{checked}}" />我已阅读并同意
+        </label>
+      </checkbox-group>
+    </view>
+    <view class='fz-28 fzColor viewUse' bindtap='chooseSezi'>(查看用户协议)</view>
+  </view>
   <view>
-    <button class='subLogin' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信授权登录</button>
+    <button class='subLogin' disabled="{{disable}}" open-type='getPhoneNumber' bindgetphonenumber='getPhone' wx:if="{{shareBtn}}">微信授权登录</button>
+    <button class='subLogin' disabled="{{disable}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:else>微信授权登录</button>
+
+  </view>
+</view>
+<view class='bgModel' wx:if="{{chooseSize}}" bindtap='hideModal'>
+  <view class="model" animation="{{animationData}}">
+    <scroll-view scroll-y='true' style="width: 100%;height:500px" class='use'>
+      <view>
+        <view class='close' bindtap='hideModal'>
+          <text class='closeIcon'></text>
+        </view>
+        <!-- <view class='gzTitle'>适用时间：购买当日起有效期一年</view> -->
+        <view class='fw gz'>FEFEE运动用户协议</view>
+        <view class='fw xyTitle'>本协议为您与FEFEE运动平台管理者之间所订立的契约，具有合同的法律效力，请您仔细阅读。</view>
+        <view class='fw xyTitle'>授权须知:</view>
+        <view class='fw xyTitle'>为方便您在沸沸运动小程序上购买会员卡、参加各类运动服务，您在此确认并同意，您将使用沸沸运动小程序注册的用户名及密码登录本小程序并享受全部服务,因此请您妥善保管用户名和密码。</view>
+        <view class='fw gz'>一、本协议内容、 生效、变更</view>
+        <view class='gzDes'>
+          <text class='desItem'>1、本协议内容包括协议正文及所有FEFEE运动已经发布的或将来可能发布的各类规则。所有规则为本协议不可分割的组成部分，与协议正文具有同等法律效力。除另行明确声明外，任何FEFEE运动及其关联公司提供的服务(以下称为FEFEE运动平台服务)均受本协议约束。</text>
+          <text class='desItem'>2、您应当在使用FEFEE运动平台服务之前认真阅读全部协议内容。如您对协议有任何疑问，应向FEFEE运动咨询。您在同意所有协议条款并完成注册程序，才能成为本站的正式用户，您点击”我已经阅读并同意遵守《FEFEE运动用户服务协议》”按钮后，本协议即生效，对双方产生约束力。</text>
+          <text class='desItem'>3、只要您使用FEFEE运动平台服务，则本协议即对您产生约束,届时您不应以未阅读本协议的内容或者未获得FEFEE运动对您问询的解答等理由，主张本协议无效，或要求撤销本协议。</text>
+          <text class='desItem'>4、您确认:本协议条款是处理双方权利义务的契约，始终有效，法律另有强制性规定或双方另有特别约定的，依其规定。</text>
+          <text class='desItem'>5、您承诺接受并遵守本协议的约定。如果您不同意本协议的约定，您应立即停止注册程序或停止使用FEFEE运动平台服务。</text>
+          <text class='desItem'>6、FEFEE运动有权根据需要不定期地制订、修改本协议及/或各类规则，并在FEFEE运动平台公示，不再另行单独通知用户。变更后的协议和规则一经在网站公布，立即生效。</text>
+          <text class='desItem'>7、如您不同意相关变更，应当立即停止使用FEFEE运动平台服务。您继续使用FEFEE运动平台服务的，即表明您接受修订后的协议和规则。</text>
+          <view class='fw gz'>二、注册</view>
+          <view class='gz'>1、注册资格:</view>
+          <text class='desItem'>1、用户须具有法定的相应权利能力和行为能力的自然人、法人或其他组织，能够独立承担法律责任。您完成注册程序或其他FEFEE运动平台同意的方式实际使用本平台服务时，即视为您确认自己具备主体资格，能够独立承担法律责任。若因您不具备主体资格，而导致的一切后果，由您及您的监护人自行承担</text>
+          <view class='gz'>2、注册资料</view>
+          <text class='desItem'>1、用户应自行诚信向本站提供注册资料,用户同意其提供的注册资料真实、准确、完整、合法有效，用户注册资料如有变动的，应及时更新其注册资料。如果用户提供的注册资料不合法、不真实、不准确、不详尽的，用户需承担因此弓起的相应责任及后果，并且FEFEE运动保留终止用户使用本平台各项服务的权利。</text>
+          <text class='desItem'>2、用户在本站进行浏览、下单购物等活动时，涉及用户真实姓名/名称、通信地址、联系电话、电子邮箱等隐私信息的，本站将予以严格保密，除非得到用户的授权或法律另有规定,本站不会向外界披露用户隐私信息。</text>
+          <view class='gz'>3、账户</view>
+          <text class='desItem'>1、您注册成功后,即成为FEFEE运动平台的会员，将持有FEFEE运动平台唯一编号的会员名和密码等账户信息，您可以根据本站规定改变您的密码。 </text>
+          <text class='desItem'>2、您设置的会员名不得侵犯或涉嫌侵犯他人合法权益。否则,FEFEE运动有权终止向您提供FEFEE运动平台服务，注销您的账户。账户注销后，相应的会员名将开放给任意用户注册登记使用。</text>
+          <text class='desItem'>3、您应谨慎合理的保存、使用您的会员名和密码,应对通过您的会员名和密码实施的行为负责。除非有法律规定或司法裁定，且征得FEFEE运动的同意，否则，会员名和密码不得以任何方式转让、赠与或继承(与账户相关的财产权益除外)。 </text>
+          <text class='desItem'>4、用户不得将在本站注册获得的账户借给他人使用,否则用户应承担由此产生的全部责任，并与实际使用人承担连带责任。</text>
+          <text class='desItem'>5、如果发现任何非法使用等可能危及您的账户安全的情形时，您应当立即以有效方式通知FEFEE运动，要求FEFEE运动暂停相关服务，并向公安机关报案。您理解FEFEE运动对您的请求采取行动需要合理时间，FEFEE运动对在采取行动前已经产生的后果(包括但不限于您的任何损失)不承担任何责任。 </text>
+          <text class='desItem'>6、为方便您使用FEFEE运动平台服务及FEFEE运动关联公司或其他组织的服务(以下称其他服务)，您同意并授权FEFEE运动将您在注册、使用FEFEE运动平台服务过程中提供、形成的信息传递给向您提供其他服务的FEFEE运动关联公司或其他组织，或从提供其他服务的FEFEE运动关联公司或其他组织获取您在注册、使用其他服务期间提供、形成的信息。</text>
+          <view class='gz'>4、用户信息的合理使用</view>
+          <text class='desItem'>1、您同意，FEFEE运动平台拥有通过邮件、短信电话等形式,向在本站注册、购物用户、收货人发送订单信息、促销活动等告知信息的权利。</text>
+          <text class='desItem'>2、您了解并同意，FEFEE运动有权应国家司法、行政等主管部]的要求，向其提供您在FEFEE运动平台填写的注册信息和交易记录等必要信息。如您涉嫌侵犯他人知识产权,则FEFEE运动亦有权在初步判断涉嫌侵权行为存在的情况下，向权利人提供您必要的身份信息。</text>
+          <text class='desItem'>3、用户同意,FEFEE运动有权使用用户的注册信息、用户名、密码等信息，登陆进入用户的注册账户，进行证据保全，包括但不限于公证、见证等。</text>
+          <view class='fw gz'>三、FEFEE运动平台服务规范</view>
+          <view class='fw xyTitle'>通过FEFEE运动平台您可以享受FEFEE运动及其关联公司提供的FEFEE运动平台服务和其它服务，在使用上述服务过程中，您同意严格遵守以下义务:</view>
+          <text class='desItem'>1、不得传输或发表损害国家、社会公共利益和涉及国家安全的信息资料或言论。</text>
+          <text class='desItem'>2、不利用本站从事窃取商业秘密、窃取个人信息等违法犯罪活动。</text>
+          <text class='desItem'>3、不发布任何侵犯他人著作权、商标权等知识产权或合法权利的内容。</text>
+          <text class='desItem'>4、不对FEFEE运动平台.上的任何数据作商业性利用,包括但不限于在未经FEFEE运动事先书面同意的情况下，以复制、传播等任何方式使用FEFEE运动平台上展示的资料。不使用任何装置、软件或程序干预FEFEE运动平台的正常运营。</text>
+          <text class='desItem'>5、本站保有删除站内各类不符合法律政策或不真实的信息内容而无须通知用户的权利。</text>
+          <text class='desItem'>6、您同意，若您未遵守以上规定的，本站有权作出独立判断并采取暂停或关闭用户帐号、订单等措施。</text>
+          <text class='desItem'>7、经国家行政或司法机关的生效法律文书确认您存在违法或侵权行为,或者FEFEE运动根据自身的判断，认为您的行为涉嫌违反本协议和/或规则的条款或涉嫌违反法律法规的规定的，则FEFEE运动有权在本平台上公示您的该等涉嫌违法或违约行为及FEFEE运动已对您采取的措施。</text>
+          <text class='desItem'>8、对于您在FEFEE运动平台上发布的涉嫌违法或涉嫌侵犯他人合法权利或违反本协议和/或规则的信息,FEFEE运动有权不经通知您即予以删除,且按照规则的规定进行处罚。</text>
+          <text class='desItem'>9、对于您在FEFEE运动平台.上实施的行为，包括您未在FEFEE运动平台上实施但已经对FEFEE运动平台及其用户产生影响的行为，FEFEE运动有权单方认定您行为的性质及是否沟成对本协议和/或规则的违反，并采取暂停或关闭用户帐号及其他措施。</text>
+          <text class='desItem'>10、对于您涉嫌违反承诺的行为对任意第三方造成损害的,您均应当以自己的名义独立承担所有的法律责任，并应确保FEFEE运动免于因此产生损失或增加费用。</text>
+          <text class='desItem'>11、如您涉嫌违反有关法律或者本协议之规定,使FEFEE运动遭受任何损失,或受到任何第三方的索赔，或受到任何行政管理部]的处罚，您应当赔偿FEFEE运动因此造成的损失及(或)发生的费用，包括合理的律师费用。</text>
+          <view class='fw gz'>四、责任范围和责任限制</view>
+          <text class='desItem'>1、本平台作为您进行了解、咨询、协商、交易的场所，提示您:应谨慎判断确定相关物品及/或信息的真实性、合法性和有效性。除非另有明确的书面说明，本平台不对各用户在本平台.上发布的信息、内容、材料、产品和服务及各方在交易中各项义务的履行能力作任何形式的担保，法律法规另有规定的除外。</text>
+          <text class='desItem'>2、FEFEE运动在接到您投诉、主管机关通知或按照法律法规规定,有合理的理由认为特定会员及具体交易事项可能存在重大违法或违约情形时,FEFEE运动可依约定或依法采取相应措施。</text>
+          <text class='desItem'>3、您了解并同意，FEFEE运动不对因下述任一情况而导致您的任何损害承担赔偿责任，包括但不限于利润、商誉、使用、数据等方面的损失或其它无形损失的损害赔偿。</text>
+          <text class='desItem'>4、第三方未经批准的使用您的账户或更改您的数据。</text>
+          <text class='desItem'>5、您对FEFEE运动平台服务的误解。</text>
+          <text class='desItem'>6、任何非因FEFEE运动的原因而引|起的与FEFEE运动平台服务有关的其它损失。</text>
+          <view class='fw xyTitle'>由于法律规定的不可抗力，信息网络正常的设备维护，信息网络连接故障,电脑、通讯或其他系统的故障，电力故障，劳动争议，生产力或生产资料不足，司法行政机关的命令或第三方的不作为及其他本平台无法控制的原因造成的本平台不能服务或延迟服务、丢失数据信息、记录的，FEFEE运动不承担责任,但FEFEE运动将协助处理相关事宜。</view>
+          <view class='fw gz'>五、协议终止</view>
+          <view class='fw xyTitle'>您同意，FEFEE运动有权自行全权决定以任何理由不经事先通知的中止、终止向您提供部分或全部FEFEE运动平台服务，暂时冻结或永久冻结(注销)您的账户，且无须为此向您或任何第三方承担任何责任。</view>
+          <view class='fw xyTitle'>出现以下情况时，FEFEE运动有权直接以注销账户的方式终止本协议:</view>
+          <text class='desItem'>1、FEFEE运动终止向您提供服务后，您涉嫌再一次百接或间接或以他人名义注册为FEFEE运动用户的。</text>
+          <text class='desItem'>2、您注册信息中的主要内容不真实或不准确或不及时或不完整。</text>
+          <text class='desItem'>3、本协议(含规则)变更时，您明示并通知FEFEE运动不愿接受新的服务协议的。</text>
+          <text class='desItem'>4、其它FEFEE运动认为应当终止服务的情况。</text>
+          <view class='fw xyTitle'>您有权向FEFEE运动要求注销您的账户，经FEFEE运动审核同意的，FEFEE运动注销(永久冻结)您的账户,届时，您与FEFEE运动基于本协议的合同关系即终止。您的账户被注销(永久冻结)后，FEFEE运动没有义务为您保留或向您披露您账户中的任何信息，也没有义务向您或第三方转发任何您未曾阅读或发送过的信息。</view>
+          <view class='fw xyTitle'>您同意，您与FEFEE运动的合同关系终止后，FEFEE运动仍享有下列权利:</view>
+          <text class='desItem'>1、继续保存您的注册信息及您使用FEFEE运动平台服务期间的所有交易信息。</text>
+          <text class='desItem'>2、您在使用FEFEE运动平台服务期间存在违法行为或违反本协议和/或规则的行为的，FEFEE运动仍可依据本协议向您主张权利。</text>
+          <view class='fw gz'>六、法律适用、管辖与其他</view>
+          <text class='desItem'>本协议包含了您使用FEFEE运动平台需遵守的一般性规范,您在使用某个FEFEE运动平台时还需遵守适用于该平台的特殊性规范。一般性规范如与特殊性规范不一致或有冲突，则特殊性规范具有优先效力。
+本协议的订立、执行和解释及争议的解决均应适用在中华人民共和国大陆地区适用之有效法律(但不包括其冲突法规则)。如发生本协议 与适用之法律相抵触时，则这些条款将完全按法律规定重新解释，而其它有效条款继续有效。
+因本协议履行过程中，因您使用FEFEE运动网服务产生争议应由FEFEE运动与您沟通并协商处理。协商不成时,双方均同意以FEFEE运动平台管理者住所地人民法院为管辖法院。
+</text>
+        </view>
+      </view>
+    </scroll-view>
   </view>
 </view>

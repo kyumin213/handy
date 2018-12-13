@@ -1,0 +1,83 @@
+/* pages/me/SelectCabinetList/SelectCabinetList.wxss */
+.con{
+  margin-bottom: 180rpx;
+}
+.cabinet{
+  position: relative;
+}
+.cabinet .select{
+  width: 42rpx;
+  height: 42rpx;
+  border-radius: 100%;
+  position: absolute;
+  top: -10rpx;
+  right: 38rpx;
+}
+.cabinet .select::after{
+  content: '';
+  width: 20rpx;
+  height: 10rpx;
+  border-left: 4rpx solid #fff;
+  border-bottom: 4rpx solid #fff;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -10rpx;
+  margin-left: -10rpx;
+}
+.cabinetItem{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 650rpx;
+  height: 168rpx;
+  border-radius: 20rpx;
+  margin: 16rpx auto 0 auto;
+  box-sizing: border-box;
+}
+.con .cabinetItem:first-child{
+  margin-top: 24rpx;
+}
+.cabinetItem .itemLift{
+  width: 55%;
+  height: 100%;
+  border-radius: 20rpx;
+  text-align: center;
+}
+.cabinetItem .item1{
+  margin: 46rpx 0 12rpx 0;
+}
+.cabinetItem .itemRight{
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.cabinetItem .itemRight .price{
+  font-size: 48rpx;
+}
+.cabinetItem .itemRight .subBtn{
+  width: 194rpx;
+  height: 50rpx;
+  border-radius: 26rpx;
+  background: #005B6D;
+  text-align: center;
+  line-height: 50rpx;
+  margin-top: 14rpx;
+}
+/* 历史记录 */
+.historyList{
+  width: 690rpx;
+  height: 102rpx;
+  line-height: 102rpx;
+  text-align: center;
+  border-radius: 14rpx;
+  position: fixed;
+  bottom: 38rpx;
+  left: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24rpx 0 40rpx;
+  box-sizing: border-box;
+}

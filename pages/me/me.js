@@ -8,12 +8,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id: "",
+    id: null,
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     personAll: {},
-    times:''
+    times: '',
+    stayStatus: false,
+    stayNum: '',
+    imgs: {
+      imgBg: 'http://112.74.169.46:8094/api/file/uploadfile/file/images/me/bg.png'
+    },
+    level: 1,
+    levelWidth: '0'
   },
 
   /**
@@ -21,20 +28,96 @@ Page({
    */
   onLoad: function(options) {
     let that = this
+    login.login()
     var loginData = wx.getStorageSync("userInfo")
     var id = loginData.id
-    this.setData({
+    that.setData({
       id: id
     })
     // this.personalLoad()
     that.nowTimes()
+    that.getCardList()
+
+  },
+  // 查询所有会员卡片
+  getCardList: function() {
+    let that = this
+    let userData = wx.getStorageSync('userInfo')
+    let id = userData.id
+    app.agriknow.getMyhandyCard(id)
+      .then(res => {
+        let datas = res.data
+        let dat = datas.slice(2)
+        console.log(dat)
+        // that.setData({
+        //   // handyCardList: dat,
+        //   // hashList: true
+        // })
+      })
+      .catch(res => {
+
+      })
+  },
+  // 团操包月支付
+  teamCard: function(e) {
+    let that = this
+    let names = '团操月卡'
+    let money = '299.00'
+    let pkCode = e.currentTarget.dataset.code
+    wx.navigateTo({
+      url: './teamCardPay/teamCardPay?names=' + names + '&money=' + money + '&pkCode=' + pkCode,
+    })
+  },
+  coachCard: function(e) {
+    let that = this
+    let names = '私教月卡'
+    let money = '1999.00'
+    let pkCode = e.currentTarget.dataset.code
+    let coachShow = true
+    wx.navigateTo({
+      url: './teamCardPay/teamCardPay?names=' + names + '&money=' + money + '&pkCode=' + pkCode + '&coachShow=' + coachShow,
+    })
+  },
+  // 待进行
+  conduct: function() {
+    var loginData = wx.getStorageSync("userInfo")
+    var id = loginData.id
+    var that = this
+    var status = 1
+    app.agriknow.getMyTeamCourse(id, status)
+      .then(res => {
+        var datas = res.data
+        for (var i = 0; i < datas.length; i++) {
+          var ss = datas[i].begtime
+          var endtime = datas[i].endtime
+          // var da = ss.lastIndexOf(' ')
+          var lastStr = ss.substring(10, 16)
+          var lastEnd = endtime.substring(10, 16)
+          datas[i].begin = lastStr
+          datas[i].end = lastEnd
+        }
+        if (res.data.length > 0) {
+          that.setData({
+            stayStatus: true,
+            stayNum: res.data.length
+          })
+        } else {
+          that.setData({
+            stayStatus: false
+          })
+        }
+
+      })
+      .catch(res => {
+        console.log(res)
+      })
   },
   // 当前时间
-  nowTimes: function () {
+  nowTimes: function() {
     let that = this
     let newData = new Date()
     let y = newData.getFullYear()
-    let month = newData.getMonth()+1
+    let month = newData.getMonth() + 1
     let d = newData.getDate()
     let h = newData.getHours()
     let m = newData.getMinutes()
@@ -61,18 +144,42 @@ Page({
     })
   },
   // 二维码入场
-  codeAdmission:function(){
+  codeAdmission: function() {
     let that = this
     let times = that.data.times
     wx.navigateTo({
-      url: './guardCode/guardCode?times='+times,
+      url: './guardCode/guardCode?times=' + times,
     })
   },
   // 获取上课、私教次数
   personalLoad() {
-    var that = this
-    app.agriknow.getPersonalLoad(this.data.id)
+    let that = this
+    let loginData = wx.getStorageSync("userInfo")
+    let id = loginData.id
+    app.agriknow.getPersonalLoad(id)
       .then(res => {
+        let courseNum = res.data.entranceCount
+        if (res.data.entranceCount < 25) {
+          let levelW = courseNum * 4
+          that.setData({
+            level: 1,
+            levelWidth: levelW
+          })
+        }
+        if (res.data.entranceCount > 25 && res.data.entranceCount <= 50) {
+          let levelW = (courseNum - parseInt(25)) * 4
+          that.setData({
+            level: 2,
+            levelWidth: levelW
+          })
+        }
+        if (res.data.entranceCount > 50) {
+          let levelW = (courseNum - parseInt(50)) * 4
+          that.setData({
+            level: 3,
+            levelWidth: levelW
+          })
+        }
         that.setData({
           personAll: res.data
         })
@@ -82,8 +189,14 @@ Page({
         console.log(res)
       })
   },
+  // 储物柜
+  lockers: function() {
+    wx.navigateTo({
+      url: './Lockers/Lockers',
+    })
+  },
   // 我的账单
-  myBill:function(){
+  myBill: function() {
     wx.navigateTo({
       url: './myBill/myBill',
     })
@@ -92,6 +205,15 @@ Page({
   payPpwd: function() {
     wx.navigateTo({
       url: './payPwd/payPwd',
+    })
+  },
+  // 邀请好友
+  fridens: function() {
+    var loginData = wx.getStorageSync("userInfo")
+    var memberId = loginData.id
+    let userId = '0'
+    wx.navigateTo({
+      url: './InvitingFriends/InvitingFriends?memberId=' + memberId + '&userId=' + userId,
     })
   },
   // 汗滴卡
@@ -108,6 +230,12 @@ Page({
       url: './RechargeableCard/RechargeableCard?allMoney=' + allMoney,
     })
   },
+  // 开通会员卡
+  openMemberCard: function() {
+    wx.navigateTo({
+      url: './myCardList/myCardList',
+    })
+  },
   // 我的预约
   myTeamCourse: function() {
     wx.navigateTo({
@@ -115,28 +243,28 @@ Page({
     })
   },
   // 我的预约状态待进行
-  djxShow:function(){
+  djxShow: function() {
     var status = 'djx'
     wx.navigateTo({
       url: './myAppointment/myAppointment?status=' + status,
     })
   },
   // 我的预约状态进行中
-  jxzShow: function () {
+  jxzShow: function() {
     var status = 'jxz'
     wx.navigateTo({
       url: './myAppointment/myAppointment?status=' + status,
     })
   },
   // 我的预约状态已完成
-  ywcShow: function () {
+  ywcShow: function() {
     var status = 'ywc'
     wx.navigateTo({
       url: './myAppointment/myAppointment?status=' + status,
     })
   },
   // 我的预约状态已取消
-  yqxShow: function () {
+  yqxShow: function() {
     var status = 'yqx'
     wx.navigateTo({
       url: './myAppointment/myAppointment?status=' + status,
@@ -157,7 +285,7 @@ Page({
   // 优惠券
   coupon: function() {
     wx.navigateTo({
-      url: './useCoupon/useCoupon',
+      url: './myCoupon/myCoupon',
     })
   },
 
@@ -172,13 +300,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    var loginData = wx.getStorageSync("userInfo")
     var that = this
+    var loginData = wx.getStorageSync("userInfo")
+    var id = loginData.id
+    if (id != null || id != undefined) {
+      that.personalLoad()
+      that.conduct()
+    }
     that.nowTimes()
     login.login()
-    if (loginData) {
-      that.personalLoad()
-    }
+    // that.personalLoad()
 
 
   },

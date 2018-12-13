@@ -17,7 +17,7 @@ Page({
     winHeight: 0,
     currentTab: 1,
     scrollHeight: 0,
-    more: false,
+    more: true,
     more2: false,
     jian: "",
     goodDes: "",
@@ -44,13 +44,14 @@ Page({
     totalMoney: '',
     courseHour: '',
     modelShow: false,
-    animationData: '',
     mobile: null,
     memberId: null,
     pkcode: null,
     fitnessCourseName: null,
     courseIndex: null,
-    hourIndex: null
+    hourIndex: null,
+    chooseSize: false,
+    animationData: {}
   },
 
   /**
@@ -106,13 +107,6 @@ Page({
       hourIndex: priceindex
     })
     let cl = that.data.courseList
-
-    // for (var i = 0; i < cl[listindex].courseReleasePriceLevel.length; i++) {
-    //   cl[listindex].courseReleasePriceLevel[i].select = false
-    // }
-
-    // cl[listindex].courseReleasePriceLevel[priceindex].select = true
-    // let check = cl[listindex].courseReleasePriceLevel[priceindex].check
     var total = cl[listindex].courseReleasePriceLevel[priceindex].totalPrice
     var courseTotal = cl[listindex].courseReleasePriceLevel[priceindex].courseTotal
     var pkcode = cl[listindex].courseReleasePkcode
@@ -125,49 +119,45 @@ Page({
       pkcode: pkcode,
       fitnessCourseName: courseName,
       coachName: coachName,
-      modelShow: true
     })
     var animation = wx.createAnimation({
-      duration: 200,
-      timingFunction: "linear"
+      duration: 300,
+      timingFunction: 'linear'
+    })
+    that.animation = animation
+    animation.translateY(500).step()
+    that.setData({
+      animationData: animation.export(),
+      modelShow: true
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      that.setData({
+        animationData: animation.export()
+      })
+    }, 200)
+
+  },
+  // 隐藏
+  hideModal: function (e) {
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 300,
+      timingFunction: 'linear'
     })
     that.animation = animation
     animation.translateY(500).step()
     that.setData({
       animationData: animation.export()
+
     })
-    setTimeout(function() {
+    setTimeout(function () {
       animation.translateY(0).step()
       that.setData({
-        animationData: animation.export()
+        animationData: animation.export(),
+        modelShow: false
       })
-    }, 20)
-
-  },
-  // 隐藏弹窗
-  hideModal: function() {
-    var that = this;
-    // that.setData({
-    //   modelShow: false
-    // })
-    var animation = wx.createAnimation({
-      duration: 500,
-      timingFunction: "linear"
-    })
-    that.animation = animation
-    animation.translateY(0).step()
-    that.setData({
-      animationData: animation.export()
-    })
-    setTimeout(function() {
-      animation.translateY(500).step()
-      that.setData({
-        animationData: animation.export()
-      })
-    }, 20)
-    that.setData({
-      modelShow: false
-    })
+    }, 200)
   },
   // 取消支付
   cancelBuy: function() {
@@ -195,7 +185,7 @@ Page({
     wx.navigateTo({
       url: './privateCoursePayment/privateCoursePayment?courseName=' + courseName + '&hour=' + hour + '&tm=' + tm + '&coachName=' + coachName + '&level=' + level + '&courseReleasePkcode=' + courseReleasePkcode,
     })
-   
+
 
   },
   // 点击切换教练简介
@@ -205,12 +195,12 @@ Page({
     var menuTop = that.data.menuTop
     if (menuStatus) {
       that.setData({
-        menuScrollTop: menuTop - 30,
+        menuScrollTop: 234,
         currentTab: 1
       });
     } else {
       that.setData({
-        menuScrollTop: menuTop - 10,
+        menuScrollTop: 234,
         currentTab: 1
       });
     }
@@ -259,16 +249,16 @@ Page({
     var that = this
     var menuStatus = that.data.menuFixed
     var item1 = that.data.items1Height
-    var item3 = that.data.items3Height
+    // var item3 = that.data.items3Height
     var menuTop = that.data.menuTop
     if (menuStatus) {
       that.setData({
-        menuScrollTop: item1 + menuTop + 10,
+        menuScrollTop: 398,
         currentTab: 2
       })
     } else {
       that.setData({
-        menuScrollTop: item1 + menuTop + 10,
+        menuScrollTop: 398,
         currentTab: 2
       })
     }
@@ -281,6 +271,19 @@ Page({
     var storeCoachId = that.data.storeCoachId
     app.agriknow.getCoachDetails(id, storeCoachId)
       .then(res => {
+        var good = res.data.storeCoachSynopsis
+        // var coachDes = good.slice(0, 100)
+        // if (coachDes.length >= 100) {
+        //   that.setData({
+        //     jian: coachDes,
+        //     more: true
+        //   })
+        // } else {
+        //   that.setData({
+        //     jian: good,
+        //     more: false
+        //   })
+        // }
         that.setData({
           coachData: res.data
         })
@@ -295,19 +298,7 @@ Page({
         that.setData({
           conText: con
         })
-        var good = res.data.storeCoachSynopsis
-        var coachDes = good.slice(0, 100)
-        if (coachDes.length >= 100) {
-          that.setData({
-            jian: coachDes,
-            more: true
-          })
-        } else {
-          that.setData({
-            jian: good,
-            more: false
-          })
-        }
+
 
       })
       .catch(res => {
@@ -433,10 +424,10 @@ Page({
     var tops = e.detail.scrollTop
     var menuTop = that.data.menuTop
     var item1 = that.data.items1Height
-    var item2 = that.data.items2Height
-    var item3 = that.data.items3Height
-    var item4 = that.data.items4Height
-    if (tops > 180) {
+    // var item2 = that.data.items2Height
+    // var item3 = that.data.items3Height
+    // var item4 = that.data.items4Height
+    if (tops > 242) {
       that.setData({
         menuFixed: true
       })
@@ -445,26 +436,26 @@ Page({
         menuFixed: false
       })
     }
-    if (tops < menuTop + 40) {
+    if (tops < menuTop + 5) {
       this.setData({
         currentTab: 1
       })
     }
-    if (tops > item1 + menuTop - 70 && tops <= menuTop + item1 + item2) {
+    if (tops > item1 + menuTop) {
       this.setData({
         currentTab: 2
       })
     }
-    if (tops >= item1 + item2 + menuTop + 50 && tops <= item1 + item2 + item3 + menuTop + 100) {
-      this.setData({
-        currentTab: 3
-      })
-    }
-    if (tops > item1 + item2 + item3 + menuTop + 500) {
-      this.setData({
-        currentTab: 4
-      })
-    }
+    // if (tops >= item1 + item2 + menuTop + 50 && tops <= item1 + item2 + item3 + menuTop + 100) {
+    //   this.setData({
+    //     currentTab: 3
+    //   })
+    // }
+    // if (tops > item1 + item2 + item3 + menuTop + 500) {
+    //   this.setData({
+    //     currentTab: 4
+    //   })
+    // }
   },
 
   /**
@@ -500,50 +491,39 @@ Page({
         items2Height: res[0].height
       })
     })
-    var query2 = wx.createSelectorQuery();
-    //选择id
-    query2.select('#items3').boundingClientRect()
-    query2.selectViewport().scrollOffset()
-    query2.exec(function(res) {
-      //取高度
-      that.setData({
-        items3Height: res[0].height
-      })
-    })
-    var query3 = wx.createSelectorQuery();
-    //选择id
-    query3.select('#items4').boundingClientRect()
-    query3.selectViewport().scrollOffset()
-    query3.exec(function(res) {
-      if (res[0] != null) {
-        //取高度
-        that.setData({
-          items4Height: res[0].height
-        })
-      }
-    })
+    // var query2 = wx.createSelectorQuery();
+    // //选择id
+    // query2.select('#items3').boundingClientRect()
+    // query2.selectViewport().scrollOffset()
+    // query2.exec(function(res) {
+    //   //取高度
+    //   that.setData({
+    //     items3Height: res[0].height
+    //   })
+    // })
+    // var query3 = wx.createSelectorQuery();
+    // //选择id
+    // query3.select('#items4').boundingClientRect()
+    // query3.selectViewport().scrollOffset()
+    // query3.exec(function(res) {
+    //   if (res[0] != null) {
+    //     //取高度
+    //     that.setData({
+    //       items4Height: res[0].height
+    //     })
+    //   }
+    // })
     var query4 = wx.createSelectorQuery();
     //选择id
     query4.select('#headImg').boundingClientRect()
     query4.selectViewport().scrollOffset()
     query4.exec(function(res) {
-      wx.pageScrollTo({
-        scrollTop: res[0].height,
-        duration: 1500
-      })
-      // console.log(res[0].height)
       //取高度
       that.setData({
         menuTop: res[0].height
       })
     })
   },
-  onPageScroll: function(e) {
-    // var scrollTop = e.scrollTop
-    var that = this
-    console.log(e.scrollTop)
-  },
-
 
   /**
    * 生命周期函数--监听页面隐藏

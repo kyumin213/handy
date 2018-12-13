@@ -10,36 +10,28 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     avatarUrl: '',
-    nickName: ''
+    nickName: '',
+    memberId: '',
+    shareBtn: false,
+    chooseSize: false,
+    animationData: {},
+    checked: false,
+    subBtns: true,
+    disable:true
   },
-  getPhoneNumber: function(e) {
-    if (e.detail.encryptedData) {
-      wx.showLoading({
-        title: '发送中，请稍后',
-      })
-      getApp().globalData.temporaryLogin(e.detail.encryptedData, e.detail.iv)
-    } else {
-      wx.showModal({
-        title: '提示',
-        showCancel: false,
-        content: '您拒绝了授权微信绑定手机号，允许授权后将为您自动登陆',
-      })
-    }
-  },
-  getUserInfo: function(e) {
-    console.log(e.detail.userInfo)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function(options) {
     var that = this;
+    let memberId = options.memberId
+    if (memberId != undefined) {
+      that.setData({
+        memberId: memberId,
+        shareBtn: true
+      })
+    }
+    that.setData({
+      memberId: memberId
+    })
+
     wx.getUserInfo({
       success: function(res) {
         console.log(res);
@@ -80,6 +72,161 @@ Page({
       })
     }
   },
+  chooseSezi: function (e) {
+    var that = this;
+    // 创建一个动画实例
+    var animation = wx.createAnimation({
+      // 动画持续时间
+      duration: 300,
+      // 定义动画效果，当前是匀速
+      timingFunction: 'linear'
+    })
+    // 将该变量赋值给当前动画
+    that.animation = animation
+    // 先在y轴偏移，然后用step()完成一个动画
+    animation.translateY(500).step()
+    // 用setData改变当前动画
+    that.setData({
+      // 通过export()方法导出数据
+      animationData: animation.export(),
+      // 改变view里面的Wx：if
+      chooseSize: true
+    })
+    // 设置setTimeout来改变y轴偏移量，实现有感觉的滑动
+    setTimeout(function () {
+      animation.translateY(0).step()
+      that.setData({
+        animationData: animation.export()
+      })
+    }, 200)
+  },
+  // 隐藏
+  hideModal: function (e) {
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 400,
+      timingFunction: 'linear'
+    })
+    that.animation = animation
+    animation.translateY(500).step()
+    that.setData({
+      animationData: animation.export()
+
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      that.setData({
+        animationData: animation.export(),
+        chooseSize: false
+      })
+    }, 200)
+  },
+  // 同意使用规则
+  checkboxChange: function () {
+    let that = this
+    let checked = that.data.checked
+    let subBtns = that.data.subBtns
+    if (checked) {
+      that.setData({
+        checked: false
+      })
+    } else {
+      that.setData({
+        checked: true
+      })
+    }
+    if (checked == false && subBtns) {
+      that.setData({
+        disable: false
+      })
+    } else {
+      that.setData({
+        disable: true
+      })
+    }
+
+  },
+  getPhoneNumber: function(e) {
+    let that = this
+    if (e.detail.encryptedData) {
+      wx.showLoading({
+        title: '发送中，请稍后',
+      })
+      getApp().globalData.temporaryLogin(e.detail.encryptedData, e.detail.iv)
+    } else {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '您拒绝了授权微信绑定手机号，允许授权后将为您自动登陆',
+      })
+    }
+  },
+  getPhone: function(e) {
+    let that = this
+    let memberId = that.data.memberId
+    if (e.detail.encryptedData) {
+      wx.showLoading({
+        title: '发送中，请稍后',
+      })
+      getApp().globalData.temporaryLogins(e.detail.encryptedData, e.detail.iv, memberId)
+
+    } else {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '您拒绝了授权微信绑定手机号，允许授权后将为您自动登陆',
+      })
+    }
+  },
+  // temporaryLogin: function(encryptedData, iv, memberId) {
+  //   wx.login({
+  //     success: function(res) {
+  //       if (res.code) {
+  //         wx.request({
+  //           url: getApp().globalData.http_address + '/wechatLogin',
+  //           data: {
+  //             encryptedData: encryptedData,
+  //             iv: iv,
+  //             js_code: res.code,
+  //             memberId: memberId
+  //           },
+  //           header: {
+  //             'content-type': 'application/json'
+  //           },
+  //           method: 'POST',
+  //           success: function(rs) {
+  //             if (rs.data.success != '200') {
+  //               wx.showModal({
+  //                 title: '提示',
+  //                 showCancel: false,
+  //                 content: rs.data.message
+  //               })
+  //               return false
+  //             } else {
+  //               wx.switchTab({
+  //                 url: '/pages/index/index',
+  //               })
+  //             }
+
+  //           }
+  //         })
+  //       }
+  //     }
+  //   })
+  // },
+  getUserInfo: function(e) {
+    console.log(e.detail.userInfo)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

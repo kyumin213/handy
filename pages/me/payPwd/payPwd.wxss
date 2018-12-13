@@ -43,7 +43,7 @@ page{
   width: 596rpx;
   height: 98rpx;
   border-radius: 10rpx;
-  background: #D71718;
+  background: #F96400;
   font-size: 36rpx;
   color: #fff;
   margin-top: 216rpx;

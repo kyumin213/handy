@@ -7,29 +7,33 @@
   text-align: center;
 }
 
+.cardList .item3 {
+  padding: 0 30rpx;
+}
+
 .selectCard {
   width: 100%;
   padding-top: 30rpx;
   padding-left: 52rpx;
-  font-size: 30rpx;
 }
 
 .wrap {
-  /* height: 312rpx; */
+  height: 344rpx;
   width: 100%;
   display: flex;
   display: -webkit-box;
   flex-direction: column;
-  padding-top: 32rpx;
-  box-sizing: border-box;
+  margin-top: 32rpx;
+  /* box-sizing: border-box; */
 }
 
 .wrap .items {
-  width: 520rpx;
-  /* height: 312rpx; */
+  width: 574rpx;
+  height: 344rpx;
   border-radius: 20rpx;
   flex: 1;
-  margin-right: 20rpx;
+  margin-right: 26rpx;
+  box-sizing: border-box;
 }
 
 .wrap .select {
@@ -40,7 +44,7 @@
   width: 48rpx;
   height: 48rpx;
   border-radius: 100%;
-  background: #f00;
+  background: #f96400;
   z-index: 99999;
 }
 
@@ -57,21 +61,22 @@
 }
 
 .wrap .imgItem {
-  width: 514rpx;
-  height: 312rpx;
+  width: 574rpx;
+  height: 344rpx;
   position: relative;
   flex: 1;
 }
 
 .wrap .items .cardType {
-  width: 514rpx;
-  height: 312rpx;
+  width: 574rpx;
+  height: 344rpx;
   border-radius: 24rpx;
   border: 6rpx solid #fff;
+  margin-right: 54rpx;
 }
 
 .wrap .items:first-child {
-  margin-left: 50rpx;
+  margin-left: 54rpx;
 }
 
 .wrap .items:last-child {
@@ -79,32 +84,62 @@
 }
 
 .wrap .items .borderCol {
-  border: 6rpx solid #f00;
-  /* position: relative;
-  top: 0;
-  left: 50%;
-  margin-left: -257rpx;
-  transition: ease-in-out .3; */
-
+  border: 6rpx solid #f96400;
 }
 
 .selectTime {
   width: 100%;
-  margin: 58rpx 0 40rpx 52rpx;
-  font-size: 30rpx;
+  /* height: 100rpx; */
+  margin: 40rpx 0 24rpx 42rpx;
 }
 
 .bor {
-  border: 4rpx solid #f00;
+  border: 4rpx solid #f96400;
 }
 
 .cardBom {
-  height: 60rpx;
+  /* height: 60rpx; */
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 28rpx;
+  left: 34rpx;
+  right: 20rpx;
+  color: #f00;
+}
+.useTxt{
+  font-size: 22rpx;
+}
+.nameTxt{
+  font-size: 30rpx;
+}
+.footer {
+  z-index: 0;
 }
 
-.footer .unactive{
-  background: #CCC;
+.footer .unactive {
+  background: #ccc;
+}
+
+.cardList .rightBy {
+  z-index: 0;
+}
+.use {
+  bottom: -50rpx;
+}
+.moneyTxt {
+  color: #fafafa;
+}
+.footer .left{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer .right .subBtn{
+  background: #005B6D;
+}
+.sjr{
+  border-bottom: 98rpx solid #005B6D;
 }

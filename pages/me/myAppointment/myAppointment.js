@@ -46,7 +46,7 @@ Page({
           rpxR = 750 / clientWidth;
         var calc = clientHeight * rpxR - 180;
         that.setData({
-          winHeight: calc
+          winHeight: clientHeight
         });
       }
     })
@@ -56,38 +56,22 @@ Page({
     that.allele()
     if (status == 'djx') {
       that.setData({
-        // stayConduct: true,
-        // completed: false,
-        // cancelled: false,
-        // allele: false,
         currentTab: 0
       })
       // that.myTeamCourse()
       that.conduct()
     } else if (status == 'jxz') {
       that.setData({
-        // allele: true,
-        // stayConduct: false,
-        // completed: false,
-        // cancelled: false,
         currentTab: 1
       })
       that.allele()
     } else if (status == 'ywc') {
       that.setData({
-        // allele: false,
-        // stayConduct: false,
-        // completed: true,
-        // cancelled: false,
         currentTab: 2
       })
       that.completed()
     } else if (status == 'yqx') {
       that.setData({
-        // allele: false,
-        // stayConduct: false,
-        // completed: false,
-        // cancelled: true,
         currentTab: 3
       })
       that.cancelled()
@@ -98,7 +82,6 @@ Page({
   coachTab: function(e) {
     var that = this
     let cur = e.currentTarget.dataset.current
-    console.log(cur)
     if (that.data.currentTab == cur) {
       return false;
     } else {
@@ -197,13 +180,6 @@ Page({
     var loginData = wx.getStorageSync("userInfo")
     var id = loginData.id
     var that = this
-    // that.setData({
-    //   stayConduct: true,
-    //   stayAssess: false,
-    //   allele: false,
-    //   completed: false,
-    //   cancelled: false
-    // })
     var status = 1
     app.agriknow.getMyTeamCourse(id, status)
       .then(res => {
@@ -230,7 +206,6 @@ Page({
 
       })
       .catch(res => {
-        // wx.stopPullDownRefresh()
         console.log(res)
       })
   },

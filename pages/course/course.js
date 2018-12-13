@@ -16,6 +16,7 @@ Page({
     storeList: {}, //城市所有门店
     storeActive: -1, //门店选中下标
     allActive: true, //默认全城选中
+    areaActive: 0, //选择区
     id: '',
     checkStatus: false,
     hashList: false,
@@ -42,7 +43,11 @@ Page({
     courseDay: '',
     nowDay: '',
     storePkcode: '',
-    flags: {}
+    flags: {},
+    currentTab: 0,
+    bannerImg: "http://112.74.169.46:8094/api/file/uploadfile/file/images/course/course-banner@2x.png",
+    pricoachList: false,
+    area: ''
   },
 
   /**
@@ -56,13 +61,20 @@ Page({
     var id = loginData.id
     wx.getSystemInfo({
       success: function(res) {
+        var clientHeight = res.windowHeight,
+          clientWidth = res.windowWidth,
+          rpxR = 750 / clientWidth;
+        var calc = clientHeight * rpxR - 180;
         that.setData({
-          screenHeight: res.windowHeight,
-          screenWidth: res.windowWidth,
-          slideHeight: res.windowHeight,
-          slideRight: res.windowWidth,
-          slideWidth: res.windowWidth * 0.7
+          winHeight: calc
         });
+        // that.setData({
+        //   screenHeight: res.windowHeight,
+        //   screenWidth: res.windowWidth,
+        //   slideHeight: res.windowHeight,
+        //   slideRight: res.windowWidth,
+        //   slideWidth: res.windowWidth * 0.7
+        // });
       }
     })
 
@@ -77,6 +89,34 @@ Page({
         console.log(res)
       })
     that.getAllCourse()
+  },
+  // 课程切换
+  selectTab: function(e) {
+    var that = this
+    let cur = e.currentTarget.dataset.current
+    if (that.data.currentTab == cur) {
+      return false;
+    } else {
+      that.setData({
+        currentTab: cur
+      })
+    }
+  },
+  switchTab: function(e) {
+    let that = this
+    that.setData({
+      currentTab: e.detail.current
+    });
+  },
+  // 选择区
+  areaActive: function(e) {
+    let that = this
+    let index = e.currentTarget.dataset.index
+    let areaActive = that.data.areaActive
+    console.log(index)
+    that.setData({
+      areaActive: index
+    })
   },
   // 点击全城
   allCity: function() {
@@ -237,8 +277,9 @@ Page({
     var store = e.currentTarget.dataset.store
     var price = e.currentTarget.dataset.price
     var names = e.currentTarget.dataset.names
+    var address = e.currentTarget.dataset.address
     wx.navigateTo({
-      url: './coursePayment/coursePayment?courseReleasePkcode=' + pkcode + '&index=' + index + '&currentData=' + datas + '&store=' + store + '&start=' + start + '&end=' + end + '&price=' + price + '&names=' + names,
+      url: './coursePayment/coursePayment?courseReleasePkcode=' + pkcode + '&index=' + index + '&currentData=' + datas + '&store=' + store + '&start=' + start + '&end=' + end + '&price=' + price + '&names=' + names + '&address=' + address,
     })
   },
   // 课程详情
@@ -255,8 +296,10 @@ Page({
     var status = e.currentTarget.dataset.status
     var datas = that.data.currentData
     var store = e.currentTarget.dataset.store
+    let types = e.currentTarget.dataset.type
+    let address = e.currentTarget.dataset.address
     wx.navigateTo({
-      url: './courseDetails/courseDetails?courseReleasePkcode=' + courseReleasePkcode + '&price=' + price + '&names=' + names + '&start=' + start + '&end=' + end + '&datas=' + datas + '&index=' + index + '&imgUrl=' + imgUrl + '&status=' + status + '&store=' + store,
+      url: './courseDetails/courseDetails?courseReleasePkcode=' + courseReleasePkcode + '&price=' + price + '&names=' + names + '&start=' + start + '&end=' + end + '&datas=' + datas + '&index=' + index + '&imgUrl=' + imgUrl + '&status=' + status + '&store=' + store + '&types=' + types + '&address=' + address,
     })
   },
 
@@ -348,12 +391,12 @@ Page({
           } else {
             res.data[i].isbook = 1
           }
-          if (res.data[i].courseReleaseFlag){
+          if (res.data[i].courseReleaseFlag) {
             var flag = res.data[i].courseReleaseFlag
             var flagJson = flag.split(",")
             res.data[i].flag = flagJson
 
-          }else{
+          } else {
             res.data[i].courseReleaseFlag = false
           }
         }
@@ -415,12 +458,6 @@ Page({
   // 选择门店
   selectStore: function(e) {
     var that = this
-    var loginData = wx.getStorageSync("userInfo")
-    var id = loginData.id
-    var day = that.data.currentData
-    var storeCoachId = ''
-    var storeProvince = ''
-    var storeDistrict = ''
     var storeCity = that.data.storeCityName
     var index = e.currentTarget.dataset.index
     var names = e.currentTarget.dataset.name
@@ -432,7 +469,21 @@ Page({
       storeNames: names,
       storePkcode: storePkcode
     })
-    that.hiddenModel()
+    // that.hiddenModel()
+
+  },
+  // 确认选择
+  submitSelect: function() {
+    let that = this
+    var loginData = wx.getStorageSync("userInfo")
+    var id = loginData.id
+    var day = that.data.currentData
+    var storeCoachId = ''
+    var storeProvince = ''
+    var storeDistrict = ''
+    let storePkcode = that.data.storePkcode
+    let storeCity = that.data.storeCityName
+    let area = that.data.area
     app.agriknow.getCourseRelease(day, id, storeCoachId, storePkcode, storeCity, storeProvince, storeDistrict)
       .then(res => {
         var thisDayDate = new Date();
@@ -459,7 +510,8 @@ Page({
         if (res.data.length > 0) {
           that.setData({
             hashList: true,
-            courseList: res.data
+            courseList: res.data,
+            area: '南山区'
           })
         } else {
           that.setData({
@@ -469,6 +521,16 @@ Page({
       }).catch(res => {
         console.log(res)
       })
+    that.hiddenModel()
+  },
+  //  清除选择
+  clearSelect: function() {
+    let that = this
+    console.log(22)
+    that.setData({
+      allActive: true,
+      storeActive: -1
+    })
   },
   // 获取门店位置信息
   getStoreAddress: function() {

@@ -1,48 +1,47 @@
 /* pages/me/InvitingFriends/InvitingFriends.wxss */
-.tops{
+.headTop{
   width: 100%;
   text-align: center;
+  margin-top: 40rpx;
 }
-.tops .topBgOne{
-  border-radius: 20rpx;
-  width: 488rpx;
-  height: 272rpx;
-  background: #FF9078;
-  margin: 100rpx auto 0 auto;
-}
-.tops .topBgTwo{
-  width: 536rpx;
-  height: 300rpx;
-  border-radius: 20rpx;
-  background: #FF6E4F;
-  margin: -240rpx auto 0 auto;
-}
-.tops .imgBox{
-  position: absolute;
-  top: 166rpx;
-  margin: 0 auto;
-  text-align: center;
-  width: 100%;
-}
-.tops .invitingImg{
-  width: 576rpx;
-  height: 322rpx;
+
+.invitingImg{
+  width: 642rpx;
+  height: 360rpx;
 }
 .txt{
-  width: 100%;
   text-align: center;
-  font-size: 36rpx;
-  color: #666666;
-  margin-top: 230rpx;
+  font-size: 30rpx;
+  color: #FFFFFF;
+  margin: 120rpx auto 40rpx auto;
+  background: #005B6D;
+  border-radius: 30rpx;
+  width: 488rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  /* padding: 0 52rpx; */
 }
 .invitingBtn{
-  width: 596rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   height: 98rpx;
   line-height: 98rpx;
   text-align: center;
-  background: #D71718;
-  border-radius: 10rpx;
+  background: #F96400;
   font-size: 36rpx;
   color: #fff;
   margin: 48rpx auto auto auto;
+  border-radius: 0;
+}
+.con{
+  width: 100%;
+  text-align: center;
+  margin-top: 30rpx;
+}
+.con .items{
+  margin-bottom: 16rpx;
+  color: #666;
 }

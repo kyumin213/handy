@@ -1,0 +1,57 @@
+<!--pages/me/SelectCabinetList/SelectCabinetList.wxml-->
+<view class='con'>
+  <view class='cabinetList'>
+    <view class='cabinet' data-index="0" bindtap='selectItem'>
+      <view class='bgF cabinetItem'>
+        <view class='itemLift bgC'>
+          <view class='fz-36 fzF item1'>租柜一个月</view>
+          <view class='fz-24 fzF'>(有效期1个月)</view>
+        </view>
+        <view class='itemRight'>
+          <view class='col3 fw price'>￥388</view>
+          <view class='fzF fz-28 subBtn'>
+            确 认 租 柜
+          </view>
+        </view>
+      </view>
+      <view class='select bgC' wx:if="{{check==0}}">
+      </view>
+    </view>
+    <view class='cabinet' data-index="1" bindtap='selectItem'>
+      <view class='bgF cabinetItem'>
+        <view class='itemLift bgC'>
+          <view class='fz-36 fzF item1'>租柜一个月</view>
+          <view class='fz-24 fzF'>(有效期1个月)</view>
+        </view>
+        <view class='itemRight'>
+          <view class='col3 fw price'>￥388</view>
+          <view class='fzF fz-28 subBtn'>
+            确 认 租 柜
+          </view>
+        </view>
+      </view>
+      <view class='select bgC' wx:if="{{check==1}}">
+      </view>
+    </view>
+    <view class='cabinet' data-index="2" bindtap='selectItem'>
+      <view class='bgF cabinetItem'>
+        <view class='itemLift bgC'>
+          <view class='fz-36 fzF item1'>租柜一个月</view>
+          <view class='fz-24 fzF'>(有效期1个月)</view>
+        </view>
+        <view class='itemRight'>
+          <view class='col3 fw price'>￥388</view>
+          <view class='fzF fz-28 subBtn'>
+            确 认 租 柜
+          </view>
+        </view>
+      </view>
+      <view class='select bgC' wx:if="{{check==2}}">
+      </view>
+    </view>
+  </view>
+</view>
+<view class='bgF historyList'>
+  <view class='fz-32 fw col3'>历史记录</view>
+  <text class='jt'></text>
+</view>

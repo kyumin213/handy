@@ -1,0 +1,89 @@
+<!--pages/me/Lockers/Lockers.wxml-->
+<view>
+  <!-- <view class='tabSelect'>
+    <view class="CabinetType" data-current="0" bindtap='selectTab'>
+      <view class="useTxt {{currentTab==0?'col3':''}}">临时柜</view>
+    </view>
+    <view class="CabinetType {{currentTab==1?'active':''}}" data-current="1" bindtap='selectTab'>
+      <view class="useTxt {{currentTab==1?'col3':''}}">长期柜</view>
+    </view>
+  </view> -->
+  <view>
+    <swiper current="{{currentTab}}" class="swiper" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+      <swiper-item>
+        <view class='con'>
+          <!-- <view class='bgF lockerAdd'>
+            <view class='addLeft'>
+              <view class='fzF fz-32 fw addTemp'>临时柜</view>
+              <view class='col3 fz-32 notHir'>未租用</view>
+            </view>
+            <view class='addRight' bindtap='cabinetList'>
+              <view class='addIcon'>
+                <view class='hen'></view>
+              </view>
+            </view>
+          </view> -->
+          <block wx:for="{{tempLockerList}}" wx:key="index">
+            <view class='lockerList' wx:if="{{hashList}}">
+              <view class='bgC lockerItem'>
+                <view class='addLeft'>
+                  <view class='col3 fz-32 fw addTemp'>临时柜</view>
+                  <view>
+                    <text class='fzF fz-32 fw lockerName'>{{item.number}}号柜</text>
+                    <text class='fzF fz-32 fw' wx:if="{{item.payStatus==2}}">已使用</text>
+                  </view>
+                  <view class='fzF fz-24 useTime'>已租用：{{item.hours}}:{{item.min}}分钟</view>
+                </view>
+                <view class='addRight'>
+                  <image class='lockerImg' src='../../../images/me/lockers.png'></image>
+                </view>
+              </view>
+            </view>
+          </block>
+          <view class='isnull' wx:if="{{hashList===false}}">
+            <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
+            <view class='nullTxt'>暂无储物柜信息</view>
+          </view>
+          <!-- <view class='bgF setPwd'>
+            <view class='fz-32 fw col3'>开柜密码设置</view>
+            <text class='jt'></text>
+          </view> -->
+        </view>
+      </swiper-item>
+      <!-- <swiper-item>
+        <view class='con'>
+          <view class='bgF lockerAdd'>
+            <view class='addLeft'>
+              <view class='fzF fz-32 fw addTemp'>长期租</view>
+              <view class='col3 fz-32 notHir'>未租用</view>
+            </view>
+            <view class='addRight'>
+              <view class='addIcon'>
+                <view class='hen'></view>
+              </view>
+            </view>
+          </view>
+          <view class='lockerList'>
+            <view class='bgC lockerItem'>
+              <view class='addLeft'>
+                <view class='col3 fz-32 fw addTemp'>长期租</view>
+                <view>
+                  <text class='fzF fz-32 fw lockerName'>处女座二号</text>
+                  <text class='fzF fz-32 fw'>正在使用</text>
+                </view>
+                <view class='fzF fz-24 useTime'>有效期至：2018-09-28(剩余28天)</view>
+              </view>
+              <view class='addRight'>
+                <image class='lockerImg' src='../../../images/me/lockers.png'></image>
+              </view>
+            </view>
+          </view>
+          <view class='bgF setPwd'>
+            <view class='fz-32 fw col3'>开柜密码设置</view>
+            <text class='jt'></text>
+          </view>
+        </view>
+      </swiper-item> -->
+    </swiper>
+  </view>
+</view>

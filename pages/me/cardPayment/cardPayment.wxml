@@ -1,31 +1,48 @@
 <!--pages/me/cardPayment/cardPayment.wxml-->
-<view class='headTop'>
-  <view class='fzColor money'>￥{{totalMoney}}</view>
-  <view class='fz-24 fzCol6 storeName'></view>
+<view class='courseDesTop'>
+  <view class='headTop'>
+    <view class='fz-36 col3'>{{names}}</view>
+    <view class='col3 money'>￥{{totalMoney}}</view>
+    <!-- <view class='fz-24 fzCol6 storeName'></view> -->
+  </view>
 </view>
-<view>
-  <view class='payList'>
-    <view class='payLeft'>
-      <image class='hanIcon' mode='widthFix' src='../../../images/pay/hanPayLogo.png'></image>
-      <text class='hanTxt'>汗的支付</text>
-    </view>
-    <view class='payRight' bindtap='hanPay'>
-    <text class="selectPay {{hanPay?'selectActive': ''}}"></text>
-    </view>
+<view class='payType'>
+  <view class='payTitle'>
+    <text class='fw txt'>支付方式</text>
   </view>
   <view class='payList'>
     <view class='payLeft'>
-      <image class='hanIcon2' mode='widthFix' src='../../../images/pay/wxPay.png'></image>
+      <image class='hanIcon' src='../../../images/pay/ff.png'></image>
+      <text class='hanTxt'>沸沸支付</text>
+    </view>
+    <view class='payRight' bindtap='hanPay'>
+      <text class="selectPay {{hanPay?'selectActive': ''}}"></text>
+    </view>
+  </view>
+
+  <view class='payList'>
+    <view class='payLeft'>
+      <image class='hanIcon' src='../../../images/pay/wxPay.png'></image>
       <text class='hanTxt'>微信支付</text>
     </view>
     <view class='payRight' bindtap='wxPay'>
-    <text class="selectPay {{wxPay?'selectActive': ''}}"></text>
+      <text class="selectPay {{wxPay?'selectActive': ''}}"></text>
     </view>
   </view>
   <view class='tips'>
     <text class='tsTxt'>温馨提示：</text>
     <text class='tipsRight'>若团操预约在开课6小时前取消，本预约已付金额
       退回，若在取消前已有免入場，其入埸金额補扣</text>
+  </view>
+  <view class='agreeItem'>
+    <view>
+      <checkbox-group bindchange="checkboxChange">
+        <label class="fz-28 checkboxBtn">
+          <checkbox class='checkBox' value="{{item.name}}" checked="{{checked}}" />我已阅读并同意
+        </label>
+      </checkbox-group>
+    </view>
+    <view class='fz-24 fzColor viewUse' bindtap='chooseSezi'>(查看使用规则)</view>
   </view>
 </view>
 <view class='submitPayment' bindtap='subPayment'>

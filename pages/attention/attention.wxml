@@ -1,5 +1,5 @@
 <!--pages/attention/attention.wxml-->
-<view class='bg-c'>
+<view>
   <view>
     <!-- <view class='headTop'>
       <view class='addressLeft'>
@@ -13,67 +13,71 @@
       </view>
     </view> -->
     <view class='tabs'>
-      <view  class='tabCon'>
-        <view class="team {{currentTab==1?'active':''}}" data-current="1" bindtap='teamList'>团操</view>
-        <view class="private {{currentTab==2?'active':''}}" data-current="2" bindtap='coachList'>私教</view>
+      <view class='tabCon'>
+        <view class="team {{currentTab==0?'active':''}}" data-current="0" bindtap='coachTab'>团操</view>
+        <view class="private {{currentTab==1?'active':''}}" data-current="1" bindtap='coachTab'>私教</view>
       </view>
     </view>
-    <view wx:if="{{currentTab==1}}">
-      <view class="attentionList" wx:if="{{teamTab}}">
-        <block wx:for="{{teamList}}" wx:key="{{index}}">
-          <view class='items' data-index="{{index}}" bindtap='coachDetails' data-id="{{item.storeCoachId}}">
-            <view class='imgBox'>
-              <image class='attenImg' src="{{item.headimg}}"></image>
+    <swiper current="{{currentTab}}" class="swiper" duration="300" bindchange="switchTab" style="height:{{winHeight?winHeight+'px':'auto'}}">
+
+      <swiper-item>
+        <scroll-view scroll-y="true" class='scoll-h'>
+          <view>
+            <view class="attentionList" wx:if="{{teamTab}}">
+              <block wx:for="{{teamList}}" wx:key="{{index}}">
+                <view class='items' data-index="{{index}}" bindtap='coachDetails' data-id="{{item.storeCoachId}}">
+                  <view class='imgBox fadeIn' wx:if="{{item.headimg?'fadeIn':''}}">
+                    <image class='attenImg' lazy-load="true" src="{{item.headimg}}"></image>
+                  </view>
+                  <view class='itemRight'>
+                    <view class='rightTitle'>
+                      <view class='fzColor attenName'>{{item.storeCoachNikename}}</view>
+                    </view>
+                    <view class='des'>
+                      <text class='txtDes'>{{item.synopsis}}</text>
+                    </view>
+                  </view>
+                </view>
+              </block>
             </view>
-            <view class='itemRight'>
-              <view class='rightTitle'>
-                <view class='attenName'>{{item.storeCoachNikename}}</view>
-                <!-- <view class="{{followStatus?'':'unfollow'}} follow" bindtap='follow'>{{item}}</view> -->
-              </view>
-              <!-- <view class='zan'>
-          <text class='zanNum'>299万</text>
-          <text>次点赞</text>
-        </view> -->
-              <view class='des'>
-                <text class='txtDes'>{{item.synopsis}}</text>
-              </view>
+            <view class='isnull' wx:if="{{!teamTab}}">
+              <image mode='widthFix' class='nullImg' src='../../images/memberCard/isnull.png'></image>
+              <view class='nullTxt'>暂无数据</view>
             </view>
           </view>
-        </block>
-      </view>
-      <view class='isnull' wx:else>
-        <image mode='widthFix' class='nullImg' src='../../images/memberCard/isnull.png'></image>
-        <view class='nullTxt'>暂无数据</view>
-      </view>
-    </view>
-    <view wx:if="{{currentTab==2}}">
-      <view class="attentionList" wx:if="{{hashList}}">
-        <block wx:for="{{coachList}}" wx:key="{{index}}">
-          <view class='items' data-index="{{index}}" bindtap='precoachDetails' data-id="{{item.storeCoachId}}">
-            <view class='imgBox'>
-              <image class='attenImg' src="{{item.headimg}}"></image>
+
+        </scroll-view>
+      </swiper-item>
+      <swiper-item>
+        <scroll-view scroll-y="true" class='scoll-h'>
+          <view>
+            <view class="attentionList" wx:if="{{hashList}}">
+              <block wx:for="{{coachList}}" wx:key="{{index}}">
+                <view class='items' data-index="{{index}}" bindtap='precoachDetails' data-id="{{item.storeCoachId}}">
+                  <view class='imgBox'>
+                    <image class='attenImg' src="{{item.headimg}}"></image>
+                  </view>
+                  <view class='itemRight'>
+                    <view class='rightTitle'>
+                      <view class='fzColor attenName'>{{item.storeCoachNikename}}</view>
+                    </view>
+                    <view class='des'>
+                      <text class='txtDes'>{{item.synopsis}}</text>
+                    </view>
+                  </view>
+                </view>
+              </block>
             </view>
-            <view class='itemRight'>
-              <view class='rightTitle'>
-                <view class='attenName'>{{item.storeCoachNikename}}</view>
-                <!-- <view class="{{followStatus?'':'unfollow'}} follow" bindtap='follow'>{{item}}</view> -->
-              </view>
-              <!-- <view class='zan'>
-          <text class='zanNum'>299万</text>
-          <text>次点赞</text>
-        </view> -->
-              <view class='des'>
-                <text class='txtDes'>{{item.synopsis}}</text>
-              </view>
+            <view class='isnull' wx:if="{{!hashList}}">
+              <image mode='widthFix' class='nullImg' src='../../images/memberCard/isnull.png'></image>
+              <view class='nullTxt'>暂无数据</view>
             </view>
           </view>
-        </block>
-      </view>
-      <view class='isnull' wx:else>
-        <image mode='widthFix' class='nullImg' src='../../images/memberCard/isnull.png'></image>
-        <view class='nullTxt'>暂无数据</view>
-      </view>
-    </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+
+
   </view>
 
 </view>

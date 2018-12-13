@@ -1,0 +1,104 @@
+<!--pages/me/teamCardPay/teamCardPay.wxml-->
+<view class='courseDesTop'>
+  <view class='headTop'>
+    <view class='fz-36 col3'>{{names}}</view>
+    <view class='col3 money'>￥{{totalMoney}}</view>
+    <!-- <view class='fz-24 fzCol6 storeName'></view> -->
+  </view>
+</view>
+<view class='payType'>
+  <view class='payTitle'>
+    <text class='fw txt'>支付方式</text>
+  </view>
+  <view class='payList'>
+    <view class='payLeft'>
+      <image class='hanIcon' src='../../../images/pay/ff.png'></image>
+      <text class='hanTxt'>沸沸支付</text>
+    </view>
+    <view class='payRight' bindtap='hanPay'>
+      <text class="selectPay {{hanPay?'selectActive': ''}}"></text>
+    </view>
+  </view>
+
+  <view class='payList'>
+    <view class='payLeft'>
+      <image class='hanIcon' src='../../../images/pay/wxPay.png'></image>
+      <text class='hanTxt'>微信支付</text>
+    </view>
+    <view class='payRight' bindtap='wxPay'>
+      <text class="selectPay {{wxPay?'selectActive': ''}}"></text>
+    </view>
+  </view>
+  <view class='tips'>
+    <text class='tsTxt'>温馨提示：</text>
+    <text class='tipsRight'>若团操预约在开课6小时前取消，本预约已付金额
+      退回，若在取消前已有免入場，其入埸金额補扣</text>
+  </view>
+  <view class='agreeItem'>
+    <view>
+      <checkbox-group bindchange="checkboxChange">
+        <label class="fz-28 checkboxBtn">
+          <checkbox class='checkBox' value="{{item.name}}" checked="{{checked}}" />我已阅读并同意
+        </label>
+      </checkbox-group>
+    </view>
+    <view class='fz-28 fzColor viewUse' bindtap='chooseSezi' wx:if="{{!coachShow}}">(查看用户协议)</view>
+    <view class='fz-28 fzColor viewUse' bindtap='coachView' wx:if="{{coachShow}}">(查看用户协议)</view>
+  </view>
+</view>
+<button class='submitPayment' bindtap='subPayment' disabled="{{disable}}">
+  <text class='payment'>确认支付</text>
+  <text class='totalMoney'>￥{{totalMoney}}</text>
+</button>
+<view class='bgModel' wx:if="{{chooseSize}}" bindtap='hideModal'>
+  <view class="model" animation="{{animationData}}">
+    <scroll-view scroll-y='true' style="width: 100%;height:500px" class='use'>
+      <view>
+        <view class='close' bindtap='hideModal'>
+          <text class='closeIcon'></text>
+        </view>
+        <!-- <view class='gzTitle'>适用时间：购买当日起有效期一年</view> -->
+
+        <view class='gzDes'>
+          <view class='fw gz'>团课月卡购买须知</view>
+          <text class='desItem'>1、购买团操课月卡可享受当月无限次免费预约团操课的特权。</text>
+          <text class='desItem'>2、团操课预约成功后，开课前6小时内不可取消。</text>
+          <text class='desItem'>3、团操课预约成功后，必须在场馆的门禁系统上签到销课，否则将视为缺课。</text>
+          <text class='desItem'>4、累计3次缺课者，将视为恶意预约用户，将列入沸沸黑名单，不得再次预约任何团操或私教课程；如有异议，可联系客服解除拉黑。</text>
+          <text class='desItem'>5、每个ID仅限1人使用，不可转赠或借给他人使用。</text>
+          <text class='desItem'>6、购买团操课月卡等同于同意《会员团操购买协议》</text>
+          <view class='fw gz'>月卡用户首次入场流程:</view>
+          <view class='desItems'>
+            <image src='../../../images/me/gzIcon.png' class='gzImg'></image>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<view class='bgModel' wx:if="{{chooseSizes}}" bindtap='hideModals'>
+  <view class="model" animation="{{animationData}}">
+    <scroll-view scroll-y='true' style="width: 100%;height:500px" class='use'>
+      <view>
+        <view class='close' bindtap='hideModals'>
+          <text class='closeIcon'></text>
+        </view>
+        <!-- <view class='gzTitle'>适用时间：购买当日起有效期一年</view> -->
+
+        <view class='gzDes'>
+          <view class='fw gz'>私教月卡购买须知</view>
+          <text class='desItem'>1、购买私教课月卡可享受当月无限次免费预约私教课的特权。</text>
+          <text class='desItem'>2、私教课预约成功后，开课前1小时内不可取消。</text>
+          <text class='desItem'>3、私教课预约成功后，必须在场馆的门禁系统上签到销课，否则将视为缺课。</text>
+          <text class='desItem'>4、累计3次缺课者，将视为恶意预约用户，将列入沸沸黑名单，不得再次预约任何团操或私教课程；如有异议，可联系客服解除拉黑。</text>
+          <text class='desItem'>5、每个ID仅限1人使用，不可转赠或借给他人使用。</text>
+          <text class='desItem'>6、购买私教课月卡等同于同意《会员私教购买协议》</text>
+          <view class='fw gz'>月卡用户首次入场流程:</view>
+          <view class='desItems'>
+            <image src='../../../images/me/gzIcon.png' class='gzImg'></image>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

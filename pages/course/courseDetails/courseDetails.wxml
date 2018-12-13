@@ -1,35 +1,37 @@
 <!--pages/course/courseDetails/courseDetails.wxml-->
 <view class='bg-c'>
-  <scroll-view scroll-y="true" bindscroll="scroll" style='height:100%' scroll-top="{{scrollTop}}">
+  <scroll-view scroll-y="true" bindscroll="scroll" style='height:{{winHeight}}px' scroll-top="{{scrollTop}}">
     <view scroll-y="true">
-      <view id="headImg">
+      <view id='headImg' class='headImg'>
         <view>
-          <image class='topImg' src='{{detailsData.fitnessCourseCoverimg}}'></image>
-        </view>
-        <view class='courseTit'>
-          <view class='courseTypes'>
-            <text class='fz-24 fw coachTxt'>团操</text>
-            <text class='fw courseName'>{{names}}</text>
-          </view>
           <view>
-            <text class='fzColor price'>￥{{price}}</text>
+            <image class='topImg' src='{{detailsData.fitnessCourseCoverimg}}'></image>
+          </view>
+        </view>
+        <view class='courAddress' id="courAddress">
+          <view class='courseTit'>
+            <view class='courseTypes'>
+              <text class='fz-24 fw coachTxt'>团操</text>
+              <text class='fw courseName'>{{names}}</text>
+            </view>
+            <view>
+              <text class='fzColor price'>￥{{price}}</text>
+            </view>
+          </view>
+          <view class='buyCourse'>
+            <view>
+              <image class='icon1' src='../../../images/course/icon1.png'></image>
+            </view>
+            <view class='fzCol6 nums'>已有102人购买该课程</view>
+          </view>
+          <view class='buyCourse adressItem'>
+            <view>
+              <image class='icon1' src='../../../images/course/icon2.png'></image>
+            </view>
+            <view class='fzCol6 nums address'>{{address}}</view>
           </view>
         </view>
       </view>
-      <!-- <view class='bor'>
-  <view class='buyCourse'>
-    <view>
-      <image mode='widthFix' class='icon1' src='../../../images/course/icon1.png'></image>
-    </view>
-    <view class='fzCol6 nums'>已有102人购买该课程</view>
-  </view>
-  <view class='buyCourse'>
-    <view>
-      <image mode='widthFix' class='icon1' src='../../../images/course/icon2.png'></image>
-    </view>
-    <view class='fzCol6 nums'>深圳市南山区海德三道海岸大厦东座</view>
-  </view>
-</view> -->
       <view class="detailTab {{menuFixed ? 'fixed': ''}}">
         <view class="fzCol6 tabs">
           <text class="{{currentTab=='1'? 'active':''}} items" id="1" data-current="1" bindtap='switchNav'>认证教练</text>
@@ -40,8 +42,23 @@
       <view>
         <!-- <scroll-view scroll-y="true" class='scoll-h' bindscroll="scroll" scroll-top="{{scrollTop}}"> -->
         <view class='box'>
-          <view class="marts1" id="item1" style='top:0px'>
+          <view class="marts1" id="item1" style='top:0px' wx:if="{{coachType==false}}">
             <view class='curriculumItem' bindtap='coachDetails' data-code="{{storeCoach.storeCoachPkcode}}">
+              <view class='imgBox'>
+                <image class='attenImg' src="{{storeCoach.storeCoachHeadimg}}"></image>
+              </view>
+              <view>
+                <view class='fw attenName'>
+                  {{storeCoach.storeCoachName}}
+                </view>
+                <view class='des'>
+                  <text class='txtDes'> {{storeCoach.storeCoachSynopsis}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="marts1" id="item1" style='top:0px' wx:if="{{coachType}}">
+            <view class='curriculumItem' bindtap='pricoachDetails' data-code="{{storeCoach.storeCoachPkcode}}">
               <view class='imgBox'>
                 <image class='attenImg' src="{{storeCoach.storeCoachHeadimg}}"></image>
               </view>
@@ -59,34 +76,58 @@
             <!-- <view class='courseImg'>
               <image mode='widthFix' class='courseIcon' src='../../../images/course/login.png'></image>
             </view> -->
-            <view>
-              <view class='fw titles'>
-                <text>课</text>
-                <text>程</text>
-                <text>介</text>
-                <text>绍</text>
+            <view class='coursejs'>
+              <view class='titles'>
+                <text class='txtNum'>02</text>
+                <text class='txtName'>课程介绍</text>
               </view>
               <!-- <view class='fw enDetail'>GOOD AT COURSE</view> -->
-              <text class='courseCon'>课程介绍</text>
+              <view class='courseNameTitle'>
+                <text class='fw courseCon'>课程介绍</text>
+              </view>
               <view class='fzCol6 conTex'>
                 {{conText.fitnessCourseintroduce}}
               </view>
-              <view class='courseCon'>训练效果</view>
+              <view class='courseNameTitle'>
+                <view class='fw courseCon'>训练效果</view>
+              </view>
+
               <view class='fzCol6 conTex'>{{conText.trainingEffect}}</view>
             </view>
-            <view class='courseCon'>适宜人群</view>
+            <view class='courseNameTitle'>
+              <view class='fw courseCon'>适宜人群</view>
+            </view>
             <view class='fzCol6 conTex'>{{conText.SuitablePopulation}}</view>
-            <view class='courseCon'>温馨提示</view>
+            <view class='courseNameTitle'>
+              <view class='fw courseCon'>温馨提示</view>
+            </view>
             <view wx:for="{{conText.Reminder}}" wx:key="{{index}}">
               <view class='fzCol6 conTex'>
-                {{item.text}}
+                <text class='reminderList'>{{item.text}}<text class='reminderItem'>{{index+1}}</text></text>
+
               </view>
             </view>
           </view>
           <view class="marts1" id='item3' style='top:{{items1Height+items2Height+menuTop}}px'>
             <view class='mart'>
-              <view>
-                <image mode='widthFix' class='useImg' src='../../../images/course/details.png'></image>
+              <view class='coursejs'>
+                <!-- <image mode='widthFix' class='useImg' src='../../../images/course/details.png'></image> -->
+                <view class='titles stepList'>
+                  <text class='txtNum'>03</text>
+                  <text class='txtName'>使用流程</text>
+                </view>
+                <view class='stepItem'>
+                  <text class='stepTxt'>手机线上预约或现场终端预约</text>
+                </view>
+                <view class='stepItem'>
+                  <text class='stepTxt step2'>操房终端机门禁开门申请</text>
+                </view>
+                <view class='stepItem'>
+                  <text class='stepTxt step3'>名字/电话+指静脉</text>
+                </view>
+                <view class='stepItem'>
+                  <text class='stepTxt step4'>验证成功开始上课</text>
+                </view>
               </view>
             </view>
           </view>

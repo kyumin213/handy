@@ -1,25 +1,27 @@
 /* pages/me/me.wxss */
 
 page {
-  background: #f7f7f7;
+  background: #fff;
 }
 
 .headBgImg {
   width: 100%;
   height: 316rpx;
 }
+
 .headImgBox {
-  width: 144rpx;
-  height: 144rpx;
+  width: 134rpx;
+  height: 134rpx;
   border-radius: 100%;
-  border: 6rpx solid #fff;
+  border: 8rpx solid #fff;
   position: absolute;
-  top: -73rpx;
+  top: -72rpx;
   left: 50%;
   margin-left: -67rpx;
   box-sizing: border-box;
   overflow: hidden;
 }
+
 .userinfo-avater {
   width: 144rpx;
   height: 144rpx;
@@ -34,19 +36,19 @@ page {
 }
 
 .headTop {
-  width: 690rpx;
-  height: 364rpx;
-  background: #fff;
-  margin: 0 auto;
+  width: 642rpx;
+  /* width:  *//* height: 404rpx; */
+  border: 10rpx solid #fff;
+  background: #105e6e;
+  margin: 0 56rpx;
   border-radius: 10rpx;
   position: absolute;
-  top: -192rpx;
+  top: -202rpx;
   z-index: 9999;
-  left: 50%;
-  margin-left: -345rpx;
+  box-sizing: border-box;
+  height: 404rpx;
+  /* left: 50%; *//* margin-left: -345rpx; */
 }
-
-
 
 .viewCode {
   width: 100%;
@@ -64,76 +66,141 @@ page {
   text-align: center;
   margin-top: 74rpx;
   font-size: 32rpx;
+  color: #fff;
 }
 
 .growthHan {
   font-size: 26rpx;
-  margin-left: 80rpx;
+  margin-left: 46rpx;
 }
 
 .growth {
   width: 540rpx;
-  height: 10rpx;
-  border-radius: 6rpx;
+  height: 14rpx;
+  border-radius: 8rpx;
   background: #e6e6e6;
-  margin: 10rpx auto 0 auto;
+  margin: 12rpx auto 0 auto;
   position: relative;
 }
-.growth .jd{
-  width: 25%;
+
+.growth .jd {
+  /* width: 0%; */
   height: 100%;
-  background: #D7171D;
+  background: #f96400;
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: 6rpx;
+  border-radius: 8rpx;
 }
 
 .level {
   width: 80rpx;
   height: 30rpx;
   line-height: 30rpx;
-  background: #d71718;
-  border-radius: 10rpx;
+  background: #fff;
+  border-radius: 16rpx;
   font-size: 26rpx;
-  color: #fff;
+  color: #105e6e;
   text-align: center;
-  margin-left: 80rpx;
+  margin-left: 46rpx;
   margin-top: 8rpx;
 }
 
 .footprint {
   font-size: 32rpx;
   text-align: center;
-  margin: 54rpx 0 44rpx 0;
+  margin-bottom: 44rpx;
+  color: #fff;
 }
 
 .showPrint {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 80rpx;
+  /* margin: 0 56rpx; */
+  padding-bottom: 44rpx;
 }
 
 .showPrint .footItem {
   text-align: center;
+  width: 100%;
+  border-right: 2rpx dashed #f96400;
+}
+
+.showPrint .footItem:last-child {
+  border-right: 0;
 }
 
 .showPrint .footItem .Num {
   font-size: 48rpx;
-  color: #333;
+  color: #fff;
   font-weight: bold;
 }
 
 .showPrint .footItem .txt {
   font-size: 26rpx;
-  margin-top: 32rpx;
+  margin-top: 16rpx;
+  color: #fff;
+}
+
+/* 充值卡、会员卡 */
+
+.czList {
+  position: relative;
+}
+
+.cardItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 170rpx;
+  /* margin-top: 44rpx; */
+  border-bottom: 14rpx solid #f3f3f3;
+  padding: 0 22rpx;
+}
+
+.cardItem .txt1 {
+  margin-right: 14rpx;
+}
+
+.cardItem .txtPrice {
+  font-size: 30rpx;
+  margin-top: 12rpx;
+}
+
+.czBg {
+  position: absolute;
+  left: 22rpx;
+  top: 22rpx;
+  width: 342rpx;
+  height: 126rpx;
+  z-index: 2;
+}
+
+.hyBg {
+  position: absolute;
+  right: 22rpx;
+  top: 22rpx;
+  width: 342rpx;
+  height: 126rpx;
+  z-index: 2;
+}
+
+.czCardBg {
+  width: 342rpx;
+  height: 126rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  border-radius: 20rpx;
+  box-shadow: 0 4rpx 4rpx 6rpx #F3F3F3;
 }
 
 .card {
   width: 690rpx;
   height: 98rpx;
-  background: #d71718;
+  background: #f96400;
   border-bottom-left-radius: 10rpx;
   border-bottom-right-radius: 10rpx;
   position: relative;
@@ -173,18 +240,23 @@ page {
 }
 
 .myAppoitment {
-  margin: 186rpx auto 0 auto;
+  margin: 202rpx auto 0 auto;
   text-align: center;
-  width: 690rpx;
-  height: 256rpx;
+  /* width: 690rpx; *//* height: 256rpx; */
   background: #fff;
   border-radius: 10rpx;
   box-sizing: border-box;
+  border-top: 14rpx solid #f3f3f3;
+  border-bottom: 14rpx solid #f3f3f3;
+  padding-bottom: 50rpx;
 }
 
 .myAppoitment .yuTitle {
   font-size: 32rpx;
-  padding-top: 28rpx;
+  padding: 32rpx 0 24rpx 0;
+  color: #333;
+  border-bottom: 2rpx solid #f2f2f2;
+  margin: 0 54rpx;
 }
 
 .yuList {
@@ -192,7 +264,23 @@ page {
   align-items: center;
   justify-content: space-between;
   font-size: 26rpx;
-  margin: 64rpx 26rpx 0 26rpx;
+  margin: 38rpx 56rpx 0 56rpx;
+}
+
+.yuList .yuItems {
+  position: relative;
+}
+
+.yuList .yuItems .statusNum {
+  width: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  border-radius: 100%;
+  background: #f96400;
+  position: absolute;
+  top: -16rpx;
+  right: 0rpx;
+  display: inline-block;
 }
 
 .listIcon {
@@ -204,16 +292,70 @@ page {
   margin-top: 20rpx;
 }
 
+.czCard {
+  width: 342rpx;
+  background: #005b6d;
+  color: #fff;
+  height: 126rpx;
+  /* line-height: 96rpx; */
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20rpx;
+}
+
+.czTxt {
+  width: 100%;
+  line-height: 96rpx;
+  overflow: hidden;
+  font-size: 30rpx;
+  margin-left: 24rpx;
+  color: #282828;
+}
+
+.sj {
+  width: 0px;
+  height: 0px;
+  border-top: 96rpx solid #005b6d;
+  border-right: 66rpx solid transparent;
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
+
 .recharge {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 16rpx auto;
-  width: 690rpx;
-  height: 108rpx;
-  background: #fff;
-  border-radius: 10rpx;
+  /* margin: 16rpx auto; */
+  width: 342rpx;
+  height: 126rpx;
+  background: #f96400;
   font-size: 28rpx;
+  position: relative;
+  z-index: 99;
+  border-radius: 20rpx;
+}
+
+.sjr {
+  width: 0px;
+  height: 0px;
+  /* border-color: #fff #fc6703 #fc6703 #fff;
+  border-width: 48rpx 48rpx 48rpx 48rpx; */
+  border-bottom: 96rpx solid #fc6703;
+  border-left: 66rpx solid transparent;
+  position: absolute;
+  right: 100%;
+  top: 0;
+}
+
+.memCard {
+  width: 100%;
+  font-size: 30rpx;
+  margin-left: 24rpx;
+  color: #282828;
 }
 
 .recharge .rechargeCard {
@@ -221,69 +363,111 @@ page {
   height: 54rpx;
   line-height: 54rpx;
   border-radius: 10rpx;
-  background: #d71718;
+  background: #f96400;
   color: #fff;
   text-align: center;
   margin-left: 26rpx;
 }
 
-.recharge .rechargeTxt {
-  margin-right: 28rpx;
+.rechargeTxt {
+  margin-right: 34rpx;
 }
 
-.recharge .rechargeTxt .jt {
+.rechargeTxt .jt {
   display: inline-block;
-  width: 20rpx;
-  height: 20rpx;
-  border-top: 2rpx solid #ccc;
-  border-right: 2rpx solid #ccc;
-  transform: rotate(45deg);
-  margin-left: 14rpx;
+  border-top: 15rpx solid transparent;
+  border-left: 22rpx solid #fff;
+  border-bottom: 15rpx solid transparent;
 }
 
 .meList {
-  width: 690rpx;
+  /* width: 690rpx; */
   margin: 0 auto;
+  border-bottom: 22rpx solid #f3f3f3;
 }
 
 .ListItems {
-  width: 100%;
-  height: auto;
+  /* height: 100rpx; */
+  margin: 20rpx 30rpx 50rpx 30rpx;
   background: #fff;
-  border-radius: 10rpx;
+  /* border-radius: 10rpx; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   box-sizing: border-box;
+  height: 100%;
+}
+
+.meList .ListItems:first-child {
+  border-bottom: 2rpx solid #f2f0f0;
+  /* padding-bottom: 50rpx; */
+  /* margin-top: 76rpx; */
+}
+.meList .ListItems:last-child{
+  margin-bottom: 0;
+  margin-top: 0;
+
 }
 
 .ListItems .items {
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100rpx;
   margin: 0 30rpx;
-  border-bottom: 2rpx solid #F2F2F2;
+  border-bottom: 2rpx solid #f2f2f2; */
+  text-align: center;
   font-size: 28rpx;
-  color: #666666;
+  color: #666;
+  border-right: 2rpx solid #f2f0f0;
+  width: 33%;
+  height: 100rpx;
+  margin-bottom: 50rpx;
 }
-.ListItems .items:last-child{
-  border-bottom: none;
+
+.ListItems .items:last-child {
+  /* border-bottom: none; */
+  border-right: 0;
 }
-.ListItems .items .itemIcon{
-  width: 44rpx;
-  height: 46rpx;
-}
-.ListItems .items .itemIcon2{
-  width: 48rpx;
-  height: 38rpx;
-}
-.ListItems .items .itemIcon4{
+
+.ListItems .items .itemIcon {
   width: 50rpx;
-  height: 40rpx;
+  height: 50rpx;
 }
-.ListItems .items .itemIcon5{
-  width: 44rpx;
+
+.ListItems .items .itemIcon2 {
+  width: 55rpx;
+  height: 43rpx;
+}
+
+.ListItems .items .itemIcon3 {
+  width: 46rpx;
+  height: 52rpx;
+}
+
+.ListItems .items .itemIcon4 {
+  width: 48rpx;
+  height: 50rpx;
+}
+
+.ListItems .items .itemIcon5 {
+  width: 46rpx;
   height: 48rpx;
 }
-.ListItems .items .jt{
+
+.ListItems .items .itemIcon6 {
+  width: 54rpx;
+  height: 42rpx;
+}
+
+.ListItems .iconHeight {
+  height: 56rpx;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.ListItems .items .jt {
   display: inline-block;
   width: 20rpx;
   height: 20rpx;
@@ -291,24 +475,29 @@ page {
   border-right: 2rpx solid #ccc;
   transform: rotate(45deg);
 }
-.ListItems .itemsTxt{
-  margin-left: 28rpx;
+
+.ListItems .itemsTxt {
+  margin-top: 22rpx;
 }
-.ListItems .itemLeft{
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.listBot{
+
+.listBot {
   width: 100%;
   height: 16rpx;
 }
-.itemImg{
+
+.itemImg {
   position: relative;
 }
-.nums{
+
+.nums {
   display: inline-block;
   /* position: absolute; */
   font-size: 30rpx;
-  color: #d71718;
+  color: #f96400;
+}
+
+.icons {
+  width: 82rpx;
+  height: 82rpx;
+  margin-left: 18rpx;
 }

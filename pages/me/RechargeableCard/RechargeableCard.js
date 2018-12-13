@@ -10,19 +10,30 @@ Page({
   data: {
     cardList: [{
         expiryDate: 1,
-        money: 100,
+        money: 500,
       },
       {
-        expiryDate: 2,
-        money: 300,
+        expiryDate: 1,
+        money: 1000,
+      },
+      {
+        expiryDate: 1,
+        money: 2000,
       }
+
     ],
-    check: -1,
-    totalMoney: 0,
+    check: 0,
+    totalMoney: 500,
     tabOne: true,
     tabTwo: false,
-    allMonty: '',
-    disable:true
+    allMonty: '0.00',
+    disable: true,
+    imgs: 'http://112.74.169.46:8094/api/file/uploadfile/file/images/memberCard/chongzhi.png',
+
+    chooseSize: false,
+    animationData: {},
+    checked: false,
+    subBtns: true
   },
 
   /**
@@ -31,22 +42,114 @@ Page({
   onLoad: function(options) {
     var allMonty = options.allMoney
     var that = this
-    that.setData({
-      allMonty: allMonty
-    })
+    if (allMonty == 0) {
+      that.setData({
+        allMonty: '0.00'
+      })
+    }
 
   },
+  // 查看会员
+  memberCard: function() {
+    wx.navigateTo({
+      url: '../myCardList/myCardList',
+    })
+  },
+  chooseSezi: function(e) {
+    var that = this;
+    // 创建一个动画实例
+    var animation = wx.createAnimation({
+      // 动画持续时间
+      duration: 300,
+      // 定义动画效果，当前是匀速
+      timingFunction: 'linear'
+    })
+    // 将该变量赋值给当前动画
+    that.animation = animation
+    // 先在y轴偏移，然后用step()完成一个动画
+    animation.translateY(500).step()
+    // 用setData改变当前动画
+    that.setData({
+      // 通过export()方法导出数据
+      animationData: animation.export(),
+      // 改变view里面的Wx：if
+      chooseSize: true
+    })
+    // 设置setTimeout来改变y轴偏移量，实现有感觉的滑动
+    setTimeout(function() {
+      animation.translateY(0).step()
+      that.setData({
+        animationData: animation.export()
+      })
+    }, 200)
+  },
+  // 隐藏
+  hideModal: function(e) {
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 400,
+      timingFunction: 'linear'
+    })
+    that.animation = animation
+    animation.translateY(500).step()
+    that.setData({
+      animationData: animation.export()
+
+    })
+    setTimeout(function() {
+      animation.translateY(0).step()
+      that.setData({
+        animationData: animation.export(),
+        chooseSize: false
+      })
+    }, 200)
+  },
+
   // 选择充值卡金额
   selectCard: function(e) {
     var that = this
     var index = e.currentTarget.dataset.index
     var datas = that.data.cardList
     var money = datas[index].money
+    let check = that.data.check
+    let checked = that.data.checked
     that.setData({
       check: index,
-      totalMoney: money,
-      disable:false
+      totalMoney: money
     })
+    // if (subBtns && !checked) {
+    //   that.setData({
+    //     disable: false
+    //   })
+    // } else {
+    //   that.setData({
+    //     disable: true
+    //   })
+    // }
+  },
+  // 同意使用规则
+  checkboxChange: function() {
+    let that = this
+    let checked = that.data.checked
+    let subBtns = that.data.subBtns
+    if (checked) {
+      that.setData({
+        checked: false
+      })
+    } else {
+      that.setData({
+        checked: true
+      })
+    }
+    if (checked == false && subBtns) {
+      that.setData({
+        disable: false
+      })
+    } else {
+      that.setData({
+        disable: true
+      })
+    }
 
   },
   // 点击tab充值
@@ -88,6 +191,7 @@ Page({
               })
             },
             'fail': function(res) {
+              let success = '400'
               // console.log("fail == " + res)
               wx.navigateTo({
                 url: '../../course/paymentSuccess/paymentSuccess?success=' + success + '&money=' + money,

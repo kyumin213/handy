@@ -17,7 +17,7 @@ Page({
     winHeight: 0,
     currentTab: 1,
     scrollHeight: 0,
-    more: false,
+    more: true,
     more2: false,
     jian: "",
     goodDes: "",
@@ -31,7 +31,6 @@ Page({
     currentData: '',
     conText: {},
     winWidth: '',
-    winHeight: '',
     coachType: 0,
     items1Height: 0,
     items2Height: 0,
@@ -102,17 +101,17 @@ Page({
     var that = this
     var menuStatus = that.data.menuFixed
     var menuTop = that.data.menuTop
-    if (menuStatus) {
-      that.setData({
-        menuScrollTop: menuTop - 30,
-        currentTab: 1
-      });
-    } else {
-      that.setData({
-        menuScrollTop: menuTop - 10,
-        currentTab: 1
-      });
-    }
+    // if (menuStatus) {
+    that.setData({
+      menuScrollTop: 242,
+      currentTab: 1
+    });
+    // } else {
+    //   that.setData({
+    //     menuScrollTop: menuTop - 10,
+    //     currentTab: 1
+    //   });
+    // }
   },
   // 点击切换擅长课程
   goodsCourse: function(e) {
@@ -184,6 +183,20 @@ Page({
     var storeCoachId = that.data.storeCoachId
     app.agriknow.getCoachDetails(id, storeCoachId)
       .then(res => {
+        let good = res.data.storeCoachSynopsis
+        // var coachDes = des.slice(0, 100)
+        // let coachDes = good.slice(0, 100)
+        // if (coachDes.length >= 100) {
+        //   that.setData({
+        //     jian: coachDes,
+        //     more: true
+        //   })
+        // } else {
+        //   that.setData({
+        //     jian: good,
+        //     more: false
+        //   })
+        // }
         that.setData({
           coachData: res.data
         })
@@ -207,21 +220,6 @@ Page({
         that.setData({
           conText: con
         })
-
-        var good = res.data.storeCoachSynopsis
-        // var coachDes = des.slice(0, 100)
-        var coachDes = good.slice(0, 100)
-        if (coachDes.length >= 100) {
-          that.setData({
-            jian: coachDes,
-            more: true
-          })
-        } else {
-          that.setData({
-            jian: good,
-            more: false
-          })
-        }
 
       })
       .catch(res => {
@@ -355,9 +353,10 @@ Page({
     var store = e.currentTarget.dataset.store
     var end = e.currentTarget.dataset.end
     var status = e.currentTarget.dataset.status
+    var address = e.currentTarget.dataset.address
     var datas = that.data.currentData
     wx.navigateTo({
-      url: '../course/courseDetails/courseDetails?courseReleasePkcode=' + courseReleasePkcode + '&price=' + price + '&names=' + names + '&start=' + start + '&end=' + end + '&datas=' + datas + '&index=' + index + '&imgUrl=' + imgUrl + '&status=' + status + '&store=' + store,
+      url: '../course/courseDetails/courseDetails?courseReleasePkcode=' + courseReleasePkcode + '&price=' + price + '&names=' + names + '&start=' + start + '&end=' + end + '&datas=' + datas + '&index=' + index + '&imgUrl=' + imgUrl + '&status=' + status + '&store=' + store + '&address=' + address,
     })
   },
   // 预约
@@ -372,8 +371,9 @@ Page({
     var names = e.currentTarget.dataset.names
     var datas = that.data.currentData
     var storeCoachId = that.data.storeCoachId
+    var address = e.currentTarget.dataset.address
     wx.navigateTo({
-      url: '../course/comfirPayment/comfirPayment?courseReleasePkcode=' + pkcode + '&index=' + index + '&currentData=' + datas + '&storeCoachId=' + storeCoachId + '&price=' + price + '&start=' + start + '&end=' + end + '&names=' + names + '&store=' + store,
+      url: '../course/comfirPayment/comfirPayment?courseReleasePkcode=' + pkcode + '&index=' + index + '&currentData=' + datas + '&storeCoachId=' + storeCoachId + '&price=' + price + '&start=' + start + '&end=' + end + '&names=' + names + '&store=' + store + '&address=' + address,
     })
   },
   // 最近一周
@@ -495,7 +495,7 @@ Page({
     var that = this
     var tops = e.detail.scrollTop
     var menuTop = that.data.menuTop
-    if (tops > 180) {
+    if (tops >= 242) {
       that.setData({
         menuFixed: true
       })
@@ -508,7 +508,7 @@ Page({
     var item2 = that.data.items2Height
     var item3 = that.data.items3Height
     var item4 = that.data.items4Height
-    if (tops < menuTop + 40) {
+    if (tops <= menuTop + 5) {
       this.setData({
         currentTab: 1
       })
@@ -518,16 +518,16 @@ Page({
         currentTab: 2
       })
     }
-    if (tops >= item1 + item2 + menuTop + 200 && tops < item1 + item2 + item3 + menuTop + 100) {
-      this.setData({
-        currentTab: 3
-      })
-    }
-    if (tops > item1 + item2 + item3 + menuTop + 600) {
-      this.setData({
-        currentTab: 4
-      })
-    }
+    // if (tops >= item1 + item2 + menuTop + 200 && tops < item1 + item2 + item3 + menuTop + 100) {
+    //   this.setData({
+    //     currentTab: 3
+    //   })
+    // }
+    // if (tops > item1 + item2 + item3 + menuTop + 600) {
+    //   this.setData({
+    //     currentTab: 4
+    //   })
+    // }
   },
 
   /**
@@ -548,42 +548,40 @@ Page({
     query.select('#items1').boundingClientRect()
     // query.selectViewport().scrollOffset()
     query.exec(function(res) {
-      console.log(res)
       that.setData({
         items1Height: res[0].height
       })
     })
-    const query1 = wx.createSelectorQuery();
-    //选择id
-    query1.select('#items2').boundingClientRect()
-    query1.selectViewport().scrollOffset()
-    query1.exec(function(res) {
-      wx.pageScrollTo({
-        scrollTop: 0
-      })
+    // const query1 = wx.createSelectorQuery();
+    // //选择id
+    // query1.select('#items2').boundingClientRect()
+    // query1.selectViewport().scrollOffset()
+    // query1.exec(function(res) {
+    //   wx.pageScrollTo({
+    //     scrollTop: 0
+    //   })
 
-      console.log(res)
-      //取高度
-      that.setData({
-        items2Height: res[0].height
-      })
-    })
-    if (item3) {
-      var query2 = wx.createSelectorQuery();
-      //选择id
-      query2.select('#items3').boundingClientRect()
-      query2.selectViewport().scrollOffset()
-      query2.exec(function(res) {
-        //取高度
-        that.setData({
-          items3Height: res[0].height
-        })
-      })
-    } else {
-      that.setData({
-        items3Height: 0
-      })
-    }
+    //   //取高度
+    //   that.setData({
+    //     items2Height: res[0].height
+    //   })
+    // })
+    // if (item3) {
+    //   var query2 = wx.createSelectorQuery();
+    //   //选择id
+    //   query2.select('#items3').boundingClientRect()
+    //   query2.selectViewport().scrollOffset()
+    //   query2.exec(function(res) {
+    //     //取高度
+    //     that.setData({
+    //       items3Height: res[0].height
+    //     })
+    //   })
+    // } else {
+    //   that.setData({
+    //     items3Height: 0
+    //   })
+    // }
     var query3 = wx.createSelectorQuery();
     //选择id
     query3.select('#items4').boundingClientRect()
@@ -601,22 +599,17 @@ Page({
     query4.select('#headImg').boundingClientRect()
     query4.selectViewport().scrollOffset()
     query4.exec(function(res) {
-      wx.pageScrollTo({
-        scrollTop: res[0].height,
-        duration: 1500
-      })
-      // console.log(res[0].height)
       //取高度
       that.setData({
         menuTop: res[0].height
       })
     })
   },
-  onPageScroll: function(e) {
-    // var scrollTop = e.scrollTop
-    var that = this
-    console.log(e.scrollTop)
-  },
+  // onPageScroll: function(e) {
+  //   // var scrollTop = e.scrollTop
+  //   var that = this
+  //   console.log(e.scrollTop)
+  // },
 
 
   /**
