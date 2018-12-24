@@ -48,7 +48,6 @@ Page({
       .then(res => {
         let datas = res.data
         let dat = datas.slice(2)
-        console.log(dat)
         // that.setData({
         //   // handyCardList: dat,
         //   // hashList: true
@@ -73,9 +72,8 @@ Page({
     let names = '私教月卡'
     let money = '1999.00'
     let pkCode = e.currentTarget.dataset.code
-    let coachShow = true
     wx.navigateTo({
-      url: './teamCardPay/teamCardPay?names=' + names + '&money=' + money + '&pkCode=' + pkCode + '&coachShow=' + coachShow,
+      url: './teamCardPay/teamCardPay?names=' + names + '&money=' + money + '&pkCode=' + pkCode,
     })
   },
   // 待进行
@@ -308,7 +306,6 @@ Page({
       that.conduct()
     }
     that.nowTimes()
-    login.login()
     // that.personalLoad()
 
 
@@ -332,14 +329,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
   },
 
   /**

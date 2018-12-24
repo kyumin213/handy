@@ -34,7 +34,8 @@ Page({
     store: '',
     winHeight: '',
     coachType: false,
-    address: ''
+    address: '',
+    count: ''
   },
 
   /**
@@ -54,7 +55,7 @@ Page({
     var store = options.store
     let types = options.types
     let address = options.address
-
+    let count = options.count
     if (status == 0) {
       that.setData({
         ends: true
@@ -83,7 +84,8 @@ Page({
       index: index,
       imgUrl: imgUrl,
       store: store,
-      address: address
+      address: address,
+      count: count
     })
     wx.getSystemInfo({
       success: function(res) {
@@ -191,9 +193,9 @@ Page({
     var end = that.data.end
     let address = that.data.address
     var names = e.currentTarget.dataset.names
-    console.log(names)
+    let count = that.data.count
     wx.navigateTo({
-      url: '../coursePayment/coursePayment?courseReleasePkcode=' + pkcode + '&index=' + index + '&currentData=' + datas + '&price=' + price + '&start=' + start + '&end=' + end + '&names=' + names + '&store=' + store + '&address=' + address,
+      url: '../coursePayment/coursePayment?courseReleasePkcode=' + pkcode + '&index=' + index + '&currentData=' + datas + '&price=' + price + '&start=' + start + '&end=' + end + '&names=' + names + '&store=' + store + '&address=' + address + '&count=' + count,
     })
   },
   // 滚动实现tab切换
@@ -305,7 +307,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**

@@ -13,7 +13,9 @@ Page({
     dataWeek: {},
     dates: {},
     storeCityList: {}, //门店所有城市
-    storeList: {}, //城市所有门店
+    storeList:[
+      { storeName:'深圳市'}
+    ],//城市所有门店
     storeActive: -1, //门店选中下标
     allActive: true, //默认全城选中
     areaActive: 0, //选择区
@@ -68,26 +70,19 @@ Page({
         that.setData({
           winHeight: calc
         });
-        // that.setData({
-        //   screenHeight: res.windowHeight,
-        //   screenWidth: res.windowWidth,
-        //   slideHeight: res.windowHeight,
-        //   slideRight: res.windowWidth,
-        //   slideWidth: res.windowWidth * 0.7
-        // });
       }
     })
 
-    app.agriknow.getStoreListByCity(id, storeCity)
-      .then(res => {
-        // if (res.data.success = '200') {
-        that.setData({
-          storeList: res.data
-        })
-        // }
-      }).catch(res => {
-        console.log(res)
-      })
+    // app.agriknow.getStoreListByCity(id, storeCity)
+    //   .then(res => {
+    //     // if (res.data.success = '200') {
+    //     that.setData({
+    //       storeList: res.data
+    //     })
+    //     // }
+    //   }).catch(res => {
+    //     console.log(res)
+    //   })
     that.getAllCourse()
   },
   // 课程切换
@@ -278,8 +273,9 @@ Page({
     var price = e.currentTarget.dataset.price
     var names = e.currentTarget.dataset.names
     var address = e.currentTarget.dataset.address
+    var count = e.currentTarget.dataset.count
     wx.navigateTo({
-      url: './coursePayment/coursePayment?courseReleasePkcode=' + pkcode + '&index=' + index + '&currentData=' + datas + '&store=' + store + '&start=' + start + '&end=' + end + '&price=' + price + '&names=' + names + '&address=' + address,
+      url: './coursePayment/coursePayment?courseReleasePkcode=' + pkcode + '&index=' + index + '&currentData=' + datas + '&store=' + store + '&start=' + start + '&end=' + end + '&price=' + price + '&names=' + names + '&address=' + address + '&count=' + count,
     })
   },
   // 课程详情
@@ -298,8 +294,9 @@ Page({
     var store = e.currentTarget.dataset.store
     let types = e.currentTarget.dataset.type
     let address = e.currentTarget.dataset.address
+    var count = e.currentTarget.dataset.count
     wx.navigateTo({
-      url: './courseDetails/courseDetails?courseReleasePkcode=' + courseReleasePkcode + '&price=' + price + '&names=' + names + '&start=' + start + '&end=' + end + '&datas=' + datas + '&index=' + index + '&imgUrl=' + imgUrl + '&status=' + status + '&store=' + store + '&types=' + types + '&address=' + address,
+      url: './courseDetails/courseDetails?courseReleasePkcode=' + courseReleasePkcode + '&price=' + price + '&names=' + names + '&start=' + start + '&end=' + end + '&datas=' + datas + '&index=' + index + '&imgUrl=' + imgUrl + '&status=' + status + '&store=' + store + '&types=' + types + '&address=' + address + '&count=' + count,
     })
   },
 
@@ -444,16 +441,16 @@ Page({
     that.setData({
       storeCityName: storeCity
     })
-    app.agriknow.getStoreListByCity(id, storeCity)
-      .then(res => {
-        if (res.data.success = '200') {
-          that.setData({
-            storeList: res.data
-          })
-        }
-      }).catch(res => {
-        console.log(res)
-      })
+    // app.agriknow.getStoreListByCity(id, storeCity)
+    //   .then(res => {
+    //     if (res.data.success = '200') {
+    //       that.setData({
+    //         storeList: res.data
+    //       })
+    //     }
+    //   }).catch(res => {
+    //     console.log(res)
+    //   })
   },
   // 选择门店
   selectStore: function(e) {
@@ -619,7 +616,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**

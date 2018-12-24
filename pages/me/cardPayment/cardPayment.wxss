@@ -117,6 +117,7 @@ page {
   line-height: 108rpx;
   color: #fff;
   background: #f96400;
+  border-radius: 0;
 }
 
 .payment {

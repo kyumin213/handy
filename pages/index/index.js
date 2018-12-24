@@ -11,26 +11,27 @@ Page({
   },
 
   onLoad: function() {
-    // var that = this
-    // var loginData = wx.getStorageSync("userInfo")
-    // var userData = wx.getStorageSync('userInfoMsg')
-    // var id = loginData.id
-    // console.log(id)
-    // if (loginData != undefined) {
-    //   if (!userData) {
-    //     that.setData({
-    //       showModel: true
-    //     })
-    //   } else {
-    //     that.setData({
-    //       showModel: false
-    //     })
-    //   }
-    // } else {
-    //   that.setData({
-    //     showModel: false
-    //   })
-    // }
+    let that = this
+    var loginData = wx.getStorageSync("userInfo")
+    var userData = wx.getStorageSync('userInfoMsg')
+    var id = loginData.id
+    if (loginData != undefined) {
+      if (!userData) {
+        that.setData({
+          showModel: true
+        })
+      } else {
+        that.setData({
+          showModel: false
+        })
+      }
+    } else {
+      that.setData({
+        showModel: false
+      })
+    }
+
+    login.login()
   },
   agreeGetUser: function(e) {
     //设置用户信息本地存储
@@ -76,27 +77,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    let that = this
-    var loginData = wx.getStorageSync("userInfo")
-    var userData = wx.getStorageSync('userInfoMsg')
-    var id = loginData.id
-    if (loginData != undefined) {
-      if (!userData) {
-        that.setData({
-          showModel: true
-        })
-      } else {
-        that.setData({
-          showModel: false
-        })
-      }
-    } else {
-      that.setData({
-        showModel: false
-      })
-    }
 
-    login.login()
 
   },
 })

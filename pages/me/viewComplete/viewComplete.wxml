@@ -1,31 +1,32 @@
 <!--pages/me/viewComplete/viewComplete.wxml-->
 <view class='imgBox'>
-  <image mode='widthFix' class='headImg' src="{{userInfo.avatarUrl}}"></image>
+  <!-- <image mode='widthFix' class='headImg' src="{{userInfo.avatarUrl}}"></image> -->
+   <open-data type="userAvatarUrl" class="userinfo-avater" mode="cover"></open-data>
 </view>
 <view class='headCard'>
-  <view class='viewDetails'>查看详情</view>
-  <view class='fw courseName'>格莱美舞蹈</view>
+  <view class='viewDetails'></view>
+  <view class='fw courseName'>{{names}}</view>
   <view class='courseDes'>
-    <text class='item1'>09月01日</text>
-    <text class='item1'>星期六</text>
-    <text>09:00-10:00</text>
+    <text class='item1'>{{dates}}</text>
+    <!-- <text class='item1'>星期六</text> -->
+    <text>{{begin}}-{{end}}</text>
   </view>
 </view>
 <view class='conDes'>
   <view class='admissionMode'>
     <view class='fw fz-28'>入场方式</view>
-    <view class='fz-28 viewCode'>查看二维码入场</view>
+    <view class='fz-28 viewCode' bindtap='codeIn'>查看二维码入场</view>
   </view>
   <view class='conAddress'>
     <view class='fw fz-28 AddressTitle'>门店地址</view>
-    <view class='fz-28 storeAddress'>深圳市南山区世界之窗益田假日广场3层</view>
-    <view class='fz-28 viewMap'>查看地图</view>
+    <view class='fz-28 storeAddress'>深圳市南山区桃园街道丽山路桑泰丹华府4期134号商铺</view>
+    <!-- <view class='fz-28 viewMap'>查看地图</view> -->
   </view>
   <view class='considerations'>
     <view class='fw fz-28 carefulTitle'>注意事项</view>
     <view class='fz-28 carefulDes'>{{jianShow}}</view>
     <view class="more" bindtap='moreView'>
-      <text class='jt' wx:if="{{more}}"></text>
+      <text class='moreIcon' wx:if="{{more}}"></text>
       <!-- <view class='fz-28 takeUp' wx:if="{{more===false}}" bindtap='takeUp'>收起</view> -->
     </view>
     
@@ -45,5 +46,5 @@
     <view class='fz-28 color'>（充值卡扣款）￥69.00</view>
   </view>
 </view>
-<view class='cancelBtn'>取消预约</view>
+<view class='cancelBtn' bindtap='cancelOrder'>取消预约</view>
 <view class='invitingFriends' bindtap='invitingFriends'>邀请好友</view>

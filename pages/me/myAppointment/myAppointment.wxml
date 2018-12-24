@@ -78,7 +78,7 @@
                 <text class='fz-24 txt2'>{{item.courseOrderNum}}</text>
               </view>
               <view class='orderCon'>
-                <view class='orderConLeft'>
+                <view class='orderConLeft' bindtap='viewDetails' data-begin="{{item.begin}}" data-end="{{item.end}}" data-names="{{item.courseName}}" data-times="{{item.times}}" data-code="{{item.memberCoursePkcode}}">
                   <view class='headImgBox'>
                     <image class='courseImg' src="{{item.headimg}}"></image>
                   </view>
@@ -99,7 +99,7 @@
             <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
             <view class='nullTxt'>暂无课程信息</view>
           </view>
-          <view class='footer' wx:if="{{stayConductList}}">
+          <view class='footer' wx:if="{{stayConductList.length>5}}">
             <view class='footTxt'>我是有底线的</view>
             <view class='bomBorder'></view>
           </view>
@@ -117,7 +117,7 @@
                 <text class='fz-24 txt2'>{{item.courseOrderNum}}</text>
               </view>
               <view class='orderCon'>
-                <view class='orderConLeft'>
+                <view class='orderConLeft' bindtap='viewDetails' data-begin="{{item.begin}}" data-end="{{item.end}}" data-names="{{item.courseName}}" data-times="{{item.times}}" data-code="{{item.memberCoursePkcode}}">
                   <view class='headImgBox'>
                     <image class='courseImg' src="{{item.headimg}}"></image>
                   </view>
@@ -138,7 +138,7 @@
             <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
             <view class='nullTxt'>暂无课程信息</view>
           </view>
-          <view class='footer' wx:if="{{alleleList}}">
+          <view class='footer' wx:if="{{alleleList.length>5}}">
             <view class='footTxt'>我是有底线的</view>
             <view class='bomBorder'></view>
           </view>
@@ -156,7 +156,7 @@
                 <text class='fz-24 txt2'>{{item.courseOrderNum}}</text>
               </view>
               <view class='orderCon'>
-                <view class='orderConLeft'>
+                <view class='orderConLeft' bindtap='viewDetails' data-begin="{{item.begin}}" data-end="{{item.end}}" data-names="{{item.courseName}}" data-times="{{item.times}}" data-code="{{item.memberCoursePkcode}}">
                   <view class='headImgBox'>
                     <image class='courseImg' src="{{item.headimg}}"></image>
                   </view>
@@ -180,7 +180,7 @@
             <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
             <view class='nullTxt'>暂无课程信息</view>
           </view>
-          <view class='footer' wx:if="{{completedList}}">
+          <view class='footer' wx:if="{{completedList.length>5}}">
             <view class='footTxt'>我是有底线的</view>
             <view class='bomBorder'></view>
           </view>
@@ -210,7 +210,7 @@
                 </view>
                 <view>
                   <view class='times'>{{item.begin}} -{{item.end}}</view>
-                  <view class='fz-28 viewBtn' bindtap='codeIn' data-code="{{item.memberCoursePkcode}}">二维码入场</view>
+                  <!-- <view class='fz-28 viewBtn' bindtap='codeIn' data-code="{{item.memberCoursePkcode}}">二维码入场</view> -->
                 </view>
               </view>
             </view>
@@ -219,7 +219,7 @@
             <image mode='widthFix' class='nullImg' src='../../../images/memberCard/isnull.png'></image>
             <view class='nullTxt'>暂无课程信息</view>
           </view>
-          <view class='footer' wx:if="{{hashList}}">
+          <view class='footer' wx:if="{{hashList.length>5}}">
             <view class='footTxt'>我是有底线的</view>
             <view class='bomBorder'></view>
           </view>

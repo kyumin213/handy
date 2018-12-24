@@ -15,7 +15,8 @@ Page({
     currentTab: 0,
     teamList: {},
     teamTab: false,
-    winHeight: ''
+    winHeight: '',
+    ios: false
   },
 
   /**
@@ -23,8 +24,6 @@ Page({
    */
   onLoad: function(options) {
     let that = this
-    that.teamList()
-    that.coachList()
     wx.getSystemInfo({
       success: function (res) {
         var clientHeight = res.windowHeight,
@@ -36,6 +35,10 @@ Page({
         });
       }
     });
+    
+    that.teamList()
+    that.coachList()
+    
   },
   // 私教教练列表
   coachList: function() {
@@ -90,9 +93,13 @@ Page({
       .then(res => {
         if (res.data.length > 0) {
           that.setData({
-            teamTab: true,
             teamList: res.data
           })
+          setTimeout(() => {
+            this.setData({
+              teamTab: true
+            });
+          }, 250)
         } else {
           that.setData({
             hashList: false
@@ -158,6 +165,16 @@ Page({
       })
     }
   },
+  onLaunch: function () {
+    var that = this;
+    var phoneInfo = wx.getSystemInfo({
+      success: function (res) {
+        if (res.system.indexOf("iOS") != -1) {
+          that.data.ios = true
+        }
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -191,7 +208,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    wx.hideNavigationBarLoading()
+    wx.stopPullDownRefresh()
   },
 
   /**

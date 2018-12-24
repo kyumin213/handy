@@ -1,5 +1,5 @@
 <!--pages/course/coursePayment/coursePayment.wxml-->
-<view>
+<view class='con'>
   <view class='courseDesTop'>
     <view class='courseDes'>
       <view class='des'>
@@ -29,7 +29,11 @@
           <text class='jt'></text>
         </view>
       </view>
-      <view class='peopleNum card' bindtap='coupon'>
+      <view class='peopleNum card' wx:if="{{disCount}}">
+        <text class='fw NumTxt'>优惠券</text>
+        <text class='fzCol6 cardTxt'>不可使用优惠券</text>
+      </view>
+      <view class='peopleNum card' bindtap='coupon' wx:else>
         <text class='fw NumTxt'>优惠券</text>
         <view>
           <text class='fzColor cardTxt' wx:if="{{couponList}}"><text class='fzColor' wx:if="{{coupons}}">-</text>{{couponNum}}</text>
@@ -64,6 +68,15 @@
         <image mode='widthFix' class='hanOn' src='../../../images/pay/default.png' wx:else></image> -->
       </view>
     </view>
+    <view class='payList'>
+      <view class='payLeft'>
+        <image class='hanIcon' src='../../../images/pay/ff.png'></image>
+        <text class='hanTxt'>团操月卡</text>
+      </view>
+      <view class='payRight' bindtap='teamCardPay'>
+        <text class="selectPay {{teamCardPay?'selectActive': ''}}"></text>
+      </view>
+    </view>
     <view class='tips'>
       <text class='tsTxt'>温馨提示：</text>
       <text class='tipsRight'>若团操预约在开课6小时前取消，本预约已付金额
@@ -84,12 +97,19 @@
     <text class='comfirBtn'>确认支付</text>
     <text class='payMoney'>￥{{price}}</text>
   </view> -->
-  <button class='comfir' wx:if="{{!useCoupon}}" bindtap='subPayment' disabled="{{disable}}" data-name="{{courseList.fitnessCourseName}}" data-time="{{currentData}}" data-stores="{{courseList.storeName}}">确认支付
-    <text class='payMoney'>￥{{totalPrice}}</text>
-  </button>
-  <button class='comfir' wx:else bindtap='subPayment' disabled="{{disable}}" data-name="{{courseList.fitnessCourseName}}" data-time="{{currentData}}" data-stores="{{courseList.storeName}}">确认支付
-    <text class='payMoney'>￥{{nowPrice}}</text>
-  </button>
+  <view wx:if="{{!teamCardPay}}">
+    <button class='comfir' wx:if="{{!useCoupon}}" bindtap='subPayment' disabled="{{disable}}" data-name="{{courseList.fitnessCourseName}}" data-time="{{currentData}}" data-stores="{{courseList.storeName}}">确认支付
+      <text class='payMoney'>￥{{totalPrice}}</text>
+    </button>
+    <button class='comfir' wx:else bindtap='subPayment' disabled="{{disable}}" data-name="{{courseList.fitnessCourseName}}" data-time="{{currentData}}" data-stores="{{courseList.storeName}}">确认支付
+      <text class='payMoney'>￥{{nowPrice}}</text>
+    </button>
+  </view>
+  <view wx:else>
+    <button class='comfir' bindtap='getTeamCardBook' disabled="{{disable}}" data-name="{{courseList.fitnessCourseName}}" data-time="{{currentData}}" data-stores="{{courseList.storeName}}">确认支付
+      <!-- <text class='payMoney'>￥{{nowPrice}}</text> -->
+    </button>
+  </view>
 </view>
 <view class='bgModel' wx:if="{{chooseSize}}" bindtap='hideModal'>
   <view class="model" animation="{{animationData}}">

@@ -22,7 +22,6 @@ Page({
     index: '',
     store: '',
     money: '',
-    disBtn: false,
     discountPkcode: null,
     useCoupon: false,
     couponNum: '',
@@ -40,7 +39,11 @@ Page({
     disable: true,
     chooseSize: false,
     checkCoupon: false,
-    couponIndex: null
+    couponIndex: null,
+    count: '',
+    disCount: false,
+    teamCardPay: false,
+    hashTeamCard: false
   },
 
   /**
@@ -57,6 +60,16 @@ Page({
     var names = options.names
     var store = options.store
     let address = options.address
+    let count = options.count
+    if (count == 1) {
+      that.setData({
+        disCount: true,
+      })
+    } else {
+      that.setData({
+        disCount: false
+      })
+    }
     if (price > 2) {
       let jsMoney = (price * 0.05).toFixed(2)
       that.setData({
@@ -96,6 +109,32 @@ Page({
       })
     that.getCouponList()
 
+  },
+  // 团操卡预约
+  getTeamCardBook: function() {
+    let that = this
+    let loginData = wx.getStorageSync("userInfo")
+    let id = loginData.id
+    var names = that.data.names
+    var times = that.data.currentData
+    var store = that.data.store
+    var start = that.data.start
+    var end = that.data.end
+    let code = that.data.courseReleasePkcode
+    app.agriknow.teamCardBook(id, code).then(res => {
+      console.log(res.success)
+      if (res.success == '200') {
+        let success = '200'
+        wx.navigateTo({
+          url: '../paymentSuccess/paymentSuccess?success=' + success + '&names=' + names + '&times=' + times + '&store=' + store + '&start=' + start + '&end=' + end,
+        })
+      } else {
+        let success = '400'
+        wx.navigateTo({
+          url: '../paymentSuccess/paymentSuccess?success=' + success + '&names=' + names + '&times=' + times + '&store=' + store + '&start=' + start + '&end=' + end,
+        })
+      }
+    })
   },
   chooseSezi: function(e) {
     var that = this;
@@ -224,6 +263,7 @@ Page({
     that.setData({
       hanPay: true,
       wxPay: false,
+      teamCardPay: false
     })
   },
   // 选择微信支付
@@ -233,6 +273,17 @@ Page({
     that.setData({
       wxPay: true,
       hanPay: false,
+      teamCardPay: false
+    })
+  },
+  // 月卡支付
+  teamCardPay: function() {
+    var that = this
+    var wx = that.data.wxPay
+    that.setData({
+      wxPay: false,
+      hanPay: false,
+      teamCardPay: true
     })
   },
   // 选择优惠券
@@ -263,9 +314,6 @@ Page({
     var courseType = 1
     var discountPkcode = that.data.discountPkcode
     var level = ''
-    that.setData({
-      disBtn: true
-    })
     if (wxPay == true) {
       var payType = 1
       app.agriknow.getBuyCourse(courseType, releaseId, id, mobile, payType, null, discountPkcode)
@@ -421,8 +469,6 @@ Page({
     let useCoupon = that.data.coupons
     let checkCoupon = that.data.checkCoupon
     let couponNum = that.data.couponNum
-    console.log(useCoupon)
-    console.log(checkCoupon)
     if (useCoupon && checkCoupon) {
       let totalPrice = price - couponNum
       that.setData({
@@ -454,7 +500,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**

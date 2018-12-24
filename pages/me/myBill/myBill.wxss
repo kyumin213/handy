@@ -19,3 +19,7 @@ page{
   font-size: 26rpx;
   margin-top: 14rpx;
 }
+.consumptionList .status{
+  font-size: 32rpx;
+  margin-top: 6rpx;
+}

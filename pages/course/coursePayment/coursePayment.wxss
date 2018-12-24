@@ -1,2 +1,5 @@
 /* pages/course/coursePayment/coursePayment.wxss */
-@import '../comfirPayment/comfirPayment.wxss'
+@import '../comfirPayment/comfirPayment.wxss';
+.con{
+  padding-bottom: 100rpx;
+}

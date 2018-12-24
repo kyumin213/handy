@@ -179,5 +179,21 @@ class agriknow {
     }
     return this._request.postRequest(this._baseUrl + '/updateLockerPwd', data).then(res => res.data)
   }
+  // 团操月卡预约
+  teamCardBook(id, courseReleasePkcode) {
+    let data = {
+      id: id,
+      courseReleasePkcode: courseReleasePkcode
+    }
+    return this._request.postRequest(this._baseUrl + '/teamCardBook', data).then(res => res.data)
+  }
+  // 取消预约
+  teamCourseRefund(id, memberCoursePkcode){
+    let data = {
+      id:id,
+      memberCoursePkcode: memberCoursePkcode
+    }
+    return this._request.postRequest(this._baseUrl + '/teamCourseRefund', data).then(res => res.data)
+  }
 }
 export default agriknow

@@ -1,7 +1,7 @@
 <!--pages/attention/attention.wxml-->
 <view>
   <view>
-    <!-- <view class='headTop'>
+    <!-- <viedw class='headTop'>
       <view class='addressLeft'>
         <view>
           <image mode='widthFix' class='addressIcon' src='../../images/course/dw1.png'></image>
@@ -19,19 +19,17 @@
       </view>
     </view>
     <swiper current="{{currentTab}}" class="swiper" duration="300" bindchange="switchTab" style="height:{{winHeight?winHeight+'px':'auto'}}">
-
       <swiper-item>
-        <scroll-view scroll-y="true" class='scoll-h'>
-          <view>
+        <scroll-view scroll-y="true" class='scoll-h fadeIn'>
             <view class="attentionList" wx:if="{{teamTab}}">
               <block wx:for="{{teamList}}" wx:key="{{index}}">
                 <view class='items' data-index="{{index}}" bindtap='coachDetails' data-id="{{item.storeCoachId}}">
-                  <view class='imgBox fadeIn' wx:if="{{item.headimg?'fadeIn':''}}">
-                    <image class='attenImg' lazy-load="true" src="{{item.headimg}}"></image>
+                  <view class='imgBox'>
+                    <image lazy-load="true"  class='attenImg' lazy-load="true" src="{{item.headimg}}"></image>
                   </view>
                   <view class='itemRight'>
                     <view class='rightTitle'>
-                      <view class='fzColor attenName'>{{item.storeCoachNikename}}</view>
+                      <view class='fw attenName'>{{item.storeCoachNikename}}</view>
                     </view>
                     <view class='des'>
                       <text class='txtDes'>{{item.synopsis}}</text>
@@ -44,18 +42,16 @@
               <image mode='widthFix' class='nullImg' src='../../images/memberCard/isnull.png'></image>
               <view class='nullTxt'>暂无数据</view>
             </view>
-          </view>
-
         </scroll-view>
       </swiper-item>
       <swiper-item>
-        <scroll-view scroll-y="true" class='scoll-h'>
+        <scroll-view scroll-y="true" class='scoll-h fadeIn'>
           <view>
             <view class="attentionList" wx:if="{{hashList}}">
               <block wx:for="{{coachList}}" wx:key="{{index}}">
                 <view class='items' data-index="{{index}}" bindtap='precoachDetails' data-id="{{item.storeCoachId}}">
                   <view class='imgBox'>
-                    <image class='attenImg' src="{{item.headimg}}"></image>
+                    <image lazy-load="true"  class='attenImg' src="{{item.headimg}}"></image>
                   </view>
                   <view class='itemRight'>
                     <view class='rightTitle'>

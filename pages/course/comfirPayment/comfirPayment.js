@@ -17,14 +17,12 @@ Page({
     currentData: '',
     courseList: {},
     storeCoachId: '',
-    disBtn: false,
     store: '',
     price: '',
     start: '',
     end: '',
     index: '',
     money: '',
-    disBtn: false,
     discountPkcode: null,
     useCoupon: false,
     couponNum: '',
@@ -38,7 +36,9 @@ Page({
     checked: false,
     subBtns: true,
     disable: true,
-    chooseSize:false
+    chooseSize: false,
+    count: '',
+    disCount: false
   },
 
   /**
@@ -51,13 +51,13 @@ Page({
     var pkcode = options.courseReleasePkcode
     var index = options.index
     var datas = options.currentData
-    console.log(datas)
     var store = options.store
     var price = options.price
     var start = options.start
     var end = options.end
     var names = options.names
     let code = options.code
+    let count = options.count
     let address = options.address
     if (price > 2) {
       let jsMoney = (price * 0.05).toFixed(2)
@@ -65,7 +65,15 @@ Page({
         moneys: jsMoney
       })
     }
-
+    if (count == 1) {
+      that.setData({
+        disCount: true,
+      })
+    } else {
+      that.setData({
+        disCount: false
+      })
+    }
     var storeCoachId = options.storeCoachId
     var loginData = wx.getStorageSync("userInfo")
     var id = loginData.id
@@ -110,7 +118,8 @@ Page({
       start: start,
       end: end,
       address: address,
-      totalPrice: price
+      totalPrice: price,
+      count: count
     })
     that.getCouponList()
   },
@@ -257,10 +266,6 @@ Page({
     var end = that.data.end
     var courseType = 1
     let discountPkcode = that.data.discountPkcode
-    console.log(discountPkcode)
-    that.setData({
-      disBtn: true
-    })
     if (wxPay == true) {
       var payType = 1
       app.agriknow.getBuyCourse(courseType, releaseId, id, mobile, payType, null, discountPkcode)
@@ -439,7 +444,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**

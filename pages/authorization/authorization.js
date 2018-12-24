@@ -178,6 +178,7 @@ Page({
       })
     }
   },
+  
   // temporaryLogin: function(encryptedData, iv, memberId) {
   //   wx.login({
   //     success: function(res) {

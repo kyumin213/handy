@@ -24,6 +24,9 @@
 .fz-32{
   font-size: 32rpx;
 }
+.fz-30{
+  font-size: 30rpx;
+}
 button::after{
   border: none;
 }

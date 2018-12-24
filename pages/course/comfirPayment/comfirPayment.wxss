@@ -123,6 +123,7 @@ page {
   background: #fff;
   margin: 0 30rpx 170rpx 30rpx;
   border-radius: 20rpx;
+  height: auto;
 }
 
 .payTitle {

@@ -4,8 +4,8 @@
     <view scroll-y="true">
       <view id='headImg' class='headImg'>
         <view>
-          <view>
-            <image class='topImg' src='{{detailsData.fitnessCourseCoverimg}}'></image>
+          <view class='topImgBox'>
+            <image lazy-load="true" class='topImg' src='{{detailsData.fitnessCourseCoverimg}}'></image>
           </view>
         </view>
         <view class='courAddress' id="courAddress">
@@ -102,8 +102,13 @@
               <view class='fw courseCon'>温馨提示</view>
             </view>
             <view wx:for="{{conText.Reminder}}" wx:key="{{index}}">
-              <view class='fzCol6 conTex'>
-                <text class='reminderList'>{{item.text}}<text class='reminderItem'>{{index+1}}</text></text>
+              <view class='fzCol6 fz-30 conTex'>
+                <view class='reminLists'>
+                  <view>
+                    <view class='fzF reminderItem'>{{index+1}}</view>
+                  </view>
+                  <view class='reminderList'>{{item.text}}</view>
+                </view>
 
               </view>
             </view>
@@ -123,7 +128,7 @@
                   <text class='stepTxt step2'>操房终端机门禁开门申请</text>
                 </view>
                 <view class='stepItem'>
-                  <text class='stepTxt step3'>名字/电话+指静脉</text>
+                  <text class='stepTxt step3'>名字/电话</text>
                 </view>
                 <view class='stepItem'>
                   <text class='stepTxt step4'>验证成功开始上课</text>

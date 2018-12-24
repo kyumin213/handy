@@ -5,9 +5,27 @@ page {
 }
 
 .imgBox {
-  width: 100%;
-  text-align: center;
+  width: 182rpx;
+  height: 182rpx;
+  border-radius: 100%;
   margin-top: 32rpx;
+  border: 10rpx solid #fff;
+  /* position: absolute;
+  top: -72rpx;
+  left: 50%;
+  margin-left: -67rpx;
+  box-sizing: border-box; */
+  overflow: hidden;
+  position: relative;
+  left: 50%;
+  margin-left: -92rpx;
+  z-index: 999;
+}
+
+.userinfo-avater {
+  width: 192rpx;
+  height: 192rpx;
+  border-radius: 100%;
 }
 
 .headImg {
@@ -20,7 +38,7 @@ page {
 .headCard {
   width: 690rpx;
   height: 302rpx;
-  background: #d41616;
+  background: #005b6d;
   border-radius: 10rpx;
   margin: -110rpx auto 0 auto;
   color: #fff;
@@ -39,7 +57,7 @@ page {
   width: 100%;
   text-align: center;
   font-size: 36rpx;
-  padding-top: 68rpx;
+  padding-top: 92rpx;
 }
 
 .headCard .courseDes {
@@ -75,7 +93,7 @@ page {
 }
 
 .conDes .viewCode {
-  color: #d71718;
+  color: #f96400;
   text-decoration-line: underline;
 }
 
@@ -93,88 +111,103 @@ page {
 .conDes .storeAddress {
   padding-bottom: 28rpx;
   color: #999;
+  line-height: 40rpx;
 }
 
 .conDes .viewMap {
   padding-bottom: 32rpx;
   text-decoration-line: underline;
 }
-.conDes .considerations{
+
+.conDes .considerations {
   margin: 0 36rpx 0 26rpx;
 }
-.considerations .carefulTitle{
+
+.considerations .carefulTitle {
   padding-top: 26rpx;
 }
-.considerations .carefulDes{
+
+.considerations .carefulDes {
   margin-top: 28rpx;
-  color: #999999;
-  line-height:50rpx;
+  color: #999;
+  line-height: 50rpx;
 }
+
 /* 预约详情 */
-.appointDes{
+
+.appointDes {
   width: 690rpx;
   height: 312rpx;
   border-radius: 10rpx;
   background: #fff;
   margin: 26rpx auto 50rpx auto;
 }
-.appointDes .items{
+
+.appointDes .items {
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  color: #333333;
+  color: #333;
   height: 100rpx;
   margin: 0 36rpx 0 26rpx;
-  border-bottom: 2rpx solid #F2F2F2;
+  border-bottom: 2rpx solid #f2f2f2;
 }
-.appointDes .items:last-child{
+
+.appointDes .items:last-child {
   border-bottom: none;
 }
-.appointDes .color{
-  color: #999999;
+
+.appointDes .color {
+  color: #999;
 }
-.appointDes .colors{
-  color: #666666;
+
+.appointDes .colors {
+  color: #666;
 }
+
 .more {
   width: 100%;
   text-align: center;
-  /* position: fixed; */
-  /* bottom: 26rpx; */
+  /* position: fixed; *//* bottom: 26rpx; */
 }
 
-.more .jt {
+.more .moreIcon {
   display: inline-block;
   width: 26rpx;
   height: 26rpx;
-  border-left: 4rpx solid #d71718;
-  border-bottom: 4rpx solid #d71718;
+  border-left: 4rpx solid #f96400;
+  border-bottom: 4rpx solid #f96400;
   transform: rotate(-45deg);
   /* margin-top: -26rpx; */
 }
-.more .takeUp{
-  color: #D71718;
+
+.more .takeUp {
+  color: #f96400;
 }
+
 /* 取消预约 */
-.cancelBtn{
+
+.cancelBtn {
   width: 596rpx;
   height: 98rpx;
   line-height: 98rpx;
   text-align: center;
   margin: 0 auto 64rpx auto;
-  border: 2rpx solid #D71718;
+  border: 2rpx solid #f96400;
   border-radius: 10rpx;
   font-size: 36rpx;
-  color: #D41616;
+  color: #f96400;
 }
+
 /* 邀请好友 */
-.invitingFriends{
+
+.invitingFriends {
   width: 100%;
   height: 98rpx;
   line-height: 98rpx;
   text-align: center;
-  background: #D41616;
+  background: #f96400;
   color: #fff;
   font-size: 36rpx;
 }

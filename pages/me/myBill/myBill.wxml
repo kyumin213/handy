@@ -24,8 +24,10 @@
         <view class='fzCol6 times'>{{item.ctime}}</view>
       </view>
       <view>
-        <view class='fw fz-28 fzColor fzColor' wx:if="{{item.type===1}}">+￥{{item.money}}</view>
+        <view class='fw fz-28 fzColor' wx:if="{{item.type===1}}">+￥{{item.money}}</view>
         <view class='fw fz-28 fzCol6' wx:if="{{item.type===2}}">-￥{{item.money}}</view>
+        <view class='fw fzColor status' wx:if="{{item.backStatus==1}}">退款成功</view>
+        <view class='fw fzColor status' wx:if="{{item.backStatus==2}}">退款中</view>
       </view>
     </view>
   </block>

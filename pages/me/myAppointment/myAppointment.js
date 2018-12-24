@@ -29,7 +29,8 @@ Page({
     times: '',
     loadingTimes: '',
     currentTab: 0,
-    winHeight: ''
+    winHeight: '',
+    orderNumList:false
   },
 
   /**
@@ -40,7 +41,7 @@ Page({
     // var stayConduct = that.data.stayConduct
     var that = this
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         var clientHeight = res.windowHeight,
           clientWidth = res.windowWidth,
           rpxR = 750 / clientWidth;
@@ -90,7 +91,7 @@ Page({
       })
     }
   },
-  switchTab: function (e) {
+  switchTab: function(e) {
     this.setData({
       currentTab: e.detail.current
     });
@@ -125,6 +126,19 @@ Page({
       times: times
     })
   },
+  // 查看详情
+  viewDetails: function(e) {
+    let that = this
+    let begin = e.currentTarget.dataset.begin
+    let end = e.currentTarget.dataset.end
+    let names = e.currentTarget.dataset.names
+    let dates = e.currentTarget.dataset.times
+    let code = e.currentTarget.dataset.code
+    let times = that.data.times
+    wx.navigateTo({
+      url: '../viewComplete/viewComplete?begin=' + begin + '&end=' + end + '&names=' + names + '&dates=' + dates + '&code=' + code,
+    })
+  },
   // 二维码入场
   codeIn: function(e) {
     let that = this
@@ -155,19 +169,21 @@ Page({
             stayConductList: false
           })
         }
+        if(res.data.length>5){
+          that.setData({
+            orderNumList:true
+          })
+        }
         var datas = res.data
         for (var i = 0; i < datas.length; i++) {
           var ss = datas[i].begtime
           var endtime = datas[i].endtime
           var lastStr = ss.substring(10, 16)
           var lastEnd = endtime.substring(10, 16)
+          let orderTimes = ss.substring(0, 10)
+          datas[i].times = orderTimes
           datas[i].begin = lastStr
-
           datas[i].end = lastEnd
-          // that.setData({
-          //   begin: lastStr,
-          //   end: lastEnd
-          // })
         }
       })
       .catch(res => {
@@ -190,6 +206,8 @@ Page({
           // var da = ss.lastIndexOf(' ')
           var lastStr = ss.substring(10, 16)
           var lastEnd = endtime.substring(10, 16)
+          let orderTimes = ss.substring(0, 10)
+          datas[i].times = orderTimes
           datas[i].begin = lastStr
           datas[i].end = lastEnd
         }
@@ -203,7 +221,11 @@ Page({
             stayConductList: false
           })
         }
-
+        if (res.data.length > 5) {
+          that.setData({
+            orderNumList: true
+          })
+        }
       })
       .catch(res => {
         console.log(res)
@@ -231,8 +253,15 @@ Page({
           // var da = ss.lastIndexOf(' ')
           var lastStr = ss.substring(10, 16)
           var lastEnd = endtime.substring(10, 16)
+          let orderTimes = ss.substring(0, 10)
+          datas[i].times = orderTimes
           datas[i].begin = lastStr
           datas[i].end = lastEnd
+        }
+        if (res.data.length > 5) {
+          that.setData({
+            orderNumList: true
+          })
         }
         if (res.data.length > 0) {
           that.setData({
@@ -256,13 +285,6 @@ Page({
     var loginData = wx.getStorageSync("userInfo")
     var id = loginData.id
     var that = this
-    // that.setData({
-    //   stayConduct: false,
-    //   stayAssess: false,
-    //   allele: false,
-    //   completed: true,
-    //   cancelled: false
-    // })
     var status = 3
     app.agriknow.getMyTeamCourse(id, status)
       .then(res => {
@@ -273,8 +295,15 @@ Page({
           // var da = ss.lastIndexOf(' ')
           var lastStr = ss.substring(10, 16)
           var lastEnd = endtime.substring(10, 16)
+          let orderTimes = ss.substring(0, 10)
+          datas[i].times = orderTimes
           datas[i].begin = lastStr
           datas[i].end = lastEnd
+        }
+        if (res.data.length > 5) {
+          that.setData({
+            orderNumList: true
+          })
         }
         if (res.data.length > 0) {
           that.setData({
@@ -298,14 +327,6 @@ Page({
     var loginData = wx.getStorageSync("userInfo")
     var id = loginData.id
     var that = this
-    // that.setData({
-    //   stayConduct: false,
-    //   stayAssess: true,
-    //   allele: false,
-    //   completed: false,
-    //   cancelled: false
-    // })
-    // var status = 3
     app.agriknow.getMyTeamCourse(id)
       .then(res => {
         if (res.data.length > 0) {
@@ -333,14 +354,6 @@ Page({
     var loginData = wx.getStorageSync("userInfo")
     var id = loginData.id
     var that = this
-    // that.setData({
-    //   // stayConduct: false,
-    //   // stayAssess: false,
-    //   // allele: false,
-    //   // completed: false,
-    //   // cancelled: true
-    //   currentTab:3
-    // })
     var status = 4
     app.agriknow.getMyTeamCourse(id, status)
       .then(res => {
@@ -353,6 +366,11 @@ Page({
           var lastEnd = endtime.substring(10, 16)
           datas[i].begin = lastStr
           datas[i].end = lastEnd
+        }
+        if (res.data.length > 5) {
+          that.setData({
+            orderNumList: true
+          })
         }
         if (res.data.length > 0) {
           that.setData({
@@ -371,12 +389,7 @@ Page({
         console.log(res)
       })
   },
-  // 查看详情
-  viewDetails: function() {
-    wx.navigateTo({
-      url: '../viewComplete/viewComplete',
-    })
-  },
+
   // 清除定时器
   endSetInter: function() {
     var that = this;
@@ -426,7 +439,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**

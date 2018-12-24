@@ -166,12 +166,12 @@ Page({
     if (menuStatus) {
       that.setData({
         menuScrollTop: item3 + item1 + item2 + menuTop + 612,
-        currentTab: 4
+        currentTab: 2
       })
     } else {
       that.setData({
         menuScrollTop: item3 + item1 + item2 + menuTop + 612,
-        currentTab: 4
+        currentTab: 2
       })
     }
   },
@@ -354,9 +354,10 @@ Page({
     var end = e.currentTarget.dataset.end
     var status = e.currentTarget.dataset.status
     var address = e.currentTarget.dataset.address
+    var count = e.currentTarget.dataset.count
     var datas = that.data.currentData
     wx.navigateTo({
-      url: '../course/courseDetails/courseDetails?courseReleasePkcode=' + courseReleasePkcode + '&price=' + price + '&names=' + names + '&start=' + start + '&end=' + end + '&datas=' + datas + '&index=' + index + '&imgUrl=' + imgUrl + '&status=' + status + '&store=' + store + '&address=' + address,
+      url: '../course/courseDetails/courseDetails?courseReleasePkcode=' + courseReleasePkcode + '&price=' + price + '&names=' + names + '&start=' + start + '&end=' + end + '&datas=' + datas + '&index=' + index + '&imgUrl=' + imgUrl + '&status=' + status + '&store=' + store + '&address=' + address + '&count=' + count,
     })
   },
   // 预约
@@ -372,8 +373,9 @@ Page({
     var datas = that.data.currentData
     var storeCoachId = that.data.storeCoachId
     var address = e.currentTarget.dataset.address
+    var count = e.currentTarget.dataset.count
     wx.navigateTo({
-      url: '../course/comfirPayment/comfirPayment?courseReleasePkcode=' + pkcode + '&index=' + index + '&currentData=' + datas + '&storeCoachId=' + storeCoachId + '&price=' + price + '&start=' + start + '&end=' + end + '&names=' + names + '&store=' + store + '&address=' + address,
+      url: '../course/comfirPayment/comfirPayment?courseReleasePkcode=' + pkcode + '&index=' + index + '&currentData=' + datas + '&storeCoachId=' + storeCoachId + '&price=' + price + '&start=' + start + '&end=' + end + '&names=' + names + '&store=' + store + '&address=' + address + '&count=' + count,
     })
   },
   // 最近一周
@@ -513,7 +515,7 @@ Page({
         currentTab: 1
       })
     }
-    if (tops > item1 + menuTop && tops <= menuTop + item1 + item2) {
+    if (tops > item1 + menuTop) {
       this.setData({
         currentTab: 2
       })
@@ -630,7 +632,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**

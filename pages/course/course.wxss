@@ -1,7 +1,7 @@
 /* pages/course/course.wxss */
 
 page {
-  background: #f2f2f2;
+  background: #005b6d;
 }
 
 .headImg {
@@ -130,7 +130,7 @@ page {
   width: 74rpx;
   height: 74rpx;
   text-align: center;
-  top: -34rpx;
+  top: -30rpx;
   left: -32rpx;
   bottom: 0;
   z-index: 0;
@@ -139,7 +139,7 @@ page {
 /* 课程 */
 
 .courseList {
-  margin-bottom: 90rpx;
+  padding-bottom: 100rpx;
 }
 
 .curriculumItem {
@@ -150,7 +150,7 @@ page {
   padding-left: 30rpx;
   box-sizing: border-box;
   background: #fff;
-  margin: 12rpx 30rpx 0 30rpx;
+  margin: 2rpx 30rpx 0 30rpx;
   border-radius: 20rpx;
   /* border-top: 4rpx solid #211e1e;
   border-bottom: 4rpx solid #1e211e; */
@@ -266,7 +266,7 @@ page {
 }
 
 .startTime .endClass {
-  background: #fff;
+  background: #f5f5f5;
   color: #ccc;
 }
 
@@ -461,7 +461,7 @@ page {
 .courseTab {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background: #fff;
   height: 84rpx;
   border-top: 2rpx solid #e6e6e6;

@@ -45,7 +45,43 @@
     <view class='fz-24 fzColor viewUse' bindtap='chooseSezi'>(查看使用规则)</view>
   </view>
 </view>
-<view class='submitPayment' bindtap='subPayment'>
+<button class='submitPayment' bindtap='subPayment' disabled="{{disable}}">
   <text class='payment'>确认支付</text>
   <text class='totalMoney'>￥{{totalMoney}}</text>
+</button>
+<view class='bgModel' wx:if="{{chooseSize}}" bindtap='hideModal'>
+  <view class="model" wx:if="{{chooseSize}}" animation="{{animationData}}">
+    <scroll-view scroll-y='true' style="width: 100%;height:550px" class='use'>
+      <view>
+        <view class='close' bindtap='hideModal'>
+          <text class='closeIcon'></text>
+        </view>
+        <!-- <view class='gzTitle'>适用时间：购买当日起有效期一年</view> -->
+
+        <view class='gzDes'>
+          <view class='fw gz'>FEFEE权益卡服务协议</view>
+          <view class='fw xyTitle'>欢迎使用FEFEE 权益卡服务，为了保障您的权益，请在进行下一步操作前，详细阅读本协议的所有内容。当您勾选“同意《FEFEE权益卡服务协议》”并点击下一步按钮时，您的行为表示您同意并签署了本协议，并同意遵守本协议中的约定。该协议构成您于深圳市领犀科技有限公司有限公司达成的协议，具有法律效力。</view>
+          <view class='fw xyTitle'>本协议是《会员注册协议》的补充协议，是不可分割的组成部分，与其构成统一整体。本协议与上述内容存在冲突的，以本协议为准。</view>
+          <view class='fw xyTitle'>本协议内容包括协议正文、FEFEE将来可能发布与权益卡会员服务相关的各类规则。所有规则为本协议不可分割的组成部分，与本协议正文具有同等法律效力。一旦相关内容发生相关变动，FEFEE将会通过电子邮件或微信公众号公告等方式提示您。如果您不同意对本协议内容所做的修改，则应立即停止使用本服务；如果您继续使用本服务的，则视为您同意对本协议内容所做的修改。</view>
+          <view class='fw gz'>1、定义</view>
+          <text class='desItem'>1、FEFEE权益卡会员，是指FEFEE小程序的个人注册用户在签署本协议并通过充值赠送、付费购买任意一种方式获得权益卡的用户。</text>
+          <text class='desItem'>2、权益卡服务:只权益卡会员所享有的特殊服务，包括制定课程优惠服务、指定类型课程折扣服务、租赁储物柜优惠服务等，具体以“沸沸运动”小程序，或“FEFEE沸沸运动”微信公众号公布内容为准。</text>
+          <view class='fw gz'>二、使用规范</view>
+          <text class='desItem'>1、您申请权益卡会员服务时，需保证您在小程序端注册的个人信息真实有效，如有变动，您应该及时更新。</text>
+          <text class='desItem'>2、FEFEE权益卡是一项个人的、非独家的、不可转让、可撤销的、有期限的使用许可。FEFEE权益卡用户在深圳市领犀科技有限公司提供的服务平台上的一切活动的监督、提示、检查的权利，如权益卡会员的行为违反有关法律法规或违反本协议条款的约定，领犀科技享有要求其纠正及追究其责任等权利。</text>
+          <view class='fw gz'>三、费用和有效期</view>
+          <text class='desItem'>1、您有两种渠道获得权益卡：①自费购买；②充值一定金额获赠。</text>
+          <text class='desItem'>2、您的权益卡有效期是365天，自获赠/购买之日生效。</text>
+          <text class='desItem'>3、充值卡用户获赠的权益卡服务为1年，权益卡生效期间，再次充值时，权益卡年限不会延长。权益卡失效后，如充值赠权益卡活动依然有效，则再次充值时，可再次获赠权益卡。具体以“沸沸运动”小程序，或“FEFEE沸沸运动”微信公众号公布内容为准。</text>
+          <text class='desItem'>4、充值卡用户获赠权益卡后，如申请退款，则权益卡失效，且1年内不能再获赠权益卡，如需要使用权益卡优惠，请自费购买权益卡。</text>
+          <view class='fw gz'>四、权益卡会员服务售后</view>
+          <text class='desItem'>1、您知悉并确认、开通权益卡服务后，若您中途主动取消服务或终止资格或被FEFEE根据《会员注册协议》、本协议及相关规则注销账号、终止会员资格的，您已支付的权益卡服务费用将不予退还。</text>
+          <text class='desItem'>2、如您有其他会员服务或售后相关的问题，可以通过FEFEE公布的联系方式联系客服进行反馈。</text>
+          <view class='fw gz'>五、其他规定</view>
+          <text class='desItem'>1、本服务条款的生效、履行、解释及争议的解决均适用中华人民共和国法律，本服务条款因与中华人民共和国现行法律相抵触而导致部分无效，不影响其他部分的效力。</text>
+          <text class='desItem'>2、如就本协议内容或其执行发生任何争议，应尽量友好协商解决；协商不成时，任何一方均可向深圳市人民法院提起诉讼。</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
 </view>

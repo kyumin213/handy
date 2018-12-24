@@ -87,7 +87,7 @@
               <view class='weekDays'>
                 <block wx:for="{{week}}" wx:key="{{index}}">
                   <!-- <text class='weekDay' data-index="{{index}}">{{item}}</text> -->
-                  <view class='weekDay' data-index="{{index}}">
+                  <view class='weekDay' data-index="{{index}}" bindtap='courseTime'>
                     <text class="weeks {{check==index?'fzF':''}}">{{item}}</text>
                   </view>
                 </block>
@@ -106,7 +106,7 @@
           <view wx:if="{{hashList}}">
             <view class='curriculumItem' wx:for="{{courseList}}" wx:key="{{index}}" data-index="{{index}}">
               <view class='curriLeft' bindtap='courseDetails' data-id="{{item.courseReleasePkcode}}" data-price="{{item.courseReleaseMoney}}" data-names="{{item.fitnessCourseName}}" data-start="{{item.coursePlanBegtime}}" data-end="{{item.coursePlanEndtime}}" data-url="{{item.storeCoachHeadimg}}"
-                data-status="{{item.isbook}}" data-store="{{item.storeName}}" data-address="{{item.storeAddress}}">
+                data-status="{{item.isbook}}" data-store="{{item.storeName}}" data-address="{{item.storeAddress}}" data-count="{{item.courseReleaseDiscountStatus}}">
                 <view class='headImgBox'>
                   <image class='curriculumImg' src="{{item.storeCoachHeadimg}}"></image>
                 </view>
@@ -124,9 +124,9 @@
 
               <view class='startTime'>
                 <view class='fw times' bindtap='courseDetails' data-id="{{item.courseReleasePkcode}}" data-price="{{item.courseReleaseMoney}}" data-names="{{item.fitnessCourseName}}" data-start="{{item.coursePlanBegtime}}" data-end="{{item.coursePlanEndtime}}" data-url="{{item.storeCoachHeadimg}}"
-                  data-status="{{item.isbook}}" data-store="{{item.storeName}}" data-address="{{item.storeAddress}}">{{item.coursePlanBegtime}}-{{item.coursePlanEndtime}}</view>
+                  data-status="{{item.isbook}}" data-store="{{item.storeName}}" data-address="{{item.storeAddress}}" data-count="{{item.courseReleaseDiscountStatus}}">{{item.coursePlanBegtime}}-{{item.coursePlanEndtime}}</view>
                 <view class='appointment' wx:if="{{item.isbook==1}}" data-index="{{index}}" bindtap='yue' id='{{item.courseReleasePkcode}}' data-store="{{item.storeName}}" data-names="{{item.fitnessCourseName}}" data-start="{{item.coursePlanBegtime}}" data-end="{{item.coursePlanEndtime}}"
-                  data-price="{{item.courseReleaseMoney}}" data-address="{{item.storeAddress}}">预约</view>
+                  data-price="{{item.courseReleaseMoney}}" data-address="{{item.storeAddress}}" data-count="{{item.courseReleaseDiscountStatus}}">预约</view>
                 <view class='appointment endBtn' wx:if="{{item.isbook==0}}" data-index="{{index}}">结束</view>
               </view>
             </view>

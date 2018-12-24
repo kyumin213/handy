@@ -31,15 +31,19 @@ Page({
     var money = options.money
     var pkCode = options.pkCode
     let names = options.names
-    let coachShow = options.coachShow
-      // that.setData({
-      //   coachShow: coachShow
-      // })
+    if(money=='299.00'){
+      that.setData({
+        coachShow:false
+      })
+    } else {
+      that.setData({
+        coachShow: true
+      })
+    }
       that.setData({
         totalMoney: money,
         pkCode: pkCode,
-        names: names,
-        coachShow: coachShow
+        names: names
       })
 
   },

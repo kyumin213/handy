@@ -15,9 +15,9 @@ Page({
     pwd1: '',
     pwd2: '',
     pwdErr: '',
-    disabled:true,
-    ispass:true,
-    ispass2:true
+    disabled: true,
+    ispass: true,
+    ispass2: true
   },
 
   /**
@@ -55,7 +55,7 @@ Page({
       that.setData({
         hiddenPwd: true,
         ispass2: false
-    })
+      })
     }
   },
   // 密码
@@ -94,7 +94,7 @@ Page({
     } else if (pwd1 == pwd2 && pwd2 != '') {
       that.setData({
         pwdErr: false,
-        disabled:false
+        disabled: false
       })
     }
   },
@@ -106,18 +106,24 @@ Page({
     let id = userData.id
     app.agriknow.updateLockerPwd(id, pwd).then(res => {
       console.log(res.success)
-      if(res.success=='400'){
-       wx.showToast({
-         title: '设置失败',
-         icon:'loading',
-         duration:2000
-       })
+      if (res.success == '400') {
+        wx.showToast({
+          title: '设置失败',
+          icon: '',
+          duration: 1000
+        })
       } else {
         wx.showToast({
           title: '设置成功',
           icon: 'success',
-          duration: 2000
+          duration: 1000
         })
+        setTimeout(function() {
+          wx.switchTab({
+            url: '../me',
+          })
+        }, 1000)
+
       }
     })
   },
